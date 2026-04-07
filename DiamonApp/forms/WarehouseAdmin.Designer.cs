@@ -13,12 +13,6 @@
         private System.Windows.Forms.ToolStripMenuItem filterToolStripMenuItemFilter;
         private System.Windows.Forms.ToolStripMenuItem exitToolStripMenuItemOutput;
         private System.Windows.Forms.Label labelLogin;
-        private System.Windows.Forms.ToolStripMenuItem весьСкладToolStripMenuItem;
-        private System.Windows.Forms.ToolStripMenuItem кольцоToolStripMenuItem;
-        private System.Windows.Forms.ToolStripMenuItem серьгиToolStripMenuItem;
-        private System.Windows.Forms.ToolStripMenuItem браслетToolStripMenuItem;
-        private System.Windows.Forms.ToolStripMenuItem кольеToolStripMenuItem;
-        private System.Windows.Forms.ToolStripMenuItem брошьToolStripMenuItem;
         private System.Windows.Forms.ToolStripMenuItem searchtoolStripMenuItem;
         private System.Windows.Forms.Button buttonHistoryShipment;
         private System.Windows.Forms.ToolStripMenuItem toolStripMenuItem3;
@@ -30,5 +24,7 @@
         private System.Windows.Forms.ToolStripMenuItem toolStripMenuItem1;
         private System.Windows.Forms.ToolStripMenuItem deleteCardToolStripMenuItem;
         private System.Windows.Forms.ToolStripMenuItem changeAccountToolStripMenuItem;
+        private ToolStripMenuItem весьСкладToolStripMenuItem;
+        private ToolStripMenuItem категорииToolStripMenuItem;
     }
 }

@@ -2,20 +2,20 @@
 using System.Security.Cryptography;
 using System.Text;
 
-namespace DiamonApp.Hash
+namespace DiamondApp.Hash
 {
     public class SimpleHash
     {
         public static string HashSHA256(string input)
         {
-            using (var sha256 = SHA256.Create())
+            using (SHA256 sha256 = SHA256.Create()) 
             {
-                var hashBytes = sha256.ComputeHash(Encoding.UTF8.GetBytes(input));
-
+                var bytes = Encoding.UTF8.GetBytes(input);
+                var hash = sha256.ComputeHash(bytes);
                 var sb = new StringBuilder();
-                foreach (var b in hashBytes)
+                foreach (byte b in hash)
                 {
-                    sb.Append(b.ToString("x2"));
+                    sb.Append(b.ToString("x2"));  
                 }
                 return sb.ToString();
             }

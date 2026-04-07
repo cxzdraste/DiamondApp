@@ -1,6 +1,6 @@
 ﻿using System;
 using DiamonApp.Enums;
-using DiamonApp.Hash;
+using DiamondApp.Hash;
 
 namespace DiamonApp.Classes
 {
@@ -18,7 +18,7 @@ namespace DiamonApp.Classes
             Name = name;
             Surname = surname;
             Login = login;
-            Password = SimpleHash.HashSHA256(password);
+            Password = password;
             Job = job;
         }
     }

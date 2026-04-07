@@ -1,7 +1,7 @@
 ﻿using DiamonApp.Classes;
+using DiamondApp.Hash;
 using Microsoft.EntityFrameworkCore;
 using Newtonsoft.Json;
-using static System.Windows.Forms.VisualStyles.VisualStyleElement.Menu;
 
 namespace DiamonApp.DataBase
 {
@@ -92,11 +92,11 @@ namespace DiamonApp.DataBase
         {
             if (!Employess.Any(w => w.Login == "777"))
             {
-                Employess.Add(new EmployeeClass("Admin", "One", "777", "777", Enums.JobsEnumcs.Administrator));
+                Employess.Add(new EmployeeClass("Admin", "One", "777", SimpleHash.HashSHA256("777"), Enums.JobsEnumcs.Administrator));
             }
             if (!Employess.Any(w => w.Login == "12"))
             {
-                Employess.Add(new EmployeeClass("Кладовщик", "Коробков", "12", "12", Enums.JobsEnumcs.Storekeeper));
+                Employess.Add(new EmployeeClass("Кладовщик", "Коробков", "12", SimpleHash.HashSHA256("12"), Enums.JobsEnumcs.Storekeeper));
             }
             SaveChanges();
             

@@ -4,8 +4,8 @@ using System.Windows.Forms;
 using DiamonApp;
 using DiamonApp.DataBase;
 using DiamonApp.Enums;
-using DiamonApp.Hash;
 using DiamonApp.Resourses;
+using DiamondApp.Hash;
 
 namespace Draft_Diamond_BD
 {
@@ -46,6 +46,7 @@ namespace Draft_Diamond_BD
                     else
                     {
                         MessageBox.Show(Resources.ErrorPassword);
+                        MessageBox.Show($"{user.Password},,,,,{password}");
                     }
                 }
                 else

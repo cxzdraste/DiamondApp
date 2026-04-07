@@ -1,9 +1,10 @@
-﻿using DiamonApp.DataBase;
+﻿using DiamonApp;
 using DiamonApp.Classes;
+using DiamonApp.DataBase;
 using DiamonApp.Enums;
-using DiamonApp;
-using Draft_Diamond_BD;
 using DiamonApp.Resourses;
+using DiamondApp.Hash;
+using Draft_Diamond_BD;
 namespace DiamonApp
 {
     public partial class Registration : Form
@@ -34,7 +35,7 @@ namespace DiamonApp
                     MessageBox.Show(Resources.SuchLogin); 
                     return;
                 }
-                var newWorker = new EmployeeClass(name, surname, login, password, JobsEnumcs.Storekeeper);
+                var newWorker = new EmployeeClass(name, surname, login, SimpleHash.HashSHA256(password), JobsEnumcs.Storekeeper);
                 
                 db.Employess.Add(newWorker);
                 db.SaveChanges();
