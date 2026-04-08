@@ -1,4 +1,5 @@
-﻿using DiamonApp.Classes;
+﻿using System.Diagnostics;
+using DiamonApp.Classes;
 using DiamondApp.Hash;
 using Microsoft.EntityFrameworkCore;
 using Newtonsoft.Json;
@@ -36,6 +37,7 @@ namespace DiamonApp.DataBase
                 entity.Property(p => p.Category);
                 entity.Property(p => p.Price);
                 entity.Property(p => p.Rest);
+                entity.Property(p => p.Creator);
             });
 
             // Categories base
@@ -107,7 +109,7 @@ namespace DiamonApp.DataBase
                 if (!Categories.Any())
                 {
                     var newListOfCategories = new List<string>() { "Кольцо","Серьги","Колье","Браслет","Брошь"};
-                    Categories.Add(new CategoryClass(newListOfCategories));
+                    Categories.Add(new CategoryClass(1,newListOfCategories));
                 }
                 SaveChanges();
         }
@@ -123,11 +125,11 @@ namespace DiamonApp.DataBase
                     }
                     Products.AddRange(new ProductClass[]
                         {
-                            new ProductClass( "Какое то кольцо", UniteOfMeasureEnum.Unit, 45000m, allNamesLinq[0], 30),
-                            new ProductClass( "Какие то серьги", UniteOfMeasureEnum.Unit, 45000m, allNamesLinq[1], 30),
-                            new ProductClass( "Какое то колье", UniteOfMeasureEnum.Unit, 45000m, allNamesLinq[2], 30),
-                            new ProductClass( "Какой то браслет", UniteOfMeasureEnum.Unit, 45000m, allNamesLinq[3], 30),
-                            new ProductClass( "Какая то брошь", UniteOfMeasureEnum.Unit, 45000m, allNamesLinq[4], 30)
+                            new ProductClass( "Какое то кольцо", UniteOfMeasureEnum.Unit, 45000m, allNamesLinq[0], 30, Employess.FirstOrDefault( p => p.Login=="777").Login),
+                            new ProductClass( "Какие то серьги", UniteOfMeasureEnum.Unit, 45000m, allNamesLinq[1], 30,Employess.FirstOrDefault( p => p.Login=="777").Login),
+                            new ProductClass( "Какое то колье", UniteOfMeasureEnum.Unit, 45000m, allNamesLinq[2], 30,Employess.FirstOrDefault(p => p.Login == "777").Login),
+                            new ProductClass( "Какой то браслет", UniteOfMeasureEnum.Unit, 45000m, allNamesLinq[3], 30, Employess.FirstOrDefault(p => p.Login == "777").Login),
+                            new ProductClass( "Какая то брошь", UniteOfMeasureEnum.Unit, 45000m, allNamesLinq[4], 30, Employess.FirstOrDefault(p => p.Login == "777").Login)
                         });
                         SaveChanges();
                 }

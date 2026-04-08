@@ -1,6 +1,5 @@
-﻿using System.Linq;
-using DiamonApp;
-using DiamonApp.DataBase;
+﻿using DiamonApp.DataBase;
+using DiamonApp.forms;
 using DiamonApp.Resourses;
 
 
@@ -13,15 +12,15 @@ namespace Draft_Diamond_BD
         public WarehouseAdmin(string login)
         {
             InitializeComponent();
-            userLogin = Resources.LoginInMenu + login;
-            labelLogin.Text = userLogin;
+            userLogin = login;
+            labelLogin.Text = Resources.LoginInMenu + userLogin;
             CreateDataGridView();
             LoadProducts();
             FilterProducts();
             весьСкладToolStripMenuItem.Click += (s, a) => LoadProducts();
             exitToolStripMenuItemOutput.Click += Exit_Click;
             //buttonHistoryShipment.Click += ButtonHistoryShipment_Click;
-            //addCardToolStripMenuItem.Click += AddCardToolStripMenuItem_Click;
+            addCardToolStripMenuItem.Click += AddCardToolStripMenuItem_Click;
             //changeCardToolStripMenuItem.Click += ChangeCardToolStripMenuItem_Click;
             //deleteCardToolStripMenuItem.Click += deleteCardToolStripMenuItem_Click;
             //searchShipmentToolStripMenuItem.Click+= SearchShipmentToolStripMenuItem_Click;
@@ -32,7 +31,7 @@ namespace Draft_Diamond_BD
             {
                 Location = new System.Drawing.Point(10, 150),
                 Size = new System.Drawing.Size(700, 250),
-                Margin = new Padding(10,10,10,10),
+                Margin = new Padding(10, 10, 10, 10),
                 AutoSizeColumnsMode = DataGridViewAutoSizeColumnsMode.Fill,
                 BackgroundColor = System.Drawing.Color.DarkGray,
                 Anchor = AnchorStyles.Left | AnchorStyles.Right | AnchorStyles.Top,
@@ -45,7 +44,7 @@ namespace Draft_Diamond_BD
             {
                 var categoriesBases = db.Categories.ToList();
 
-                for (var i = 0;i< categoriesBases.Count;i++)
+                for (var i = 0; i < categoriesBases.Count; i++)
                 {
                     var categories = categoriesBases[i].NamesOfCategory;
                     foreach (var category in categories)
@@ -68,7 +67,15 @@ namespace Draft_Diamond_BD
                         {
                             using (var db = new AllDB())
                             {
-                                var products = db.Products.Where(p => p.Category == category).ToList();
+                                var products = db.Products.Where(p => p.Category == category).Select(p => new
+                                {
+                                    p.Name,
+                                    p.UniteOfMeasure,
+                                    p.Price,
+                                    p.Category,
+                                    p.Rest,
+                                    p.Creator,
+                                }).ToList();
                                 dgvWarehouse.DataSource = products;
                             }
                         };
@@ -84,27 +91,34 @@ namespace Draft_Diamond_BD
         {
             using (var db = new AllDB())
             {
-                var products = db.Products.Select(p => new 
+                var products = db.Products.Select(p => new
                 {
                     p.Name,
                     p.UniteOfMeasure,
                     p.Price,
                     p.Category,
                     p.Rest,
+                    p.Creator,
                 }).ToList();
                 dgvWarehouse.DataSource = products;
-                
+
             }
         }
-       
-        //private void AddCardToolStripMenuItem_Click(object sender, EventArgs e)
-        //{
-        //    var addCardForm = new AddCard();
-        //    if (addCardForm.ShowDialog() == DialogResult.OK)
-        //    {
-        //        LoadProducts(); 
-        //    }
-        //}
+
+        private void AddCardToolStripMenuItem_Click(object sender, EventArgs e)
+        {
+            var addCardForm = new AddCard(userLogin);
+            if (addCardForm.ShowDialog() == DialogResult.OK)
+            {
+                LoadProducts();
+            }
+        }
+        private void категориюToolStripMenuItem_Click(object sender, EventArgs e)
+        {
+            var newFormAddCategory = new AddCategory(userLogin);
+            newFormAddCategory.Show();
+            Hide();
+        }
         //private void ButtonHistoryShipment_Click(object sender, EventArgs e)
         //{
         //    var historyForm = new HistoryShipment(userLogin);
@@ -142,20 +156,23 @@ namespace Draft_Diamond_BD
             menuStripWarehouseProducts = new MenuStrip();
             toolStripMenuItem3 = new ToolStripMenuItem();
             addCardToolStripMenuItem = new ToolStripMenuItem();
+            категориюToolStripMenuItem = new ToolStripMenuItem();
             toolStripMenuItem2 = new ToolStripMenuItem();
             changeCardToolStripMenuItem = new ToolStripMenuItem();
+            категориюToolStripMenuItem1 = new ToolStripMenuItem();
             toolStripMenuItem1 = new ToolStripMenuItem();
             deleteCardToolStripMenuItem = new ToolStripMenuItem();
+            категориюToolStripMenuItem2 = new ToolStripMenuItem();
             searchtoolStripMenuItem = new ToolStripMenuItem();
             searchShipmentToolStripMenuItem = new ToolStripMenuItem();
             найтиToolStripMenuItem = new ToolStripMenuItem();
             filterToolStripMenuItemFilter = new ToolStripMenuItem();
+            весьСкладToolStripMenuItem = new ToolStripMenuItem();
+            категорииToolStripMenuItem = new ToolStripMenuItem();
             exitToolStripMenuItemOutput = new ToolStripMenuItem();
             changeAccountToolStripMenuItem = new ToolStripMenuItem();
             labelLogin = new Label();
             buttonHistoryShipment = new Button();
-            this.весьСкладToolStripMenuItem = new ToolStripMenuItem();
-            this.категорииToolStripMenuItem = new ToolStripMenuItem();
             menuStripWarehouseProducts.SuspendLayout();
             SuspendLayout();
             // 
@@ -181,7 +198,7 @@ namespace Draft_Diamond_BD
             // 
             // toolStripMenuItem3
             // 
-            toolStripMenuItem3.DropDownItems.AddRange(new ToolStripItem[] { addCardToolStripMenuItem });
+            toolStripMenuItem3.DropDownItems.AddRange(new ToolStripItem[] { addCardToolStripMenuItem, категориюToolStripMenuItem });
             toolStripMenuItem3.Name = "toolStripMenuItem3";
             toolStripMenuItem3.Size = new Size(71, 20);
             toolStripMenuItem3.Text = "Добавить";
@@ -192,9 +209,16 @@ namespace Draft_Diamond_BD
             addCardToolStripMenuItem.Size = new Size(180, 22);
             addCardToolStripMenuItem.Text = "Карточку ";
             // 
+            // категориюToolStripMenuItem
+            // 
+            категориюToolStripMenuItem.Name = "категориюToolStripMenuItem";
+            категориюToolStripMenuItem.Size = new Size(180, 22);
+            категориюToolStripMenuItem.Text = "Категорию";
+            категориюToolStripMenuItem.Click += категориюToolStripMenuItem_Click;
+            // 
             // toolStripMenuItem2
             // 
-            toolStripMenuItem2.DropDownItems.AddRange(new ToolStripItem[] { changeCardToolStripMenuItem });
+            toolStripMenuItem2.DropDownItems.AddRange(new ToolStripItem[] { changeCardToolStripMenuItem, категориюToolStripMenuItem1 });
             toolStripMenuItem2.Name = "toolStripMenuItem2";
             toolStripMenuItem2.Size = new Size(73, 20);
             toolStripMenuItem2.Text = "Изменить";
@@ -202,12 +226,18 @@ namespace Draft_Diamond_BD
             // changeCardToolStripMenuItem
             // 
             changeCardToolStripMenuItem.Name = "changeCardToolStripMenuItem";
-            changeCardToolStripMenuItem.Size = new Size(180, 22);
+            changeCardToolStripMenuItem.Size = new Size(134, 22);
             changeCardToolStripMenuItem.Text = "Карточку";
+            // 
+            // категориюToolStripMenuItem1
+            // 
+            категориюToolStripMenuItem1.Name = "категориюToolStripMenuItem1";
+            категориюToolStripMenuItem1.Size = new Size(134, 22);
+            категориюToolStripMenuItem1.Text = "Категорию";
             // 
             // toolStripMenuItem1
             // 
-            toolStripMenuItem1.DropDownItems.AddRange(new ToolStripItem[] { deleteCardToolStripMenuItem });
+            toolStripMenuItem1.DropDownItems.AddRange(new ToolStripItem[] { deleteCardToolStripMenuItem, категориюToolStripMenuItem2 });
             toolStripMenuItem1.Name = "toolStripMenuItem1";
             toolStripMenuItem1.Size = new Size(63, 20);
             toolStripMenuItem1.Text = "Удалить";
@@ -215,8 +245,14 @@ namespace Draft_Diamond_BD
             // deleteCardToolStripMenuItem
             // 
             deleteCardToolStripMenuItem.Name = "deleteCardToolStripMenuItem";
-            deleteCardToolStripMenuItem.Size = new Size(125, 22);
+            deleteCardToolStripMenuItem.Size = new Size(134, 22);
             deleteCardToolStripMenuItem.Text = "Карточку";
+            // 
+            // категориюToolStripMenuItem2
+            // 
+            категориюToolStripMenuItem2.Name = "категориюToolStripMenuItem2";
+            категориюToolStripMenuItem2.Size = new Size(134, 22);
+            категориюToolStripMenuItem2.Text = "Категорию";
             // 
             // searchtoolStripMenuItem
             // 
@@ -239,10 +275,22 @@ namespace Draft_Diamond_BD
             // 
             // filterToolStripMenuItemFilter
             // 
-            filterToolStripMenuItemFilter.DropDownItems.AddRange(new ToolStripItem[] { this.весьСкладToolStripMenuItem, this.категорииToolStripMenuItem });
+            filterToolStripMenuItemFilter.DropDownItems.AddRange(new ToolStripItem[] { весьСкладToolStripMenuItem, категорииToolStripMenuItem });
             filterToolStripMenuItemFilter.Name = "filterToolStripMenuItemFilter";
             filterToolStripMenuItemFilter.Size = new Size(60, 20);
             filterToolStripMenuItemFilter.Text = "Фильтр";
+            // 
+            // весьСкладToolStripMenuItem
+            // 
+            весьСкладToolStripMenuItem.Name = "весьСкладToolStripMenuItem";
+            весьСкладToolStripMenuItem.Size = new Size(133, 22);
+            весьСкладToolStripMenuItem.Text = "Весь склад";
+            // 
+            // категорииToolStripMenuItem
+            // 
+            категорииToolStripMenuItem.Name = "категорииToolStripMenuItem";
+            категорииToolStripMenuItem.Size = new Size(133, 22);
+            категорииToolStripMenuItem.Text = "Категории";
             // 
             // exitToolStripMenuItemOutput
             // 
@@ -285,18 +333,6 @@ namespace Draft_Diamond_BD
             buttonHistoryShipment.Text = "История Отгрузок";
             buttonHistoryShipment.UseVisualStyleBackColor = false;
             // 
-            // весьСкладToolStripMenuItem
-            // 
-            this.весьСкладToolStripMenuItem.Name = "весьСкладToolStripMenuItem";
-            this.весьСкладToolStripMenuItem.Size = new Size(180, 22);
-            this.весьСкладToolStripMenuItem.Text = "Весь склад";
-            // 
-            // категорииToolStripMenuItem
-            // 
-            this.категорииToolStripMenuItem.Name = "категорииToolStripMenuItem";
-            this.категорииToolStripMenuItem.Size = new Size(180, 22);
-            this.категорииToolStripMenuItem.Text = "Категории";
-            // 
             // WarehouseAdmin
             // 
             ClientSize = new Size(732, 629);
@@ -314,6 +350,6 @@ namespace Draft_Diamond_BD
 
         }
 
-
+        
     }
 }

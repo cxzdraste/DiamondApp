@@ -6,12 +6,12 @@ namespace DiamonApp.Classes
 {
     public class CategoryClass
     {
-        public Guid Id { get; set; }
+        public int Id { get; set; }
         public List<string> NamesOfCategory { get; set; }
         
-        public CategoryClass( List<string> namesOfCategory)
+        public CategoryClass(int id, List<string> namesOfCategory)
         {
-            Id = new Guid();    
+            Id = id;    
             NamesOfCategory = namesOfCategory;
         }
         public CategoryClass(string namesOfCategory)

@@ -26,5 +26,8 @@
         private System.Windows.Forms.ToolStripMenuItem changeAccountToolStripMenuItem;
         private ToolStripMenuItem весьСкладToolStripMenuItem;
         private ToolStripMenuItem категорииToolStripMenuItem;
+        private ToolStripMenuItem категориюToolStripMenuItem;
+        private ToolStripMenuItem категориюToolStripMenuItem1;
+        private ToolStripMenuItem категориюToolStripMenuItem2;
     }
 }
