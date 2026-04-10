@@ -108,10 +108,8 @@ namespace Draft_Diamond_BD
         private void AddCardToolStripMenuItem_Click(object sender, EventArgs e)
         {
             var addCardForm = new AddCard(userLogin);
-            if (addCardForm.ShowDialog() == DialogResult.OK)
-            {
-                LoadProducts();
-            }
+            addCardForm.Show();
+            Hide();
         }
         private void категориюToolStripMenuItem_Click(object sender, EventArgs e)
         {
@@ -182,7 +180,7 @@ namespace Draft_Diamond_BD
             labelwarehouse.Font = new Font("Microsoft Sans Serif", 18F, FontStyle.Regular, GraphicsUnit.Point, 0);
             labelwarehouse.Location = new Point(12, 107);
             labelwarehouse.Name = "labelwarehouse";
-            labelwarehouse.Size = new Size(90, 29);
+            labelwarehouse.Size = new Size(115, 36);
             labelwarehouse.TabIndex = 0;
             labelwarehouse.Text = "Склад:";
             // 
@@ -192,7 +190,7 @@ namespace Draft_Diamond_BD
             menuStripWarehouseProducts.Items.AddRange(new ToolStripItem[] { toolStripMenuItem3, toolStripMenuItem2, toolStripMenuItem1, searchtoolStripMenuItem, filterToolStripMenuItemFilter, exitToolStripMenuItemOutput, changeAccountToolStripMenuItem });
             menuStripWarehouseProducts.Location = new Point(0, 0);
             menuStripWarehouseProducts.Name = "menuStripWarehouseProducts";
-            menuStripWarehouseProducts.Size = new Size(732, 24);
+            menuStripWarehouseProducts.Size = new Size(732, 28);
             menuStripWarehouseProducts.TabIndex = 1;
             menuStripWarehouseProducts.Text = "Меню";
             // 
@@ -200,19 +198,19 @@ namespace Draft_Diamond_BD
             // 
             toolStripMenuItem3.DropDownItems.AddRange(new ToolStripItem[] { addCardToolStripMenuItem, категориюToolStripMenuItem });
             toolStripMenuItem3.Name = "toolStripMenuItem3";
-            toolStripMenuItem3.Size = new Size(71, 20);
+            toolStripMenuItem3.Size = new Size(90, 24);
             toolStripMenuItem3.Text = "Добавить";
             // 
             // addCardToolStripMenuItem
             // 
             addCardToolStripMenuItem.Name = "addCardToolStripMenuItem";
-            addCardToolStripMenuItem.Size = new Size(180, 22);
+            addCardToolStripMenuItem.Size = new Size(168, 26);
             addCardToolStripMenuItem.Text = "Карточку ";
             // 
             // категориюToolStripMenuItem
             // 
             категориюToolStripMenuItem.Name = "категориюToolStripMenuItem";
-            категориюToolStripMenuItem.Size = new Size(180, 22);
+            категориюToolStripMenuItem.Size = new Size(168, 26);
             категориюToolStripMenuItem.Text = "Категорию";
             категориюToolStripMenuItem.Click += категориюToolStripMenuItem_Click;
             // 
@@ -220,89 +218,89 @@ namespace Draft_Diamond_BD
             // 
             toolStripMenuItem2.DropDownItems.AddRange(new ToolStripItem[] { changeCardToolStripMenuItem, категориюToolStripMenuItem1 });
             toolStripMenuItem2.Name = "toolStripMenuItem2";
-            toolStripMenuItem2.Size = new Size(73, 20);
+            toolStripMenuItem2.Size = new Size(92, 24);
             toolStripMenuItem2.Text = "Изменить";
             // 
             // changeCardToolStripMenuItem
             // 
             changeCardToolStripMenuItem.Name = "changeCardToolStripMenuItem";
-            changeCardToolStripMenuItem.Size = new Size(134, 22);
+            changeCardToolStripMenuItem.Size = new Size(168, 26);
             changeCardToolStripMenuItem.Text = "Карточку";
             // 
             // категориюToolStripMenuItem1
             // 
             категориюToolStripMenuItem1.Name = "категориюToolStripMenuItem1";
-            категориюToolStripMenuItem1.Size = new Size(134, 22);
+            категориюToolStripMenuItem1.Size = new Size(168, 26);
             категориюToolStripMenuItem1.Text = "Категорию";
             // 
             // toolStripMenuItem1
             // 
             toolStripMenuItem1.DropDownItems.AddRange(new ToolStripItem[] { deleteCardToolStripMenuItem, категориюToolStripMenuItem2 });
             toolStripMenuItem1.Name = "toolStripMenuItem1";
-            toolStripMenuItem1.Size = new Size(63, 20);
+            toolStripMenuItem1.Size = new Size(79, 24);
             toolStripMenuItem1.Text = "Удалить";
             // 
             // deleteCardToolStripMenuItem
             // 
             deleteCardToolStripMenuItem.Name = "deleteCardToolStripMenuItem";
-            deleteCardToolStripMenuItem.Size = new Size(134, 22);
+            deleteCardToolStripMenuItem.Size = new Size(168, 26);
             deleteCardToolStripMenuItem.Text = "Карточку";
             // 
             // категориюToolStripMenuItem2
             // 
             категориюToolStripMenuItem2.Name = "категориюToolStripMenuItem2";
-            категориюToolStripMenuItem2.Size = new Size(134, 22);
+            категориюToolStripMenuItem2.Size = new Size(168, 26);
             категориюToolStripMenuItem2.Text = "Категорию";
             // 
             // searchtoolStripMenuItem
             // 
             searchtoolStripMenuItem.DropDownItems.AddRange(new ToolStripItem[] { searchShipmentToolStripMenuItem, найтиToolStripMenuItem });
             searchtoolStripMenuItem.Name = "searchtoolStripMenuItem";
-            searchtoolStripMenuItem.Size = new Size(54, 20);
+            searchtoolStripMenuItem.Size = new Size(66, 24);
             searchtoolStripMenuItem.Text = "Поиск";
             // 
             // searchShipmentToolStripMenuItem
             // 
             searchShipmentToolStripMenuItem.Name = "searchShipmentToolStripMenuItem";
-            searchShipmentToolStripMenuItem.Size = new Size(166, 22);
+            searchShipmentToolStripMenuItem.Size = new Size(206, 26);
             searchShipmentToolStripMenuItem.Text = "Найти отгрузку ";
             // 
             // найтиToolStripMenuItem
             // 
             найтиToolStripMenuItem.Name = "найтиToolStripMenuItem";
-            найтиToolStripMenuItem.Size = new Size(166, 22);
+            найтиToolStripMenuItem.Size = new Size(206, 26);
             найтиToolStripMenuItem.Text = "Поиск карточки ";
             // 
             // filterToolStripMenuItemFilter
             // 
             filterToolStripMenuItemFilter.DropDownItems.AddRange(new ToolStripItem[] { весьСкладToolStripMenuItem, категорииToolStripMenuItem });
             filterToolStripMenuItemFilter.Name = "filterToolStripMenuItemFilter";
-            filterToolStripMenuItemFilter.Size = new Size(60, 20);
+            filterToolStripMenuItemFilter.Size = new Size(74, 24);
             filterToolStripMenuItemFilter.Text = "Фильтр";
             // 
             // весьСкладToolStripMenuItem
             // 
             весьСкладToolStripMenuItem.Name = "весьСкладToolStripMenuItem";
-            весьСкладToolStripMenuItem.Size = new Size(133, 22);
+            весьСкладToolStripMenuItem.Size = new Size(166, 26);
             весьСкладToolStripMenuItem.Text = "Весь склад";
             // 
             // категорииToolStripMenuItem
             // 
             категорииToolStripMenuItem.Name = "категорииToolStripMenuItem";
-            категорииToolStripMenuItem.Size = new Size(133, 22);
+            категорииToolStripMenuItem.Size = new Size(166, 26);
             категорииToolStripMenuItem.Text = "Категории";
             // 
             // exitToolStripMenuItemOutput
             // 
             exitToolStripMenuItemOutput.Name = "exitToolStripMenuItemOutput";
-            exitToolStripMenuItemOutput.Size = new Size(54, 20);
+            exitToolStripMenuItemOutput.Size = new Size(67, 24);
             exitToolStripMenuItemOutput.Text = "Выход";
             // 
             // changeAccountToolStripMenuItem
             // 
             changeAccountToolStripMenuItem.Alignment = ToolStripItemAlignment.Right;
             changeAccountToolStripMenuItem.Name = "changeAccountToolStripMenuItem";
-            changeAccountToolStripMenuItem.Size = new Size(112, 20);
+            changeAccountToolStripMenuItem.Size = new Size(139, 24);
             changeAccountToolStripMenuItem.Text = "Сменить аккаунт";
             changeAccountToolStripMenuItem.Click += changeAccountToolStripMenuItem_Click;
             // 
@@ -311,11 +309,11 @@ namespace Draft_Diamond_BD
             labelLogin.Anchor = AnchorStyles.Top | AnchorStyles.Right;
             labelLogin.AutoSize = true;
             labelLogin.Font = new Font("Microsoft Sans Serif", 12F, FontStyle.Regular, GraphicsUnit.Point, 204);
-            labelLogin.Location = new Point(519, 0);
+            labelLogin.Location = new Point(486, 0);
             labelLogin.Margin = new Padding(5);
             labelLogin.Name = "labelLogin";
             labelLogin.Padding = new Padding(2);
-            labelLogin.Size = new Size(55, 24);
+            labelLogin.Size = new Size(68, 29);
             labelLogin.TabIndex = 2;
             labelLogin.Text = "label1";
             // 
@@ -350,6 +348,6 @@ namespace Draft_Diamond_BD
 
         }
 
-        
+
     }
 }
