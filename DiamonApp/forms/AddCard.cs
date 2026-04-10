@@ -25,7 +25,6 @@ namespace Draft_Diamond_BD
                     comboBoxUniteOfMeasure.Items.Add(unite);
                 }
             }
-
         }
 
         private void buttonAdd_Click(object sender, EventArgs e)

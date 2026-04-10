@@ -127,6 +127,7 @@
             // 
             numPurchasePrice.BackColor = SystemColors.ControlDarkDark;
             numPurchasePrice.Location = new Point(264, 288);
+            numPurchasePrice.Maximum = new decimal(new int[] { -469762048, -590869294, 5421010, 0 });
             numPurchasePrice.Name = "numPurchasePrice";
             numPurchasePrice.Size = new Size(228, 27);
             numPurchasePrice.TabIndex = 9;

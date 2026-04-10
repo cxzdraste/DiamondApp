@@ -224,13 +224,14 @@ namespace Draft_Diamond_BD
             // changeCardToolStripMenuItem
             // 
             changeCardToolStripMenuItem.Name = "changeCardToolStripMenuItem";
-            changeCardToolStripMenuItem.Size = new Size(168, 26);
+            changeCardToolStripMenuItem.Size = new Size(224, 26);
             changeCardToolStripMenuItem.Text = "Карточку";
+            changeCardToolStripMenuItem.Click += changeCardToolStripMenuItem_Click;
             // 
             // категориюToolStripMenuItem1
             // 
             категориюToolStripMenuItem1.Name = "категориюToolStripMenuItem1";
-            категориюToolStripMenuItem1.Size = new Size(168, 26);
+            категориюToolStripMenuItem1.Size = new Size(224, 26);
             категориюToolStripMenuItem1.Text = "Категорию";
             // 
             // toolStripMenuItem1
@@ -348,6 +349,11 @@ namespace Draft_Diamond_BD
 
         }
 
-
+        private void changeCardToolStripMenuItem_Click(object sender, EventArgs e)
+        {
+            var newChangeCardForm = new ChangeCard(userLogin);
+            newChangeCardForm.Show();
+            Hide();
+        }
     }
 }
