@@ -9,6 +9,6 @@ namespace DiamonApp.Classes
     public class HistoryShipment
     {
         public Guid Id { get; set; }
-        public List<ShippingBasketClass> Shipments { get; set; }
+        public List<ProductsOnShipmentClass> Shipments { get; set; }
     }
 }

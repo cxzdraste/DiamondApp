@@ -19,11 +19,7 @@ namespace Draft_Diamond_BD
             FilterProducts();
             весьСкладToolStripMenuItem.Click += (s, a) => LoadProducts();
             exitToolStripMenuItemOutput.Click += Exit_Click;
-            //buttonHistoryShipment.Click += ButtonHistoryShipment_Click;
             addCardToolStripMenuItem.Click += AddCardToolStripMenuItem_Click;
-            //changeCardToolStripMenuItem.Click += ChangeCardToolStripMenuItem_Click;
-            //deleteCardToolStripMenuItem.Click += deleteCardToolStripMenuItem_Click;
-            //searchShipmentToolStripMenuItem.Click+= SearchShipmentToolStripMenuItem_Click;
         }
         private void CreateDataGridView()
         {
@@ -111,33 +107,13 @@ namespace Draft_Diamond_BD
             addCardForm.Show();
             Hide();
         }
-        private void категориюToolStripMenuItem_Click(object sender, EventArgs e)
+        private void newCategoryToolStripMenuItem_Click(object sender, EventArgs e)
         {
             var newFormAddCategory = new AddCategory(userLogin);
             newFormAddCategory.Show();
             Hide();
         }
-        //private void ButtonHistoryShipment_Click(object sender, EventArgs e)
-        //{
-        //    var historyForm = new HistoryShipment(userLogin);
-        //    historyForm.Show();
-        //    Hide();
-        //}
-        //private void ChangeCardToolStripMenuItem_Click(object sender, EventArgs e)
-        //{
-        //    var changeCardForm = new ChangeCard(dgvWarehouse);
-        //    changeCardForm.Show();
-        //}
-        //private void deleteCardToolStripMenuItem_Click(object sender, EventArgs e)
-        //{
-        //    var deleteCardDelete = new DeleteCard(dgvWarehouse);
-        //    deleteCardDelete.Show();
-        //}
-        //private void SearchShipmentToolStripMenuItem_Click(object sender, EventArgs e)
-        //{
-        //    var findShipmentForm = new FindShipment();
-        //    findShipmentForm.Show();
-        //}
+
         private void Exit_Click(object sender, EventArgs e)
         {
             Application.Exit();
@@ -148,19 +124,43 @@ namespace Draft_Diamond_BD
             newFormAuthorization.Show();
             Hide();
         }
+        private void changeCardToolStripMenuItem_Click(object sender, EventArgs e)
+        {
+            var newChangeCardForm = new ChangeCard(userLogin);
+            newChangeCardForm.Show();
+            Hide();
+        }
+        private void CategoryChangeToolStripMenuItem1_Click(object sender, EventArgs e)
+        {
+            var newChangeCategory = new ChangeCategory(userLogin);
+            newChangeCategory.Show();
+            Hide();
+        }
+        private void deleteCardToolStripMenuItem_Click(object sender, EventArgs e)
+        {
+            var newDeleteCategory = new DeleteCard(userLogin);
+            newDeleteCategory.Show();
+            Hide();
+        }
+        private void deleteCategoryToolStripMenuItem2_Click(object sender, EventArgs e)
+        {
+            var newDeleteCategory = new DeleteCategory(userLogin);
+            newDeleteCategory.Show();
+            Hide();
+        }
         private void InitializeComponent()
         {
             labelwarehouse = new Label();
             menuStripWarehouseProducts = new MenuStrip();
             toolStripMenuItem3 = new ToolStripMenuItem();
             addCardToolStripMenuItem = new ToolStripMenuItem();
-            категориюToolStripMenuItem = new ToolStripMenuItem();
+            NewCategoryToolStripMenuItem = new ToolStripMenuItem();
             toolStripMenuItem2 = new ToolStripMenuItem();
             changeCardToolStripMenuItem = new ToolStripMenuItem();
-            категориюToolStripMenuItem1 = new ToolStripMenuItem();
+            changeCategoryToolStripMenuItem1 = new ToolStripMenuItem();
             toolStripMenuItem1 = new ToolStripMenuItem();
             deleteCardToolStripMenuItem = new ToolStripMenuItem();
-            категориюToolStripMenuItem2 = new ToolStripMenuItem();
+            DeleteCategoryToolStripMenuItem2 = new ToolStripMenuItem();
             searchtoolStripMenuItem = new ToolStripMenuItem();
             searchShipmentToolStripMenuItem = new ToolStripMenuItem();
             найтиToolStripMenuItem = new ToolStripMenuItem();
@@ -180,7 +180,7 @@ namespace Draft_Diamond_BD
             labelwarehouse.Font = new Font("Microsoft Sans Serif", 18F, FontStyle.Regular, GraphicsUnit.Point, 0);
             labelwarehouse.Location = new Point(12, 107);
             labelwarehouse.Name = "labelwarehouse";
-            labelwarehouse.Size = new Size(115, 36);
+            labelwarehouse.Size = new Size(90, 29);
             labelwarehouse.TabIndex = 0;
             labelwarehouse.Text = "Склад:";
             // 
@@ -190,118 +190,121 @@ namespace Draft_Diamond_BD
             menuStripWarehouseProducts.Items.AddRange(new ToolStripItem[] { toolStripMenuItem3, toolStripMenuItem2, toolStripMenuItem1, searchtoolStripMenuItem, filterToolStripMenuItemFilter, exitToolStripMenuItemOutput, changeAccountToolStripMenuItem });
             menuStripWarehouseProducts.Location = new Point(0, 0);
             menuStripWarehouseProducts.Name = "menuStripWarehouseProducts";
-            menuStripWarehouseProducts.Size = new Size(732, 28);
+            menuStripWarehouseProducts.Size = new Size(732, 24);
             menuStripWarehouseProducts.TabIndex = 1;
             menuStripWarehouseProducts.Text = "Меню";
             // 
             // toolStripMenuItem3
             // 
-            toolStripMenuItem3.DropDownItems.AddRange(new ToolStripItem[] { addCardToolStripMenuItem, категориюToolStripMenuItem });
+            toolStripMenuItem3.DropDownItems.AddRange(new ToolStripItem[] { addCardToolStripMenuItem, NewCategoryToolStripMenuItem });
             toolStripMenuItem3.Name = "toolStripMenuItem3";
-            toolStripMenuItem3.Size = new Size(90, 24);
+            toolStripMenuItem3.Size = new Size(71, 20);
             toolStripMenuItem3.Text = "Добавить";
             // 
             // addCardToolStripMenuItem
             // 
             addCardToolStripMenuItem.Name = "addCardToolStripMenuItem";
-            addCardToolStripMenuItem.Size = new Size(168, 26);
+            addCardToolStripMenuItem.Size = new Size(180, 22);
             addCardToolStripMenuItem.Text = "Карточку ";
             // 
-            // категориюToolStripMenuItem
+            // NewCategoryToolStripMenuItem
             // 
-            категориюToolStripMenuItem.Name = "категориюToolStripMenuItem";
-            категориюToolStripMenuItem.Size = new Size(168, 26);
-            категориюToolStripMenuItem.Text = "Категорию";
-            категориюToolStripMenuItem.Click += категориюToolStripMenuItem_Click;
+            NewCategoryToolStripMenuItem.Name = "NewCategoryToolStripMenuItem";
+            NewCategoryToolStripMenuItem.Size = new Size(180, 22);
+            NewCategoryToolStripMenuItem.Text = "Категорию";
+            NewCategoryToolStripMenuItem.Click += newCategoryToolStripMenuItem_Click;
             // 
             // toolStripMenuItem2
             // 
-            toolStripMenuItem2.DropDownItems.AddRange(new ToolStripItem[] { changeCardToolStripMenuItem, категориюToolStripMenuItem1 });
+            toolStripMenuItem2.DropDownItems.AddRange(new ToolStripItem[] { changeCardToolStripMenuItem, changeCategoryToolStripMenuItem1 });
             toolStripMenuItem2.Name = "toolStripMenuItem2";
-            toolStripMenuItem2.Size = new Size(92, 24);
+            toolStripMenuItem2.Size = new Size(73, 20);
             toolStripMenuItem2.Text = "Изменить";
             // 
             // changeCardToolStripMenuItem
             // 
             changeCardToolStripMenuItem.Name = "changeCardToolStripMenuItem";
-            changeCardToolStripMenuItem.Size = new Size(224, 26);
+            changeCardToolStripMenuItem.Size = new Size(180, 22);
             changeCardToolStripMenuItem.Text = "Карточку";
             changeCardToolStripMenuItem.Click += changeCardToolStripMenuItem_Click;
             // 
-            // категориюToolStripMenuItem1
+            // changeCategoryToolStripMenuItem1
             // 
-            категориюToolStripMenuItem1.Name = "категориюToolStripMenuItem1";
-            категориюToolStripMenuItem1.Size = new Size(224, 26);
-            категориюToolStripMenuItem1.Text = "Категорию";
+            changeCategoryToolStripMenuItem1.Name = "changeCategoryToolStripMenuItem1";
+            changeCategoryToolStripMenuItem1.Size = new Size(180, 22);
+            changeCategoryToolStripMenuItem1.Text = "Категорию";
+            changeCategoryToolStripMenuItem1.Click += CategoryChangeToolStripMenuItem1_Click;
             // 
             // toolStripMenuItem1
             // 
-            toolStripMenuItem1.DropDownItems.AddRange(new ToolStripItem[] { deleteCardToolStripMenuItem, категориюToolStripMenuItem2 });
+            toolStripMenuItem1.DropDownItems.AddRange(new ToolStripItem[] { deleteCardToolStripMenuItem, DeleteCategoryToolStripMenuItem2 });
             toolStripMenuItem1.Name = "toolStripMenuItem1";
-            toolStripMenuItem1.Size = new Size(79, 24);
+            toolStripMenuItem1.Size = new Size(63, 20);
             toolStripMenuItem1.Text = "Удалить";
             // 
             // deleteCardToolStripMenuItem
             // 
             deleteCardToolStripMenuItem.Name = "deleteCardToolStripMenuItem";
-            deleteCardToolStripMenuItem.Size = new Size(168, 26);
+            deleteCardToolStripMenuItem.Size = new Size(180, 22);
             deleteCardToolStripMenuItem.Text = "Карточку";
+            deleteCardToolStripMenuItem.Click += deleteCardToolStripMenuItem_Click;
             // 
-            // категориюToolStripMenuItem2
+            // DeleteCategoryToolStripMenuItem2
             // 
-            категориюToolStripMenuItem2.Name = "категориюToolStripMenuItem2";
-            категориюToolStripMenuItem2.Size = new Size(168, 26);
-            категориюToolStripMenuItem2.Text = "Категорию";
+            DeleteCategoryToolStripMenuItem2.Name = "DeleteCategoryToolStripMenuItem2";
+            DeleteCategoryToolStripMenuItem2.Size = new Size(180, 22);
+            DeleteCategoryToolStripMenuItem2.Text = "Категорию";
+            DeleteCategoryToolStripMenuItem2.Click += deleteCategoryToolStripMenuItem2_Click;
             // 
             // searchtoolStripMenuItem
             // 
             searchtoolStripMenuItem.DropDownItems.AddRange(new ToolStripItem[] { searchShipmentToolStripMenuItem, найтиToolStripMenuItem });
             searchtoolStripMenuItem.Name = "searchtoolStripMenuItem";
-            searchtoolStripMenuItem.Size = new Size(66, 24);
+            searchtoolStripMenuItem.Size = new Size(54, 20);
             searchtoolStripMenuItem.Text = "Поиск";
             // 
             // searchShipmentToolStripMenuItem
             // 
             searchShipmentToolStripMenuItem.Name = "searchShipmentToolStripMenuItem";
-            searchShipmentToolStripMenuItem.Size = new Size(206, 26);
+            searchShipmentToolStripMenuItem.Size = new Size(166, 22);
             searchShipmentToolStripMenuItem.Text = "Найти отгрузку ";
             // 
             // найтиToolStripMenuItem
             // 
             найтиToolStripMenuItem.Name = "найтиToolStripMenuItem";
-            найтиToolStripMenuItem.Size = new Size(206, 26);
+            найтиToolStripMenuItem.Size = new Size(166, 22);
             найтиToolStripMenuItem.Text = "Поиск карточки ";
             // 
             // filterToolStripMenuItemFilter
             // 
             filterToolStripMenuItemFilter.DropDownItems.AddRange(new ToolStripItem[] { весьСкладToolStripMenuItem, категорииToolStripMenuItem });
             filterToolStripMenuItemFilter.Name = "filterToolStripMenuItemFilter";
-            filterToolStripMenuItemFilter.Size = new Size(74, 24);
+            filterToolStripMenuItemFilter.Size = new Size(60, 20);
             filterToolStripMenuItemFilter.Text = "Фильтр";
             // 
             // весьСкладToolStripMenuItem
             // 
             весьСкладToolStripMenuItem.Name = "весьСкладToolStripMenuItem";
-            весьСкладToolStripMenuItem.Size = new Size(166, 26);
+            весьСкладToolStripMenuItem.Size = new Size(133, 22);
             весьСкладToolStripMenuItem.Text = "Весь склад";
             // 
             // категорииToolStripMenuItem
             // 
             категорииToolStripMenuItem.Name = "категорииToolStripMenuItem";
-            категорииToolStripMenuItem.Size = new Size(166, 26);
+            категорииToolStripMenuItem.Size = new Size(133, 22);
             категорииToolStripMenuItem.Text = "Категории";
             // 
             // exitToolStripMenuItemOutput
             // 
             exitToolStripMenuItemOutput.Name = "exitToolStripMenuItemOutput";
-            exitToolStripMenuItemOutput.Size = new Size(67, 24);
+            exitToolStripMenuItemOutput.Size = new Size(54, 20);
             exitToolStripMenuItemOutput.Text = "Выход";
             // 
             // changeAccountToolStripMenuItem
             // 
             changeAccountToolStripMenuItem.Alignment = ToolStripItemAlignment.Right;
             changeAccountToolStripMenuItem.Name = "changeAccountToolStripMenuItem";
-            changeAccountToolStripMenuItem.Size = new Size(139, 24);
+            changeAccountToolStripMenuItem.Size = new Size(112, 20);
             changeAccountToolStripMenuItem.Text = "Сменить аккаунт";
             changeAccountToolStripMenuItem.Click += changeAccountToolStripMenuItem_Click;
             // 
@@ -314,7 +317,7 @@ namespace Draft_Diamond_BD
             labelLogin.Margin = new Padding(5);
             labelLogin.Name = "labelLogin";
             labelLogin.Padding = new Padding(2);
-            labelLogin.Size = new Size(68, 29);
+            labelLogin.Size = new Size(55, 24);
             labelLogin.TabIndex = 2;
             labelLogin.Text = "label1";
             // 
@@ -349,11 +352,9 @@ namespace Draft_Diamond_BD
 
         }
 
-        private void changeCardToolStripMenuItem_Click(object sender, EventArgs e)
+        private void категориюToolStripMenuItem2_Click(object sender, EventArgs e)
         {
-            var newChangeCardForm = new ChangeCard(userLogin);
-            newChangeCardForm.Show();
-            Hide();
+
         }
     }
 }

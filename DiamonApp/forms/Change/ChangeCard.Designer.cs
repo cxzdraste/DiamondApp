@@ -95,7 +95,6 @@
             buttonChange.TabIndex = 10;
             buttonChange.Text = "Изменить";
             buttonChange.UseVisualStyleBackColor = false;
-            buttonChange.Click += buttonChange_Click;
             // 
             // comboBoxName
             // 

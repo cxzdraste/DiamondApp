@@ -13,7 +13,7 @@ namespace DiamonApp.DataBase
         public DbSet<CategoryClass> Categories { get; set; }
         public DbSet<EmployeeClass> Employess { get; set; }
         public DbSet<HistoryShipment> HistoryShipment { get; set; }
-        public DbSet<ShippingBasketClass> ShippingBasket { get; set; }
+        public DbSet<ProductsOnShipmentClass> ProductsOnShipments { get; set; }
         public DbSet<UniteOfMeasureClass> UniteOfMeasures { get; set; }
 
         public AllDB()
@@ -79,20 +79,16 @@ namespace DiamonApp.DataBase
                 entity.Property(e => e.Shipments)
                     .HasConversion(
                         v => JsonConvert.SerializeObject(v),
-                        v => JsonConvert.DeserializeObject<List<ShippingBasketClass>>(v) ?? new List<ShippingBasketClass>()
+                        v => JsonConvert.DeserializeObject<List<ProductsOnShipmentClass>>(v) ?? new List<ProductsOnShipmentClass>()
                     );
             });
 
             //Employees base
-            modelBuilder.Entity<ShippingBasketClass>().ToTable("ShippingBasketClass");
-            modelBuilder.Entity<ShippingBasketClass>(entity =>
+            modelBuilder.Entity<ProductsOnShipmentClass>().ToTable("ShippingBasketClass");
+            modelBuilder.Entity<ProductsOnShipmentClass>(entity =>
             {
                 entity.HasKey(p => p.Id);
-                entity.Property(p => p.ListOfProducts)
-                    .HasConversion(
-                            v => JsonConvert.SerializeObject(v),
-                            v => JsonConvert.DeserializeObject<List<ProductClass>>(v) ?? new List<ProductClass>()
-                    );
+                entity.Property(p => p.Name);
                 entity.Property(p => p.PurchasePrice);
                 entity.Property(p => p.CustomerName);
                 entity.Property(p => p.CustomerPlace);
