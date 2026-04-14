@@ -46,9 +46,9 @@
             // 
             label1.AutoSize = true;
             label1.Font = new Font("Microsoft Sans Serif", 18F, FontStyle.Bold, GraphicsUnit.Point, 204);
-            label1.Location = new Point(10, 67);
+            label1.Location = new Point(11, 89);
             label1.Name = "label1";
-            label1.Size = new Size(96, 29);
+            label1.Size = new Size(121, 36);
             label1.TabIndex = 0;
             label1.Text = "Склад:";
             // 
@@ -57,9 +57,9 @@
             labelLogin.Anchor = AnchorStyles.None;
             labelLogin.AutoSize = true;
             labelLogin.Font = new Font("Microsoft Sans Serif", 12F);
-            labelLogin.Location = new Point(550, 9);
+            labelLogin.Location = new Point(580, 9);
             labelLogin.Name = "labelLogin";
-            labelLogin.Size = new Size(51, 20);
+            labelLogin.Size = new Size(64, 25);
             labelLogin.TabIndex = 1;
             labelLogin.Text = "label2";
             // 
@@ -69,69 +69,70 @@
             menuStrip1.Items.AddRange(new ToolStripItem[] { toolStripMenuItem1, createShipmentToolStripMenuItem, searchToolStripMenuItem, фильтрToolStripMenuItem, exitToolStripMenuItemOutput, сменитьАккаунтToolStripMenuItem });
             menuStrip1.Location = new Point(0, 0);
             menuStrip1.Name = "menuStrip1";
-            menuStrip1.Padding = new Padding(5, 2, 0, 2);
-            menuStrip1.Size = new Size(726, 24);
+            menuStrip1.Padding = new Padding(6, 3, 0, 3);
+            menuStrip1.Size = new Size(830, 30);
             menuStrip1.TabIndex = 2;
             menuStrip1.Text = "menuStrip1";
             // 
             // toolStripMenuItem1
             // 
             toolStripMenuItem1.Name = "toolStripMenuItem1";
-            toolStripMenuItem1.Size = new Size(12, 20);
+            toolStripMenuItem1.Size = new Size(14, 24);
             // 
             // createShipmentToolStripMenuItem
             // 
             createShipmentToolStripMenuItem.Name = "createShipmentToolStripMenuItem";
-            createShipmentToolStripMenuItem.Size = new Size(115, 20);
+            createShipmentToolStripMenuItem.Size = new Size(144, 24);
             createShipmentToolStripMenuItem.Text = "Создать отгрузку ";
             // 
             // searchToolStripMenuItem
             // 
             searchToolStripMenuItem.Name = "searchToolStripMenuItem";
-            searchToolStripMenuItem.Size = new Size(57, 20);
+            searchToolStripMenuItem.Size = new Size(70, 24);
             searchToolStripMenuItem.Text = "Поиск ";
             // 
             // фильтрToolStripMenuItem
             // 
             фильтрToolStripMenuItem.DropDownItems.AddRange(new ToolStripItem[] { весьСкладToolStripMenuItem, категорииToolStripMenuItem });
             фильтрToolStripMenuItem.Name = "фильтрToolStripMenuItem";
-            фильтрToolStripMenuItem.Size = new Size(60, 20);
+            фильтрToolStripMenuItem.Size = new Size(74, 24);
             фильтрToolStripMenuItem.Text = "Фильтр";
             // 
             // весьСкладToolStripMenuItem
             // 
             весьСкладToolStripMenuItem.Name = "весьСкладToolStripMenuItem";
-            весьСкладToolStripMenuItem.Size = new Size(133, 22);
+            весьСкладToolStripMenuItem.Size = new Size(166, 26);
             весьСкладToolStripMenuItem.Text = "Весь склад";
             // 
             // категорииToolStripMenuItem
             // 
             категорииToolStripMenuItem.Name = "категорииToolStripMenuItem";
-            категорииToolStripMenuItem.Size = new Size(133, 22);
+            категорииToolStripMenuItem.Size = new Size(166, 26);
             категорииToolStripMenuItem.Text = "Категории";
             // 
             // exitToolStripMenuItemOutput
             // 
             exitToolStripMenuItemOutput.Name = "exitToolStripMenuItemOutput";
-            exitToolStripMenuItemOutput.Size = new Size(54, 20);
+            exitToolStripMenuItemOutput.Size = new Size(67, 24);
             exitToolStripMenuItemOutput.Text = "Выход";
             // 
             // сменитьАккаунтToolStripMenuItem
             // 
             сменитьАккаунтToolStripMenuItem.Alignment = ToolStripItemAlignment.Right;
             сменитьАккаунтToolStripMenuItem.Name = "сменитьАккаунтToolStripMenuItem";
-            сменитьАккаунтToolStripMenuItem.Size = new Size(112, 20);
+            сменитьАккаунтToolStripMenuItem.Size = new Size(139, 24);
             сменитьАккаунтToolStripMenuItem.Text = "Сменить аккаунт";
             // 
             // WarehouseStorekeeper
             // 
-            AutoScaleDimensions = new SizeF(7F, 15F);
+            AutoScaleDimensions = new SizeF(8F, 20F);
             AutoScaleMode = AutoScaleMode.Font;
-            ClientSize = new Size(726, 422);
+            ClientSize = new Size(830, 563);
             Controls.Add(labelLogin);
             Controls.Add(label1);
             Controls.Add(menuStrip1);
             MainMenuStrip = menuStrip1;
+            Margin = new Padding(3, 4, 3, 4);
             Name = "WarehouseStorekeeper";
             Text = "WarehouseStorekeeper";
             menuStrip1.ResumeLayout(false);

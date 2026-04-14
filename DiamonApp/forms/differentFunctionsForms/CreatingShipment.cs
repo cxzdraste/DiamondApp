@@ -52,7 +52,7 @@ namespace DiamonApp.forms.differentFunctionsForms
                 var shipments = db.ProductsOnShipments.Select(p => new
                 {
                     p.Name,
-                    p.PurchasePrice,
+                    p.Count,
                     p.CustomerName,
                     p.CustomerPlace,
                     p.LoginStorekeeper,
@@ -122,7 +122,8 @@ namespace DiamonApp.forms.differentFunctionsForms
                 var productOnShipment = new ProductsOnShipmentClass
                 (
                     comboBoxName.Text,
-                    numCount.Value,
+                    (int)numCount.Value,
+                    numSumProduct.Value,
                     comboBoxCustomerName.Text,
                     comboBoxCustomerPlace.Text,
                     UserLogin
@@ -142,14 +143,43 @@ namespace DiamonApp.forms.differentFunctionsForms
                     MessageBox.Show("Корзина пуста", "Ошибка", MessageBoxButtons.OK, MessageBoxIcon.Warning);
                     return;
                 }
+                decimal sumShipment = 0;
+                decimal sumProduct = 0;
+                var productsNameOnShipment = new StringBuilder();
                 foreach(var product in db.ProductsOnShipments)
                 {
                     var newProduct = db.Products.FirstOrDefault(p => p.Name == product.Name);
                     newProduct.Rest = newProduct.Rest - (double)numCount.Value;
+                    productsNameOnShipment.Append($"{newProduct.Name};");
+                    sumShipment += newProduct.Price;
+                    sumShipment += numSumProduct.Value;
+                    if (newProduct.Rest == 0)
+                    {
+                        db.ProductsOnShipments.Remove(product);
+                    }
+
+                    db.SaveChanges();
+                }
+                var newHistoryShipment = new HistoryShipment
+                    (
+                        productsNameOnShipment.ToString(),
+                        db.UniteOfMeasures.FirstOrDefault(p => p.UnitesOfMeasure[0] == "Штуки").ToString(),
+                        DateTime.Today,
+                        (int)numCount.Value,
+                        sumShipment,
+                        sumProduct - sumShipment,
+                        comboBoxCustomerName.Text,
+                        comboBoxCustomerPlace.Text,
+                        UserLogin
+                    );
+                db.HistoryShipment.Add(newHistoryShipment);
+                db.SaveChanges();
+                MessageBox.Show($"{Resources.Success}");
+                foreach(var product in db.ProductsOnShipments)
+                {
                     db.ProductsOnShipments.Remove(product);
                     db.SaveChanges();
                 }
-                MessageBox.Show($"{Resources.Success}");
                 new WarehouseStorekeeper(UserLogin).Show();
                 Close();
             }

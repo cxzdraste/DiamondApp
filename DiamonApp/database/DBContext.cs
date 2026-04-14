@@ -71,29 +71,32 @@ namespace DiamonApp.DataBase
                 entity.Property(p => p.Job);
             });
 
-            //Employees base
+            //History shipment base
             modelBuilder.Entity<HistoryShipment>().ToTable("HistoryShipment");
             modelBuilder.Entity<HistoryShipment>(entity =>
             {
                 entity.HasKey(e => e.Id);
-                entity.Property(e => e.Shipments)
-                    .HasConversion(
-                        v => JsonConvert.SerializeObject(v),
-                        v => JsonConvert.DeserializeObject<List<ProductsOnShipmentClass>>(v) ?? new List<ProductsOnShipmentClass>()
-                    );
+                entity.Property(p => p.ProductsName);
+                entity.Property(p => p.UniteOfMeasure);
+                entity.Property(p => p.DateShipment);
+                entity.Property(p => p.Count);
+                entity.Property(p => p.SumShipment);
+                entity.Property(p => p.Profit);
+                entity.Property(p => p.CustomerName);
+                entity.Property(p => p.CustomerPlace);
+                entity.Property(p => p.LoginStorekeeper);
             });
 
             //Employees base
-            modelBuilder.Entity<ProductsOnShipmentClass>().ToTable("ShippingBasketClass");
+            modelBuilder.Entity<ProductsOnShipmentClass>().ToTable("ProductsOnShipmentClass");
             modelBuilder.Entity<ProductsOnShipmentClass>(entity =>
             {
                 entity.HasKey(p => p.Id);
                 entity.Property(p => p.Name);
-                entity.Property(p => p.PurchasePrice);
+                entity.Property(p => p.Count);
                 entity.Property(p => p.CustomerName);
                 entity.Property(p => p.CustomerPlace);
                 entity.Property(p => p.LoginStorekeeper);
-
             });
            
         }

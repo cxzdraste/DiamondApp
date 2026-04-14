@@ -10,16 +10,18 @@ namespace DiamonApp.Classes
     {
         public Guid Id { get; set; }        
         public string Name { get; set; }
-        public decimal PurchasePrice { get; set; }
+        public int Count { get; set; }
+        public decimal Sum { get; set; }
         public string CustomerName { get; set; }
         public string CustomerPlace { get; set; }
         public string LoginStorekeeper { get; set; }
 
-        public ProductsOnShipmentClass(string name, decimal purchasePrice, string customerName, string customerPlace, string loginStorekeeper)
+        public ProductsOnShipmentClass(string name, int count, decimal sum, string customerName, string customerPlace, string loginStorekeeper)
         {
             Id = Guid.NewGuid();
             Name = name;
-            PurchasePrice = purchasePrice;  
+            Count = count;
+            Sum = sum;
             CustomerName = customerName;
             CustomerPlace = customerPlace;
             LoginStorekeeper = loginStorekeeper;
