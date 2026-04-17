@@ -1,7 +1,7 @@
 ﻿using System.Data;
 using DiamonApp.DataBase;
 using DiamonApp.forms.differentFunctionsForms;
-using DiamonApp.Resourses;
+using DiamondApp.Resourses;
 
 namespace Draft_Diamond_BD
 {
@@ -20,6 +20,7 @@ namespace Draft_Diamond_BD
             весьСкладToolStripMenuItem.Click += (s, e) => LoadProducts();
             exitToolStripMenuItemOutput.Click += Exit_Click;
             createShipmentToolStripMenuItem.Click += CreateShipmentToolStripMenuItem_Click;
+            сменитьАккаунтToolStripMenuItem.Click += changeAccountToolStripMenuItem_Click;
         }
         private void CreateDataGridView()
         {
@@ -100,13 +101,20 @@ namespace Draft_Diamond_BD
 
         private void CreateShipmentToolStripMenuItem_Click(object sender, EventArgs e)
         {
-            var createform = new CreatingShipment(userLogin);
+            var createform = new CreatingShipmentForm(userLogin);
             createform.Show();
             Hide();
         }
         private void Exit_Click(object sender, EventArgs e)
         {
             Application.Exit();
+        }
+
+        private void changeAccountToolStripMenuItem_Click(object sender, EventArgs e)
+        {
+            var newAuthorization = new Authorization();
+            newAuthorization.Show();
+            Close();
         }
     }
 }

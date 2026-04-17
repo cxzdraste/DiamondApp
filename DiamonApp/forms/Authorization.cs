@@ -4,7 +4,7 @@ using System.Windows.Forms;
 using DiamonApp;
 using DiamonApp.DataBase;
 using DiamonApp.Enums;
-using DiamonApp.Resourses;
+using DiamondApp.Resourses;
 using DiamondApp.Hash;
 
 namespace Draft_Diamond_BD

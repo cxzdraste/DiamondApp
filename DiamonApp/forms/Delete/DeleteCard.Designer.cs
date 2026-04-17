@@ -89,7 +89,7 @@
             Controls.Add(label1);
             Controls.Add(labelDeleteCategory);
             Name = "DeleteCard";
-            Text = "DeleteCard";
+            Text = "Удалить карточку";
             ResumeLayout(false);
             PerformLayout();
         }

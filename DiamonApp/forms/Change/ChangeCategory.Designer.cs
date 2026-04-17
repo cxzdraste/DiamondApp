@@ -123,7 +123,7 @@
             Controls.Add(labelOldName);
             Controls.Add(labelChangeCategory);
             Name = "ChangeCategory";
-            Text = "ChangeForm";
+            Text = "Изменить категорию";
             ResumeLayout(false);
             PerformLayout();
         }

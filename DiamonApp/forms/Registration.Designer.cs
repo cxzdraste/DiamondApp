@@ -28,170 +28,170 @@
         /// </summary>
         private void InitializeComponent()
         {
-            this.registrationWorker = new System.Windows.Forms.Label();
-            this.nameWorker = new System.Windows.Forms.Label();
-            this.surnameWorker = new System.Windows.Forms.Label();
-            this.loginWorker = new System.Windows.Forms.Label();
-            this.passwordWorker = new System.Windows.Forms.Label();
-            this.textBoxName = new System.Windows.Forms.TextBox();
-            this.textBoxSurname = new System.Windows.Forms.TextBox();
-            this.textBoxLogin = new System.Windows.Forms.TextBox();
-            this.textBoxPassword = new System.Windows.Forms.TextBox();
-            this.buttonRegister = new System.Windows.Forms.Button();
-            this.btnAuthorization = new System.Windows.Forms.Button();
-            this.SuspendLayout();
+            registrationWorker = new Label();
+            nameWorker = new Label();
+            surnameWorker = new Label();
+            loginWorker = new Label();
+            passwordWorker = new Label();
+            textBoxName = new TextBox();
+            textBoxSurname = new TextBox();
+            textBoxLogin = new TextBox();
+            textBoxPassword = new TextBox();
+            buttonRegister = new Button();
+            btnAuthorization = new Button();
+            SuspendLayout();
             // 
             // registrationWorker
             // 
-            this.registrationWorker.Anchor = System.Windows.Forms.AnchorStyles.None;
-            this.registrationWorker.AutoSize = true;
-            this.registrationWorker.Font = new System.Drawing.Font("Microsoft Sans Serif", 16.2F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(204)));
-            this.registrationWorker.Location = new System.Drawing.Point(281, 45);
-            this.registrationWorker.Name = "registrationWorker";
-            this.registrationWorker.Size = new System.Drawing.Size(243, 32);
-            this.registrationWorker.TabIndex = 0;
-            this.registrationWorker.Text = "РЕГИСТРАЦИЯ ";
-            this.registrationWorker.TextAlign = System.Drawing.ContentAlignment.MiddleCenter;
+            registrationWorker.Anchor = AnchorStyles.None;
+            registrationWorker.AutoSize = true;
+            registrationWorker.Font = new Font("Microsoft Sans Serif", 16.2F, FontStyle.Bold, GraphicsUnit.Point, 204);
+            registrationWorker.Location = new Point(246, 42);
+            registrationWorker.Name = "registrationWorker";
+            registrationWorker.Size = new Size(194, 26);
+            registrationWorker.TabIndex = 0;
+            registrationWorker.Text = "РЕГИСТРАЦИЯ ";
+            registrationWorker.TextAlign = ContentAlignment.MiddleCenter;
             // 
             // nameWorker
             // 
-            this.nameWorker.Anchor = System.Windows.Forms.AnchorStyles.None;
-            this.nameWorker.AutoSize = true;
-            this.nameWorker.Font = new System.Drawing.Font("Microsoft Sans Serif", 13.8F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(204)));
-            this.nameWorker.Location = new System.Drawing.Point(131, 124);
-            this.nameWorker.Name = "nameWorker";
-            this.nameWorker.Size = new System.Drawing.Size(70, 29);
-            this.nameWorker.TabIndex = 1;
-            this.nameWorker.Text = "Имя:";
+            nameWorker.Anchor = AnchorStyles.None;
+            nameWorker.AutoSize = true;
+            nameWorker.Font = new Font("Microsoft Sans Serif", 13.8F, FontStyle.Regular, GraphicsUnit.Point, 204);
+            nameWorker.Location = new Point(115, 116);
+            nameWorker.Name = "nameWorker";
+            nameWorker.Size = new Size(51, 24);
+            nameWorker.TabIndex = 1;
+            nameWorker.Text = "Имя:";
             // 
             // surnameWorker
             // 
-            this.surnameWorker.Anchor = System.Windows.Forms.AnchorStyles.None;
-            this.surnameWorker.AutoSize = true;
-            this.surnameWorker.Font = new System.Drawing.Font("Microsoft Sans Serif", 13.8F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(204)));
-            this.surnameWorker.Location = new System.Drawing.Point(93, 185);
-            this.surnameWorker.Name = "surnameWorker";
-            this.surnameWorker.Size = new System.Drawing.Size(130, 29);
-            this.surnameWorker.TabIndex = 2;
-            this.surnameWorker.Text = "Фамилия:";
+            surnameWorker.Anchor = AnchorStyles.None;
+            surnameWorker.AutoSize = true;
+            surnameWorker.Font = new Font("Microsoft Sans Serif", 13.8F, FontStyle.Regular, GraphicsUnit.Point, 204);
+            surnameWorker.Location = new Point(81, 173);
+            surnameWorker.Name = "surnameWorker";
+            surnameWorker.Size = new Size(96, 24);
+            surnameWorker.TabIndex = 2;
+            surnameWorker.Text = "Фамилия:";
             // 
             // loginWorker
             // 
-            this.loginWorker.Anchor = System.Windows.Forms.AnchorStyles.None;
-            this.loginWorker.AutoSize = true;
-            this.loginWorker.Font = new System.Drawing.Font("Microsoft Sans Serif", 13.8F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(204)));
-            this.loginWorker.Location = new System.Drawing.Point(122, 244);
-            this.loginWorker.Name = "loginWorker";
-            this.loginWorker.Size = new System.Drawing.Size(88, 29);
-            this.loginWorker.TabIndex = 3;
-            this.loginWorker.Text = "Логин:";
+            loginWorker.Anchor = AnchorStyles.None;
+            loginWorker.AutoSize = true;
+            loginWorker.Font = new Font("Microsoft Sans Serif", 13.8F, FontStyle.Regular, GraphicsUnit.Point, 204);
+            loginWorker.Location = new Point(107, 229);
+            loginWorker.Name = "loginWorker";
+            loginWorker.Size = new Size(69, 24);
+            loginWorker.TabIndex = 3;
+            loginWorker.Text = "Логин:";
             // 
             // passwordWorker
             // 
-            this.passwordWorker.Anchor = System.Windows.Forms.AnchorStyles.None;
-            this.passwordWorker.AutoSize = true;
-            this.passwordWorker.Font = new System.Drawing.Font("Microsoft Sans Serif", 13.8F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(204)));
-            this.passwordWorker.Location = new System.Drawing.Point(107, 304);
-            this.passwordWorker.Name = "passwordWorker";
-            this.passwordWorker.Size = new System.Drawing.Size(102, 29);
-            this.passwordWorker.TabIndex = 4;
-            this.passwordWorker.Text = "Пароль:";
+            passwordWorker.Anchor = AnchorStyles.None;
+            passwordWorker.AutoSize = true;
+            passwordWorker.Font = new Font("Microsoft Sans Serif", 13.8F, FontStyle.Regular, GraphicsUnit.Point, 204);
+            passwordWorker.Location = new Point(94, 285);
+            passwordWorker.Name = "passwordWorker";
+            passwordWorker.Size = new Size(81, 24);
+            passwordWorker.TabIndex = 4;
+            passwordWorker.Text = "Пароль:";
             // 
             // textBoxName
             // 
-            this.textBoxName.Anchor = System.Windows.Forms.AnchorStyles.None;
-            this.textBoxName.BackColor = System.Drawing.SystemColors.ControlDarkDark;
-            this.textBoxName.Font = new System.Drawing.Font("Microsoft Sans Serif", 13.8F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(204)));
-            this.textBoxName.ForeColor = System.Drawing.SystemColors.Window;
-            this.textBoxName.Location = new System.Drawing.Point(247, 122);
-            this.textBoxName.Multiline = true;
-            this.textBoxName.Name = "textBoxName";
-            this.textBoxName.Size = new System.Drawing.Size(327, 31);
-            this.textBoxName.TabIndex = 5;
-            this.textBoxName.TextAlign = System.Windows.Forms.HorizontalAlignment.Center;
+            textBoxName.Anchor = AnchorStyles.None;
+            textBoxName.BackColor = SystemColors.ControlDarkDark;
+            textBoxName.Font = new Font("Microsoft Sans Serif", 13.8F, FontStyle.Regular, GraphicsUnit.Point, 204);
+            textBoxName.ForeColor = SystemColors.Window;
+            textBoxName.Location = new Point(216, 114);
+            textBoxName.Multiline = true;
+            textBoxName.Name = "textBoxName";
+            textBoxName.Size = new Size(287, 29);
+            textBoxName.TabIndex = 5;
+            textBoxName.TextAlign = HorizontalAlignment.Center;
             // 
             // textBoxSurname
             // 
-            this.textBoxSurname.Anchor = System.Windows.Forms.AnchorStyles.None;
-            this.textBoxSurname.BackColor = System.Drawing.SystemColors.ControlDarkDark;
-            this.textBoxSurname.Font = new System.Drawing.Font("Microsoft Sans Serif", 13.8F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(204)));
-            this.textBoxSurname.ForeColor = System.Drawing.SystemColors.Window;
-            this.textBoxSurname.Location = new System.Drawing.Point(249, 185);
-            this.textBoxSurname.Multiline = true;
-            this.textBoxSurname.Name = "textBoxSurname";
-            this.textBoxSurname.Size = new System.Drawing.Size(326, 32);
-            this.textBoxSurname.TabIndex = 6;
-            this.textBoxSurname.TextAlign = System.Windows.Forms.HorizontalAlignment.Center;
+            textBoxSurname.Anchor = AnchorStyles.None;
+            textBoxSurname.BackColor = SystemColors.ControlDarkDark;
+            textBoxSurname.Font = new Font("Microsoft Sans Serif", 13.8F, FontStyle.Regular, GraphicsUnit.Point, 204);
+            textBoxSurname.ForeColor = SystemColors.Window;
+            textBoxSurname.Location = new Point(218, 173);
+            textBoxSurname.Multiline = true;
+            textBoxSurname.Name = "textBoxSurname";
+            textBoxSurname.Size = new Size(286, 30);
+            textBoxSurname.TabIndex = 6;
+            textBoxSurname.TextAlign = HorizontalAlignment.Center;
             // 
             // textBoxLogin
             // 
-            this.textBoxLogin.Anchor = System.Windows.Forms.AnchorStyles.None;
-            this.textBoxLogin.BackColor = System.Drawing.SystemColors.ControlDarkDark;
-            this.textBoxLogin.Font = new System.Drawing.Font("Microsoft Sans Serif", 13.8F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(204)));
-            this.textBoxLogin.ForeColor = System.Drawing.SystemColors.Window;
-            this.textBoxLogin.Location = new System.Drawing.Point(249, 244);
-            this.textBoxLogin.Multiline = true;
-            this.textBoxLogin.Name = "textBoxLogin";
-            this.textBoxLogin.Size = new System.Drawing.Size(325, 29);
-            this.textBoxLogin.TabIndex = 7;
-            this.textBoxLogin.TextAlign = System.Windows.Forms.HorizontalAlignment.Center;
+            textBoxLogin.Anchor = AnchorStyles.None;
+            textBoxLogin.BackColor = SystemColors.ControlDarkDark;
+            textBoxLogin.Font = new Font("Microsoft Sans Serif", 13.8F, FontStyle.Regular, GraphicsUnit.Point, 204);
+            textBoxLogin.ForeColor = SystemColors.Window;
+            textBoxLogin.Location = new Point(218, 229);
+            textBoxLogin.Multiline = true;
+            textBoxLogin.Name = "textBoxLogin";
+            textBoxLogin.Size = new Size(285, 27);
+            textBoxLogin.TabIndex = 7;
+            textBoxLogin.TextAlign = HorizontalAlignment.Center;
             // 
             // textBoxPassword
             // 
-            this.textBoxPassword.Anchor = System.Windows.Forms.AnchorStyles.None;
-            this.textBoxPassword.BackColor = System.Drawing.SystemColors.ControlDarkDark;
-            this.textBoxPassword.Font = new System.Drawing.Font("Microsoft Sans Serif", 13.8F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(204)));
-            this.textBoxPassword.ForeColor = System.Drawing.SystemColors.Window;
-            this.textBoxPassword.Location = new System.Drawing.Point(248, 304);
-            this.textBoxPassword.Multiline = true;
-            this.textBoxPassword.Name = "textBoxPassword";
-            this.textBoxPassword.Size = new System.Drawing.Size(324, 29);
-            this.textBoxPassword.TabIndex = 8;
-            this.textBoxPassword.TextAlign = System.Windows.Forms.HorizontalAlignment.Center;
+            textBoxPassword.Anchor = AnchorStyles.None;
+            textBoxPassword.BackColor = SystemColors.ControlDarkDark;
+            textBoxPassword.Font = new Font("Microsoft Sans Serif", 13.8F, FontStyle.Regular, GraphicsUnit.Point, 204);
+            textBoxPassword.ForeColor = SystemColors.Window;
+            textBoxPassword.Location = new Point(217, 285);
+            textBoxPassword.Multiline = true;
+            textBoxPassword.Name = "textBoxPassword";
+            textBoxPassword.Size = new Size(284, 27);
+            textBoxPassword.TabIndex = 8;
+            textBoxPassword.TextAlign = HorizontalAlignment.Center;
             // 
             // buttonRegister
             // 
-            this.buttonRegister.Anchor = System.Windows.Forms.AnchorStyles.None;
-            this.buttonRegister.BackColor = System.Drawing.SystemColors.ScrollBar;
-            this.buttonRegister.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
-            this.buttonRegister.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(204)));
-            this.buttonRegister.Location = new System.Drawing.Point(248, 421);
-            this.buttonRegister.Name = "buttonRegister";
-            this.buttonRegister.Size = new System.Drawing.Size(312, 53);
-            this.buttonRegister.TabIndex = 9;
-            this.buttonRegister.Text = "Зарегистрироваться ";
-            this.buttonRegister.UseVisualStyleBackColor = false;
+            buttonRegister.Anchor = AnchorStyles.None;
+            buttonRegister.BackColor = SystemColors.ScrollBar;
+            buttonRegister.FlatStyle = FlatStyle.Flat;
+            buttonRegister.Font = new Font("Microsoft Sans Serif", 12F, FontStyle.Regular, GraphicsUnit.Point, 204);
+            buttonRegister.Location = new Point(217, 395);
+            buttonRegister.Name = "buttonRegister";
+            buttonRegister.Size = new Size(273, 50);
+            buttonRegister.TabIndex = 9;
+            buttonRegister.Text = "Зарегистрироваться ";
+            buttonRegister.UseVisualStyleBackColor = false;
             // 
             // btnAuthorization
             // 
-            this.btnAuthorization.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
-            this.btnAuthorization.Location = new System.Drawing.Point(-1, -2);
-            this.btnAuthorization.Name = "btnAuthorization";
-            this.btnAuthorization.Size = new System.Drawing.Size(206, 27);
-            this.btnAuthorization.TabIndex = 10;
-            this.btnAuthorization.Text = "Авторизоваться ";
-            this.btnAuthorization.UseVisualStyleBackColor = true;
+            btnAuthorization.FlatStyle = FlatStyle.Flat;
+            btnAuthorization.Location = new Point(-1, -2);
+            btnAuthorization.Name = "btnAuthorization";
+            btnAuthorization.Size = new Size(180, 25);
+            btnAuthorization.TabIndex = 10;
+            btnAuthorization.Text = "Авторизоваться ";
+            btnAuthorization.UseVisualStyleBackColor = true;
             // 
             // Registration
             // 
-            this.AutoScaleDimensions = new System.Drawing.SizeF(8F, 16F);
-            this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.ClientSize = new System.Drawing.Size(887, 540);
-            this.Controls.Add(this.btnAuthorization);
-            this.Controls.Add(this.buttonRegister);
-            this.Controls.Add(this.textBoxPassword);
-            this.Controls.Add(this.textBoxLogin);
-            this.Controls.Add(this.textBoxSurname);
-            this.Controls.Add(this.textBoxName);
-            this.Controls.Add(this.passwordWorker);
-            this.Controls.Add(this.loginWorker);
-            this.Controls.Add(this.surnameWorker);
-            this.Controls.Add(this.nameWorker);
-            this.Controls.Add(this.registrationWorker);
-            this.Name = "Registration";
-            this.Text = "Registration";
-            this.ResumeLayout(false);
-            this.PerformLayout();
+            AutoScaleDimensions = new SizeF(7F, 15F);
+            AutoScaleMode = AutoScaleMode.Font;
+            ClientSize = new Size(776, 506);
+            Controls.Add(btnAuthorization);
+            Controls.Add(buttonRegister);
+            Controls.Add(textBoxPassword);
+            Controls.Add(textBoxLogin);
+            Controls.Add(textBoxSurname);
+            Controls.Add(textBoxName);
+            Controls.Add(passwordWorker);
+            Controls.Add(loginWorker);
+            Controls.Add(surnameWorker);
+            Controls.Add(nameWorker);
+            Controls.Add(registrationWorker);
+            Name = "Registration";
+            Text = "Регистрация";
+            ResumeLayout(false);
+            PerformLayout();
 
         }
 

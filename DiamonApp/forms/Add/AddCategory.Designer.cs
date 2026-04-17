@@ -92,7 +92,7 @@
             Controls.Add(textBoxName);
             Controls.Add(labelAddCategory);
             Name = "AddCategory";
-            Text = "AddCategory";
+            Text = "Добавить категорию";
             ResumeLayout(false);
             PerformLayout();
         }

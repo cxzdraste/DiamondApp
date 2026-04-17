@@ -9,17 +9,17 @@ using System.Threading.Tasks;
 using System.Windows.Forms;
 using DiamonApp.Classes;
 using DiamonApp.DataBase;
-using DiamonApp.Resourses;
+using DiamondApp.Resourses;
 using Draft_Diamond_BD;
 
 namespace DiamonApp.forms.differentFunctionsForms
 {
 
-    public partial class CreatingShipment : Form
+    public partial class CreatingShipmentForm : Form
     {
         private DataGridView dgvWarehouse;
         private string UserLogin;
-        public CreatingShipment(string userLogin)
+        public CreatingShipmentForm(string userLogin)
         {
             InitializeComponent();
             UserLogin = userLogin;

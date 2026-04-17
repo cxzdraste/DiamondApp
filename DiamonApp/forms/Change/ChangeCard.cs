@@ -1,5 +1,5 @@
 ﻿using DiamonApp.DataBase;
-using DiamonApp.Resourses;
+using DiamondApp.Resourses;
 using System;
 using System.Linq;
 using System.Windows.Forms;

@@ -1,6 +1,6 @@
 ﻿using DiamonApp.Classes;
 using DiamonApp.DataBase;
-using DiamonApp.Resourses;
+using DiamondApp.Resourses;
 
 namespace Draft_Diamond_BD
 {

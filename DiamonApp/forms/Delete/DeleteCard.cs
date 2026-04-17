@@ -8,7 +8,7 @@ using System.Text;
 using System.Threading.Tasks;
 using System.Windows.Forms;
 using DiamonApp.DataBase;
-using DiamonApp.Resourses;
+using DiamondApp.Resourses;
 using Draft_Diamond_BD;
 
 namespace DiamonApp.forms

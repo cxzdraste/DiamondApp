@@ -1,10 +1,10 @@
-﻿using DiamonApp;
-using DiamonApp.Classes;
+﻿using DiamonApp.Classes;
 using DiamonApp.DataBase;
 using DiamonApp.Enums;
-using DiamonApp.Resourses;
+using DiamondApp.Resourses;
 using DiamondApp.Hash;
 using Draft_Diamond_BD;
+
 namespace DiamonApp
 {
     public partial class Registration : Form

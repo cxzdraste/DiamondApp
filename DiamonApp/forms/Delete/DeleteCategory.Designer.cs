@@ -91,7 +91,7 @@
             Controls.Add(labelNameCategory);
             Controls.Add(labelDeleteCategory);
             Name = "DeleteCategory";
-            Text = "DeleteCategory";
+            Text = "Удалить категорию";
             ResumeLayout(false);
             PerformLayout();
         }

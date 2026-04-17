@@ -1,5 +1,5 @@
 ﻿using DiamonApp.DataBase;
-using DiamonApp.Resourses;
+using DiamondApp.Resourses;
 using Draft_Diamond_BD;
 
 namespace DiamonApp.forms
