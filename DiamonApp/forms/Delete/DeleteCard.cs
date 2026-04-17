@@ -42,6 +42,7 @@ namespace DiamonApp.forms
                 db.SaveChanges();
                 MessageBox.Show($"{Resources.Success}");
                 new WarehouseAdmin(LoginAdmin).Show();
+                Close();
             }
         }
 
