@@ -23,7 +23,7 @@ namespace DiamonApp.forms.differentFunctionsForms
         {
             dgvWarehouse = new DataGridView
             {
-                Location = new System.Drawing.Point(10, 150),
+                Location = new System.Drawing.Point(10, 200),
                 Size = new System.Drawing.Size(1000, 250),
                 Margin = new Padding(10, 10, 10, 10),
                 AutoSizeColumnsMode = DataGridViewAutoSizeColumnsMode.Fill,
