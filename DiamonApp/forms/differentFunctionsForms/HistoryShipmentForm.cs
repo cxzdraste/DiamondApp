@@ -1,8 +1,10 @@
 ﻿using System.Data;
 using DiamonApp.Classes;
 using DiamonApp.DataBase;
+using DiamonApp.Enums;
 using DiamondApp.Resourses;
 using Draft_Diamond_BD;
+using Newtonsoft.Json;
 
 namespace DiamonApp.forms.differentFunctionsForms
 {
@@ -17,6 +19,7 @@ namespace DiamonApp.forms.differentFunctionsForms
             labelLogin.Text = Resources.LoginInMenu + userLogin;
             CreateDataGridView();
             LoadProducts();
+            comboBoxFiter.Click += (s, a) => LoadStorekeepersInFilter();
         }
 
         private void CreateDataGridView()
@@ -51,6 +54,45 @@ namespace DiamonApp.forms.differentFunctionsForms
                 }).ToList();
                 dgvWarehouse.DataSource = products;
                 SetupColumns();
+            }
+        }
+        private void LoadStorekeepersInFilter()
+        {
+            var startDate = date1.Value;
+            var endDate = date2.Value;
+            comboBoxFiter.Items.Clear();
+            using (var db = new AllDB())
+            {
+                foreach (var empl in db.Employess.ToList())
+                {
+                    if (empl.Job == JobsEnumcs.Storekeeper)
+                    {
+                        comboBoxFiter.Items.Add(empl.Login);
+                    }
+                }
+                comboBoxFiter.SelectedIndexChanged += (s, e) =>
+                {
+                    using (var db = new AllDB())
+                    {
+                        var selectedLogin = comboBoxFiter.SelectedItem.ToString();
+                        var shipments = db.HistoryShipment.Where(p => p.LoginStorekeeper == selectedLogin &&
+                        (p.DateShipment.Date >= startDate && p.DateShipment.Date <= endDate)).Select(p => new
+                        {
+                            p.DateShipment,
+                            p.ProductsName,
+                            p.UniteOfMeasure,
+                            p.Count,
+                            p.SumShipment,
+                            p.Profit,
+                            p.CustomerName,
+                            p.CustomerPlace,
+                            p.LoginStorekeeper,
+                            p.Id,
+                        }).ToList();
+                        dgvWarehouse.DataSource = shipments;
+                        SetupColumns();
+                    }
+                };
             }
         }
         private void SetupColumns()
@@ -101,11 +143,11 @@ namespace DiamonApp.forms.differentFunctionsForms
                                 "Ошибка", MessageBoxButtons.OK, MessageBoxIcon.Warning);
                 return;
             }
-            using (var db = new AllDB()) 
+            using (var db = new AllDB())
             {
                 var startDate = date1.Value;
                 var endDate = date2.Value;
-                var listShip1 =  db.HistoryShipment.Where(p => p.DateShipment.Date >= startDate && p.DateShipment.Date <= endDate).Select( p => new
+                var listShip1 = db.HistoryShipment.Where(p => p.DateShipment.Date >= startDate && p.DateShipment.Date <= endDate).Select(p => new
                 {
                     p.DateShipment,
                     p.ProductsName,
@@ -120,6 +162,48 @@ namespace DiamonApp.forms.differentFunctionsForms
                 }).ToList();
                 dgvWarehouse.DataSource = listShip1;
                 SetupColumns();
+            }
+        }
+
+        private void buttonExportTheReport_Click(object sender, EventArgs e)
+        {
+            if(dgvWarehouse.DataSource == null)
+            {
+                MessageBox.Show("Нет данных для экспорта","Предупреждение",MessageBoxButtons.OK, MessageBoxIcon.Warning); return;
+            }
+            var data = dgvWarehouse.DataSource;
+            var exportList = new List<object>();
+            if (data is System.Collections.IEnumerable enumerable) 
+            {
+                foreach(var item in enumerable)
+                {
+                    exportList.Add(item);
+                }
+            }
+
+            if(exportList.Count == 0)
+            {
+                MessageBox.Show("Не читаются отгрузки", "Предупреждение", MessageBoxButtons.OK, MessageBoxIcon.Warning); return;
+            }
+            var saveFile = new SaveFileDialog
+            {
+                Filter = "JSON files (*.json)|*.json|All files (*.*)|*.*",
+                FilterIndex = 1,
+                RestoreDirectory = true,
+                FileName = $"Отгрузки_{DateTime.Now:M}.json"
+            };
+            if(saveFile.ShowDialog() == DialogResult.OK)
+            {
+                try
+                {
+                    var json = JsonConvert.SerializeObject(exportList, Formatting.Indented);
+                    File.WriteAllText(saveFile.FileName, json);
+                    MessageBox.Show(Resources.Success);
+                }
+                catch(Exception ex)
+                {
+                    MessageBox.Show($"Ошибка при экспорте{ex.Message}", "Ошибка", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                }
             }
         }
     }

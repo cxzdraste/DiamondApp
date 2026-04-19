@@ -44,6 +44,7 @@ namespace DiamonApp.forms.differentFunctionsForms
             comboBoxFiter = new ComboBox();
             labelExportTheReport = new Label();
             buttonExportTheReport = new Button();
+            labelFilter = new Label();
             menuStrip1.SuspendLayout();
             SuspendLayout();
             // 
@@ -186,12 +187,24 @@ namespace DiamonApp.forms.differentFunctionsForms
             buttonExportTheReport.TabIndex = 12;
             buttonExportTheReport.Text = "Экспортировать в json";
             buttonExportTheReport.UseVisualStyleBackColor = true;
+            buttonExportTheReport.Click += buttonExportTheReport_Click;
+            // 
+            // labelFilter
+            // 
+            labelFilter.AutoSize = true;
+            labelFilter.BackColor = SystemColors.ControlLight;
+            labelFilter.Location = new Point(19, 168);
+            labelFilter.Name = "labelFilter";
+            labelFilter.Size = new Size(60, 20);
+            labelFilter.TabIndex = 13;
+            labelFilter.Text = "Фильтр";
             // 
             // HistoryShipmentForm
             // 
             AutoScaleDimensions = new SizeF(8F, 20F);
             AutoScaleMode = AutoScaleMode.Font;
             ClientSize = new Size(1044, 598);
+            Controls.Add(labelFilter);
             Controls.Add(buttonExportTheReport);
             Controls.Add(labelExportTheReport);
             Controls.Add(comboBoxFiter);
@@ -207,7 +220,7 @@ namespace DiamonApp.forms.differentFunctionsForms
             MainMenuStrip = menuStrip1;
             Margin = new Padding(3, 4, 3, 4);
             Name = "HistoryShipmentForm";
-            Text = "HistoryShipmentForm";
+            Text = "Отгрузить товар";
             menuStrip1.ResumeLayout(false);
             menuStrip1.PerformLayout();
             ResumeLayout(false);
@@ -230,5 +243,6 @@ namespace DiamonApp.forms.differentFunctionsForms
         private ComboBox comboBoxFiter;
         private Label labelExportTheReport;
         private Button buttonExportTheReport;
+        private Label labelFilter;
     }
 }
