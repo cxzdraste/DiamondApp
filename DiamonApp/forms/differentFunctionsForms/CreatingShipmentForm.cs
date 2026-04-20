@@ -58,7 +58,25 @@ namespace DiamonApp.forms.differentFunctionsForms
                     p.LoginStorekeeper,
                 }).ToList();
                 dgvWarehouse.DataSource = shipments;
+                SetupColumns();
             }
+        }
+        private void SetupColumns()
+        {
+            if (dgvWarehouse.Columns["Name"] != null)
+                dgvWarehouse.Columns["Name"].HeaderText = "Имя";
+
+            if (dgvWarehouse.Columns["Count"] != null)
+                dgvWarehouse.Columns["Count"].HeaderText = "Количество";
+
+            if (dgvWarehouse.Columns["CustomerName"] != null)
+                dgvWarehouse.Columns["CustomerName"].HeaderText = "Кому";
+
+            if (dgvWarehouse.Columns["CustomerPlace"] != null)
+                dgvWarehouse.Columns["CustomerPlace"].HeaderText = "Куда";
+
+            if (dgvWarehouse.Columns["LoginStorekeeper"] != null)
+                dgvWarehouse.Columns["LoginStorekeeper"].HeaderText = "Кто создал";
         }
 
         private void comboBoxName_SelectedIndexChanged(object sender, EventArgs e)
@@ -136,7 +154,7 @@ namespace DiamonApp.forms.differentFunctionsForms
 
         private void buttonShipment_Click(object sender, EventArgs e)
         {
-            using (var db = new AllDB()) 
+            using (var db = new AllDB())
             {
                 if (!db.ProductsOnShipments.Any())
                 {
@@ -146,7 +164,7 @@ namespace DiamonApp.forms.differentFunctionsForms
                 decimal sumShipment = 0;
                 decimal sumProduct = 0;
                 var productsNameOnShipment = new StringBuilder();
-                foreach(var product in db.ProductsOnShipments)
+                foreach (var product in db.ProductsOnShipments)
                 {
                     var newProduct = db.Products.FirstOrDefault(p => p.Name == product.Name);
                     newProduct.Rest = newProduct.Rest - (double)numCount.Value;
@@ -175,7 +193,7 @@ namespace DiamonApp.forms.differentFunctionsForms
                 db.HistoryShipment.Add(newHistoryShipment);
                 db.SaveChanges();
                 MessageBox.Show($"{Resources.Success}");
-                foreach(var product in db.ProductsOnShipments)
+                foreach (var product in db.ProductsOnShipments)
                 {
                     db.ProductsOnShipments.Remove(product);
                     db.SaveChanges();
@@ -183,6 +201,11 @@ namespace DiamonApp.forms.differentFunctionsForms
                 new WarehouseStorekeeper(UserLogin).Show();
                 Close();
             }
+        }
+
+        private void comboBoxUniteOfMeasure_SelectedIndexChanged_1(object sender, EventArgs e)
+        {
+
         }
     }
 }

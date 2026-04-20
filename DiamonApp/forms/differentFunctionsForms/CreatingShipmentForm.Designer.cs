@@ -135,6 +135,7 @@
             comboBoxUniteOfMeasure.Name = "comboBoxUniteOfMeasure";
             comboBoxUniteOfMeasure.Size = new Size(198, 28);
             comboBoxUniteOfMeasure.TabIndex = 7;
+            comboBoxUniteOfMeasure.SelectedIndexChanged += comboBoxUniteOfMeasure_SelectedIndexChanged_1;
             // 
             // numCount
             // 

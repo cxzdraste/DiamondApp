@@ -1,6 +1,7 @@
 ﻿using System.Diagnostics;
 using DiamonApp.classes;
 using DiamonApp.Classes;
+using DiamondApp.classes;
 using DiamondApp.Hash;
 using Microsoft.EntityFrameworkCore;
 using Newtonsoft.Json;
@@ -14,6 +15,7 @@ namespace DiamonApp.DataBase
         public DbSet<EmployeeClass> Employess { get; set; }
         public DbSet<HistoryShipment> HistoryShipment { get; set; }
         public DbSet<ProductsOnShipmentClass> ProductsOnShipments { get; set; }
+        public DbSet<ProductsOnAcceptanceClass> ProductsOnAcceptance { get; set; }
         public DbSet<UniteOfMeasureClass> UniteOfMeasures { get; set; }
 
         public AllDB()
@@ -87,7 +89,7 @@ namespace DiamonApp.DataBase
                 entity.Property(p => p.LoginStorekeeper);
             });
 
-            //Employees base
+            //Products on shipment base
             modelBuilder.Entity<ProductsOnShipmentClass>().ToTable("ProductsOnShipmentClass");
             modelBuilder.Entity<ProductsOnShipmentClass>(entity =>
             {
@@ -98,7 +100,18 @@ namespace DiamonApp.DataBase
                 entity.Property(p => p.CustomerPlace);
                 entity.Property(p => p.LoginStorekeeper);
             });
-           
+
+            //Products on acceptance base
+            modelBuilder.Entity<ProductsOnAcceptanceClass>().ToTable("ProductsOnAcceptanceClass");
+            modelBuilder.Entity<ProductsOnAcceptanceClass>(entity =>
+            {
+                entity.HasKey(p => p.Id);
+                entity.Property(p => p.Name);
+                entity.Property(p => p.Count);
+                entity.Property(p => p.Price);
+                entity.Property(p => p.ProviderName);
+                entity.Property(p => p.LoginEmployee);
+            });
         }
         private void EnsureExist()
         {

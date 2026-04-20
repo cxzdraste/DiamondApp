@@ -2,6 +2,7 @@
 using DiamonApp.DataBase;
 using DiamonApp.forms;
 using DiamonApp.forms.differentFunctionsForms;
+using DiamondApp.forms.differentFunctionsForms;
 using DiamondApp.Resourses;
 
 
@@ -28,7 +29,7 @@ namespace Draft_Diamond_BD
             dgvWarehouse = new DataGridView
             {
                 Location = new System.Drawing.Point(10, 150),
-                Size = new System.Drawing.Size(700, 250),
+                Size = new System.Drawing.Size(780, 250),
                 Margin = new Padding(10, 10, 10, 10),
                 AutoSizeColumnsMode = DataGridViewAutoSizeColumnsMode.Fill,
                 BackgroundColor = System.Drawing.Color.DarkGray,
@@ -176,6 +177,12 @@ namespace Draft_Diamond_BD
             newHistoryShipmentForm.Show();
             Hide();
         }
+        private void принятьПоставкуToolStripMenuItem_Click(object sender, EventArgs e)
+        {
+            var newAcceptanceOfGoods = new AcceptanceOfGoodsForm(userLogin);
+            newAcceptanceOfGoods.Show();
+            Hide();
+        }
         private void InitializeComponent()
         {
             labelwarehouse = new Label();
@@ -194,6 +201,7 @@ namespace Draft_Diamond_BD
             категорииToolStripMenuItem = new ToolStripMenuItem();
             exitToolStripMenuItemOutput = new ToolStripMenuItem();
             changeAccountToolStripMenuItem = new ToolStripMenuItem();
+            принятьПоставкуToolStripMenuItem = new ToolStripMenuItem();
             labelLogin = new Label();
             buttonHistoryShipment = new Button();
             menuStripWarehouseProducts.SuspendLayout();
@@ -205,17 +213,17 @@ namespace Draft_Diamond_BD
             labelwarehouse.Font = new Font("Microsoft Sans Serif", 18F, FontStyle.Regular, GraphicsUnit.Point, 0);
             labelwarehouse.Location = new Point(12, 107);
             labelwarehouse.Name = "labelwarehouse";
-            labelwarehouse.Size = new Size(90, 29);
+            labelwarehouse.Size = new Size(115, 36);
             labelwarehouse.TabIndex = 0;
             labelwarehouse.Text = "Склад:";
             // 
             // menuStripWarehouseProducts
             // 
             menuStripWarehouseProducts.ImageScalingSize = new Size(20, 20);
-            menuStripWarehouseProducts.Items.AddRange(new ToolStripItem[] { toolStripMenuItem3, toolStripMenuItem2, toolStripMenuItem1, filterToolStripMenuItemFilter, exitToolStripMenuItemOutput, changeAccountToolStripMenuItem });
+            menuStripWarehouseProducts.Items.AddRange(new ToolStripItem[] { toolStripMenuItem3, toolStripMenuItem2, toolStripMenuItem1, filterToolStripMenuItemFilter, exitToolStripMenuItemOutput, changeAccountToolStripMenuItem, принятьПоставкуToolStripMenuItem });
             menuStripWarehouseProducts.Location = new Point(0, 0);
             menuStripWarehouseProducts.Name = "menuStripWarehouseProducts";
-            menuStripWarehouseProducts.Size = new Size(732, 24);
+            menuStripWarehouseProducts.Size = new Size(804, 28);
             menuStripWarehouseProducts.TabIndex = 1;
             menuStripWarehouseProducts.Text = "Меню";
             // 
@@ -223,19 +231,19 @@ namespace Draft_Diamond_BD
             // 
             toolStripMenuItem3.DropDownItems.AddRange(new ToolStripItem[] { addCardToolStripMenuItem, NewCategoryToolStripMenuItem });
             toolStripMenuItem3.Name = "toolStripMenuItem3";
-            toolStripMenuItem3.Size = new Size(71, 20);
+            toolStripMenuItem3.Size = new Size(90, 24);
             toolStripMenuItem3.Text = "Добавить";
             // 
             // addCardToolStripMenuItem
             // 
             addCardToolStripMenuItem.Name = "addCardToolStripMenuItem";
-            addCardToolStripMenuItem.Size = new Size(134, 22);
+            addCardToolStripMenuItem.Size = new Size(168, 26);
             addCardToolStripMenuItem.Text = "Карточку ";
             // 
             // NewCategoryToolStripMenuItem
             // 
             NewCategoryToolStripMenuItem.Name = "NewCategoryToolStripMenuItem";
-            NewCategoryToolStripMenuItem.Size = new Size(134, 22);
+            NewCategoryToolStripMenuItem.Size = new Size(168, 26);
             NewCategoryToolStripMenuItem.Text = "Категорию";
             NewCategoryToolStripMenuItem.Click += newCategoryToolStripMenuItem_Click;
             // 
@@ -243,20 +251,20 @@ namespace Draft_Diamond_BD
             // 
             toolStripMenuItem2.DropDownItems.AddRange(new ToolStripItem[] { changeCardToolStripMenuItem, changeCategoryToolStripMenuItem1 });
             toolStripMenuItem2.Name = "toolStripMenuItem2";
-            toolStripMenuItem2.Size = new Size(73, 20);
+            toolStripMenuItem2.Size = new Size(92, 24);
             toolStripMenuItem2.Text = "Изменить";
             // 
             // changeCardToolStripMenuItem
             // 
             changeCardToolStripMenuItem.Name = "changeCardToolStripMenuItem";
-            changeCardToolStripMenuItem.Size = new Size(134, 22);
+            changeCardToolStripMenuItem.Size = new Size(168, 26);
             changeCardToolStripMenuItem.Text = "Карточку";
             changeCardToolStripMenuItem.Click += changeCardToolStripMenuItem_Click;
             // 
             // changeCategoryToolStripMenuItem1
             // 
             changeCategoryToolStripMenuItem1.Name = "changeCategoryToolStripMenuItem1";
-            changeCategoryToolStripMenuItem1.Size = new Size(134, 22);
+            changeCategoryToolStripMenuItem1.Size = new Size(168, 26);
             changeCategoryToolStripMenuItem1.Text = "Категорию";
             changeCategoryToolStripMenuItem1.Click += CategoryChangeToolStripMenuItem1_Click;
             // 
@@ -264,20 +272,20 @@ namespace Draft_Diamond_BD
             // 
             toolStripMenuItem1.DropDownItems.AddRange(new ToolStripItem[] { deleteCardToolStripMenuItem, DeleteCategoryToolStripMenuItem2 });
             toolStripMenuItem1.Name = "toolStripMenuItem1";
-            toolStripMenuItem1.Size = new Size(63, 20);
+            toolStripMenuItem1.Size = new Size(79, 24);
             toolStripMenuItem1.Text = "Удалить";
             // 
             // deleteCardToolStripMenuItem
             // 
             deleteCardToolStripMenuItem.Name = "deleteCardToolStripMenuItem";
-            deleteCardToolStripMenuItem.Size = new Size(134, 22);
+            deleteCardToolStripMenuItem.Size = new Size(168, 26);
             deleteCardToolStripMenuItem.Text = "Карточку";
             deleteCardToolStripMenuItem.Click += deleteCardToolStripMenuItem_Click;
             // 
             // DeleteCategoryToolStripMenuItem2
             // 
             DeleteCategoryToolStripMenuItem2.Name = "DeleteCategoryToolStripMenuItem2";
-            DeleteCategoryToolStripMenuItem2.Size = new Size(134, 22);
+            DeleteCategoryToolStripMenuItem2.Size = new Size(168, 26);
             DeleteCategoryToolStripMenuItem2.Text = "Категорию";
             DeleteCategoryToolStripMenuItem2.Click += deleteCategoryToolStripMenuItem2_Click;
             // 
@@ -285,45 +293,52 @@ namespace Draft_Diamond_BD
             // 
             filterToolStripMenuItemFilter.DropDownItems.AddRange(new ToolStripItem[] { весьСкладToolStripMenuItem, категорииToolStripMenuItem });
             filterToolStripMenuItemFilter.Name = "filterToolStripMenuItemFilter";
-            filterToolStripMenuItemFilter.Size = new Size(60, 20);
+            filterToolStripMenuItemFilter.Size = new Size(74, 24);
             filterToolStripMenuItemFilter.Text = "Фильтр";
             // 
             // весьСкладToolStripMenuItem
             // 
             весьСкладToolStripMenuItem.Name = "весьСкладToolStripMenuItem";
-            весьСкладToolStripMenuItem.Size = new Size(133, 22);
+            весьСкладToolStripMenuItem.Size = new Size(166, 26);
             весьСкладToolStripMenuItem.Text = "Весь склад";
             // 
             // категорииToolStripMenuItem
             // 
             категорииToolStripMenuItem.Name = "категорииToolStripMenuItem";
-            категорииToolStripMenuItem.Size = new Size(133, 22);
+            категорииToolStripMenuItem.Size = new Size(166, 26);
             категорииToolStripMenuItem.Text = "Категории";
             // 
             // exitToolStripMenuItemOutput
             // 
             exitToolStripMenuItemOutput.Name = "exitToolStripMenuItemOutput";
-            exitToolStripMenuItemOutput.Size = new Size(54, 20);
+            exitToolStripMenuItemOutput.Size = new Size(67, 24);
             exitToolStripMenuItemOutput.Text = "Выход";
             // 
             // changeAccountToolStripMenuItem
             // 
             changeAccountToolStripMenuItem.Alignment = ToolStripItemAlignment.Right;
             changeAccountToolStripMenuItem.Name = "changeAccountToolStripMenuItem";
-            changeAccountToolStripMenuItem.Size = new Size(112, 20);
+            changeAccountToolStripMenuItem.Size = new Size(139, 24);
             changeAccountToolStripMenuItem.Text = "Сменить аккаунт";
             changeAccountToolStripMenuItem.Click += changeAccountToolStripMenuItem_Click;
+            // 
+            // принятьПоставкуToolStripMenuItem
+            // 
+            принятьПоставкуToolStripMenuItem.Name = "принятьПоставкуToolStripMenuItem";
+            принятьПоставкуToolStripMenuItem.Size = new Size(148, 24);
+            принятьПоставкуToolStripMenuItem.Text = "Принять поставку";
+            принятьПоставкуToolStripMenuItem.Click += принятьПоставкуToolStripMenuItem_Click;
             // 
             // labelLogin
             // 
             labelLogin.Anchor = AnchorStyles.Top | AnchorStyles.Right;
             labelLogin.AutoSize = true;
             labelLogin.Font = new Font("Microsoft Sans Serif", 12F, FontStyle.Regular, GraphicsUnit.Point, 204);
-            labelLogin.Location = new Point(486, 0);
+            labelLogin.Location = new Point(558, 0);
             labelLogin.Margin = new Padding(5);
             labelLogin.Name = "labelLogin";
             labelLogin.Padding = new Padding(2);
-            labelLogin.Size = new Size(55, 24);
+            labelLogin.Size = new Size(68, 29);
             labelLogin.TabIndex = 2;
             labelLogin.Text = "label1";
             // 
@@ -332,7 +347,7 @@ namespace Draft_Diamond_BD
             buttonHistoryShipment.Anchor = AnchorStyles.Top | AnchorStyles.Right;
             buttonHistoryShipment.BackColor = SystemColors.ControlDarkDark;
             buttonHistoryShipment.Font = new Font("Microsoft Sans Serif", 13.8F, FontStyle.Regular, GraphicsUnit.Point, 204);
-            buttonHistoryShipment.Location = new Point(436, 85);
+            buttonHistoryShipment.Location = new Point(508, 85);
             buttonHistoryShipment.Name = "buttonHistoryShipment";
             buttonHistoryShipment.Padding = new Padding(2);
             buttonHistoryShipment.RightToLeft = RightToLeft.Yes;
@@ -344,7 +359,7 @@ namespace Draft_Diamond_BD
             // 
             // WarehouseAdmin
             // 
-            ClientSize = new Size(732, 629);
+            ClientSize = new Size(804, 629);
             Controls.Add(buttonHistoryShipment);
             Controls.Add(labelLogin);
             Controls.Add(labelwarehouse);

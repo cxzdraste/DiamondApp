@@ -26,5 +26,6 @@
         private ToolStripMenuItem NewCategoryToolStripMenuItem;
         private ToolStripMenuItem changeCategoryToolStripMenuItem1;
         private ToolStripMenuItem DeleteCategoryToolStripMenuItem2;
+        private ToolStripMenuItem принятьПоставкуToolStripMenuItem;
     }
 }
