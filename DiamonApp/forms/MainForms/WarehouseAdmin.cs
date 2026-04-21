@@ -70,7 +70,7 @@ namespace Draft_Diamond_BD
                                 {
                                     p.Name,
                                     p.UniteOfMeasure,
-                                    p.Price,
+                                    p.PurchasePrice,
                                     p.Category,
                                     p.Rest,
                                     p.Creator,
@@ -94,7 +94,7 @@ namespace Draft_Diamond_BD
                 {
                     p.Name,
                     p.UniteOfMeasure,
-                    p.Price,
+                    p.PurchasePrice,
                     p.Category,
                     p.Rest,
                     p.Creator,

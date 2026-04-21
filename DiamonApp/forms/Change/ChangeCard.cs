@@ -50,7 +50,7 @@ namespace Draft_Diamond_BD
 
                 if (product != null)
                 {
-                    product.Price = Convert.ToDecimal(numePurchasePrise.Text);
+                    product.PurchasePrice = Convert.ToDecimal(numePurchasePrise.Text);
 
                     if (comboBoxUniteOfMeasure.SelectedItem != null)
                     {

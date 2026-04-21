@@ -40,7 +40,7 @@ namespace DiamonApp.DataBase
                 entity.Property(p => p.Name);
                 entity.Property(p => p.UniteOfMeasure);
                 entity.Property(p => p.Category);
-                entity.Property(p => p.Price);
+                entity.Property(p => p.PurchasePrice);
                 entity.Property(p => p.Rest);
                 entity.Property(p => p.Creator);
             });

@@ -169,7 +169,7 @@ namespace DiamonApp.forms.differentFunctionsForms
                     var newProduct = db.Products.FirstOrDefault(p => p.Name == product.Name);
                     newProduct.Rest = newProduct.Rest - (double)numCount.Value;
                     productsNameOnShipment.Append($"{newProduct.Name};");
-                    sumShipment += newProduct.Price;
+                    sumShipment += newProduct.PurchasePrice;
                     sumShipment += numSumProduct.Value;
                     if (newProduct.Rest == 0)
                     {

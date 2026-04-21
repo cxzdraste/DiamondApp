@@ -152,7 +152,7 @@ namespace DiamondApp.forms.differentFunctionsForms
                 {
                     var newProduct = db.Products.FirstOrDefault(p => p.Name == product.Name);
                     newProduct.Rest += (double)numCount.Value;
-                    newProduct.Price = product.Price;
+                    newProduct.PurchasePrice = product.Price;
                     db.SaveChanges();
                 }
                 MessageBox.Show(Resources.Success);
