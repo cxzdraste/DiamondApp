@@ -22,10 +22,10 @@ namespace DiamonApp.forms
                 MessageBox.Show($"Введите название категории");
                 return;
             }
-            using(var db = new AllDB())
+            using (var db = new AllDB())
             {
                 var flag = false;
-                foreach(var category in db.Categories.FirstOrDefault(p => p.Id == 1).NamesOfCategory)
+                foreach (var category in db.Categories.FirstOrDefault(p => p.Id == 1).NamesOfCategory)
                 {
                     if (newCategory == category.ToLower())
                     {
@@ -39,6 +39,12 @@ namespace DiamonApp.forms
                 db.SaveChanges();
                 Close();
             }
+        }
+
+        private void backToolStripMenuItem_Click(object sender, EventArgs e)
+        {
+            new WarehouseAdmin(LoginAdmin).Show();
+            Hide();
         }
     }
 }

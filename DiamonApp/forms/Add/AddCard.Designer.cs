@@ -37,7 +37,10 @@
             numPurchasePrice = new NumericUpDown();
             comboBoxCategory = new ComboBox();
             CategoryLabel = new Label();
+            menuStrip1 = new MenuStrip();
+            назадToolStripMenuItem = new ToolStripMenuItem();
             ((System.ComponentModel.ISupportInitialize)numPurchasePrice).BeginInit();
+            menuStrip1.SuspendLayout();
             SuspendLayout();
             // 
             // labelAddCard
@@ -159,6 +162,23 @@
             CategoryLabel.TabIndex = 10;
             CategoryLabel.Text = "Категория:";
             // 
+            // menuStrip1
+            // 
+            menuStrip1.ImageScalingSize = new Size(20, 20);
+            menuStrip1.Items.AddRange(new ToolStripItem[] { назадToolStripMenuItem });
+            menuStrip1.Location = new Point(0, 0);
+            menuStrip1.Name = "menuStrip1";
+            menuStrip1.Size = new Size(800, 28);
+            menuStrip1.TabIndex = 12;
+            menuStrip1.Text = "menuStrip1";
+            // 
+            // назадToolStripMenuItem
+            // 
+            назадToolStripMenuItem.Name = "назадToolStripMenuItem";
+            назадToolStripMenuItem.Size = new Size(65, 24);
+            назадToolStripMenuItem.Text = "Назад";
+            назадToolStripMenuItem.Click += BackToolStripMenuItem_Click;
+            // 
             // AddCard
             // 
             AutoScaleDimensions = new SizeF(8F, 20F);
@@ -174,10 +194,16 @@
             Controls.Add(labelUnit);
             Controls.Add(labelNameCard);
             Controls.Add(labelAddCard);
+            Controls.Add(menuStrip1);
+            FormBorderStyle = FormBorderStyle.FixedSingle;
+            MainMenuStrip = menuStrip1;
             Margin = new Padding(3, 4, 3, 4);
+            MaximizeBox = false;
             Name = "AddCard";
             Text = "Добавить карточку";
             ((System.ComponentModel.ISupportInitialize)numPurchasePrice).EndInit();
+            menuStrip1.ResumeLayout(false);
+            menuStrip1.PerformLayout();
             ResumeLayout(false);
             PerformLayout();
 
@@ -195,5 +221,7 @@
         private NumericUpDown numPurchasePrice;
         private ComboBox comboBoxCategory;
         private Label CategoryLabel;
+        private MenuStrip menuStrip1;
+        private ToolStripMenuItem назадToolStripMenuItem;
     }
 }

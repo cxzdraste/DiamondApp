@@ -35,6 +35,9 @@
             comboBoxNewName = new ComboBox();
             labelNewName = new Label();
             buttonChangeCategory = new Button();
+            menuStrip1 = new MenuStrip();
+            backToolStripMenuItem = new ToolStripMenuItem();
+            menuStrip1.SuspendLayout();
             SuspendLayout();
             // 
             // labelChangeCategory
@@ -42,9 +45,9 @@
             labelChangeCategory.Anchor = AnchorStyles.Top | AnchorStyles.Left | AnchorStyles.Right;
             labelChangeCategory.AutoSize = true;
             labelChangeCategory.Font = new Font("Microsoft Sans Serif", 18F);
-            labelChangeCategory.Location = new Point(207, 41);
+            labelChangeCategory.Location = new Point(237, 55);
             labelChangeCategory.Name = "labelChangeCategory";
-            labelChangeCategory.Size = new Size(260, 29);
+            labelChangeCategory.Size = new Size(324, 36);
             labelChangeCategory.TabIndex = 0;
             labelChangeCategory.Text = "Изменить категорию";
             // 
@@ -60,9 +63,9 @@
             labelOldName.Anchor = AnchorStyles.None;
             labelOldName.AutoSize = true;
             labelOldName.Font = new Font("Microsoft Sans Serif", 12F, FontStyle.Regular, GraphicsUnit.Point, 204);
-            labelOldName.Location = new Point(133, 103);
+            labelOldName.Location = new Point(152, 137);
             labelOldName.Name = "labelOldName";
-            labelOldName.Size = new Size(91, 40);
+            labelOldName.Size = new Size(113, 50);
             labelOldName.TabIndex = 4;
             labelOldName.Text = "Название \r\nкатегории:";
             // 
@@ -71,10 +74,9 @@
             comboBoxOldName.BackColor = SystemColors.ControlDarkDark;
             comboBoxOldName.DropDownStyle = ComboBoxStyle.DropDownList;
             comboBoxOldName.FormattingEnabled = true;
-            comboBoxOldName.Location = new Point(252, 120);
-            comboBoxOldName.Margin = new Padding(3, 2, 3, 2);
+            comboBoxOldName.Location = new Point(288, 160);
             comboBoxOldName.Name = "comboBoxOldName";
-            comboBoxOldName.Size = new Size(190, 23);
+            comboBoxOldName.Size = new Size(217, 28);
             comboBoxOldName.TabIndex = 12;
             // 
             // comboBoxNewName
@@ -82,10 +84,9 @@
             comboBoxNewName.BackColor = SystemColors.ControlDarkDark;
             comboBoxNewName.DropDownStyle = ComboBoxStyle.Simple;
             comboBoxNewName.FormattingEnabled = true;
-            comboBoxNewName.Location = new Point(252, 197);
-            comboBoxNewName.Margin = new Padding(3, 2, 3, 2);
+            comboBoxNewName.Location = new Point(288, 263);
             comboBoxNewName.Name = "comboBoxNewName";
-            comboBoxNewName.Size = new Size(190, 23);
+            comboBoxNewName.Size = new Size(217, 29);
             comboBoxNewName.TabIndex = 14;
             // 
             // labelNewName
@@ -93,9 +94,9 @@
             labelNewName.Anchor = AnchorStyles.None;
             labelNewName.AutoSize = true;
             labelNewName.Font = new Font("Microsoft Sans Serif", 12F, FontStyle.Regular, GraphicsUnit.Point, 204);
-            labelNewName.Location = new Point(133, 180);
+            labelNewName.Location = new Point(152, 240);
             labelNewName.Name = "labelNewName";
-            labelNewName.Size = new Size(84, 40);
+            labelNewName.Size = new Size(103, 50);
             labelNewName.TabIndex = 13;
             labelNewName.Text = "Новое \r\nназвание:";
             // 
@@ -104,26 +105,51 @@
             buttonChangeCategory.BackColor = SystemColors.ScrollBar;
             buttonChangeCategory.FlatStyle = FlatStyle.Flat;
             buttonChangeCategory.Font = new Font("Microsoft Sans Serif", 13.8F, FontStyle.Regular, GraphicsUnit.Point, 204);
-            buttonChangeCategory.Location = new Point(224, 305);
+            buttonChangeCategory.Location = new Point(256, 407);
+            buttonChangeCategory.Margin = new Padding(3, 4, 3, 4);
             buttonChangeCategory.Name = "buttonChangeCategory";
-            buttonChangeCategory.Size = new Size(194, 46);
+            buttonChangeCategory.Size = new Size(222, 61);
             buttonChangeCategory.TabIndex = 15;
             buttonChangeCategory.Text = "Изменить";
             buttonChangeCategory.UseVisualStyleBackColor = false;
             // 
+            // menuStrip1
+            // 
+            menuStrip1.ImageScalingSize = new Size(20, 20);
+            menuStrip1.Items.AddRange(new ToolStripItem[] { backToolStripMenuItem });
+            menuStrip1.Location = new Point(0, 0);
+            menuStrip1.Name = "menuStrip1";
+            menuStrip1.Size = new Size(767, 28);
+            menuStrip1.TabIndex = 16;
+            menuStrip1.Text = "menuStrip1";
+            // 
+            // backToolStripMenuItem
+            // 
+            backToolStripMenuItem.Name = "backToolStripMenuItem";
+            backToolStripMenuItem.Size = new Size(65, 24);
+            backToolStripMenuItem.Text = "Назад";
+            backToolStripMenuItem.Click += backToolStripMenuItem_Click;
+            // 
             // ChangeCategory
             // 
-            AutoScaleDimensions = new SizeF(7F, 15F);
+            AutoScaleDimensions = new SizeF(8F, 20F);
             AutoScaleMode = AutoScaleMode.Font;
-            ClientSize = new Size(671, 450);
+            ClientSize = new Size(767, 600);
             Controls.Add(buttonChangeCategory);
             Controls.Add(comboBoxNewName);
             Controls.Add(labelNewName);
             Controls.Add(comboBoxOldName);
             Controls.Add(labelOldName);
             Controls.Add(labelChangeCategory);
+            Controls.Add(menuStrip1);
+            FormBorderStyle = FormBorderStyle.FixedSingle;
+            MainMenuStrip = menuStrip1;
+            Margin = new Padding(3, 4, 3, 4);
+            MaximizeBox = false;
             Name = "ChangeCategory";
             Text = "Изменить категорию";
+            menuStrip1.ResumeLayout(false);
+            menuStrip1.PerformLayout();
             ResumeLayout(false);
             PerformLayout();
         }
@@ -137,5 +163,7 @@
         private ComboBox comboBoxNewName;
         private Label labelNewName;
         private Button buttonChangeCategory;
+        private MenuStrip menuStrip1;
+        private ToolStripMenuItem backToolStripMenuItem;
     }
 }

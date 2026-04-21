@@ -82,6 +82,11 @@ namespace Draft_Diamond_BD
             }
         }
 
+        private void BackToolStripMenuItem_Click(object sender, EventArgs e)
+        {
+            new WarehouseAdmin(LoginAdmin).Show();
+            Hide();
+        }
     }
 }
 

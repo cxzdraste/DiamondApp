@@ -180,12 +180,12 @@ namespace DiamonApp.forms.differentFunctionsForms
             // 
             buttonExportTheReport.FlatAppearance.BorderColor = Color.FromArgb(64, 64, 64);
             buttonExportTheReport.FlatStyle = FlatStyle.Flat;
-            buttonExportTheReport.Font = new Font("Segoe UI", 15F);
+            buttonExportTheReport.Font = new Font("Segoe UI", 14F);
             buttonExportTheReport.Location = new Point(19, 519);
             buttonExportTheReport.Name = "buttonExportTheReport";
             buttonExportTheReport.Size = new Size(293, 52);
             buttonExportTheReport.TabIndex = 12;
-            buttonExportTheReport.Text = "Экспортировать в json";
+            buttonExportTheReport.Text = "Экспортировать в JSON";
             buttonExportTheReport.UseVisualStyleBackColor = true;
             buttonExportTheReport.Click += buttonExportTheReport_Click;
             // 

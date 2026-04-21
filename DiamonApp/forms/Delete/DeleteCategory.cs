@@ -38,11 +38,11 @@ namespace DiamonApp.forms
 
         private void buttonDeleteCategory_Click(object sender, EventArgs e)
         {
-            using (var db = new AllDB()) 
-            { 
-                foreach(var name in db.Products)
+            using (var db = new AllDB())
+            {
+                foreach (var name in db.Products)
                 {
-                    if (name.Category == comboBoxName.Text) 
+                    if (name.Category == comboBoxName.Text)
                     {
                         var product = name;
                         db.Products.Remove(product);
@@ -54,6 +54,12 @@ namespace DiamonApp.forms
                 new WarehouseAdmin(LoginAdmin).Show();
                 Hide();
             }
+        }
+
+        private void BackToolStripMenuItem_Click(object sender, EventArgs e)
+        {
+            new WarehouseAdmin(LoginAdmin).Show();
+            Hide();
         }
     }
 }

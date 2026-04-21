@@ -45,6 +45,7 @@
             buttonDoAcceptance = new Button();
             buttonImport = new Button();
             labelImport = new Label();
+            labelLogin = new Label();
             ((System.ComponentModel.ISupportInitialize)numPrice).BeginInit();
             ((System.ComponentModel.ISupportInitialize)numCount).BeginInit();
             menuStrip1.SuspendLayout();
@@ -228,11 +229,21 @@
             labelImport.TabIndex = 30;
             labelImport.Text = "Импорт из файла:";
             // 
+            // labelLogin
+            // 
+            labelLogin.AutoSize = true;
+            labelLogin.Location = new Point(932, 9);
+            labelLogin.Name = "labelLogin";
+            labelLogin.Size = new Size(50, 20);
+            labelLogin.TabIndex = 31;
+            labelLogin.Text = "label1";
+            // 
             // AcceptanceOfGoodsForm
             // 
             AutoScaleDimensions = new SizeF(8F, 20F);
             AutoScaleMode = AutoScaleMode.Font;
             ClientSize = new Size(1170, 705);
+            Controls.Add(labelLogin);
             Controls.Add(labelImport);
             Controls.Add(buttonImport);
             Controls.Add(buttonDoAcceptance);
@@ -278,5 +289,6 @@
         private ToolStripMenuItem назадToolStripMenuItem;
         private Button buttonImport;
         private Label labelImport;
+        private Label labelLogin;
     }
 }

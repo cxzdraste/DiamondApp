@@ -110,6 +110,8 @@
             Controls.Add(enter);
             Controls.Add(txtLogin);
             Controls.Add(txtPassword);
+            FormBorderStyle = FormBorderStyle.FixedSingle;
+            MaximizeBox = false;
             Name = "Authorization";
             Text = "Авторизация";
             ResumeLayout(false);

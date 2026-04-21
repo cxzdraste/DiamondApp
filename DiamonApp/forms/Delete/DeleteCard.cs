@@ -31,7 +31,7 @@ namespace DiamonApp.forms
                 var id = new Guid();
                 foreach (var name in db.Products.ToList())
                 {
-                    if(name.Name == comboBoxName.Text)
+                    if (name.Name == comboBoxName.Text)
                     {
                         id = name.Id;
                         break;
@@ -56,6 +56,12 @@ namespace DiamonApp.forms
                     comboBoxName.Items.Add(name.Name);
                 }
             }
+        }
+
+        private void BackToolStripMenuItem_Click(object sender, EventArgs e)
+        {
+            new WarehouseAdmin(LoginAdmin).Show();
+            Hide();
         }
     }
 }

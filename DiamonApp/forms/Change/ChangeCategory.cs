@@ -51,9 +51,9 @@ namespace DiamonApp.forms
                 categoryDb[index] = newCategory;
 
                 var products = db.Products.ToList();
-                foreach (var product in products) 
-                { 
-                    if(product.Category == oldCategory)
+                foreach (var product in products)
+                {
+                    if (product.Category == oldCategory)
                     {
                         product.Category = newCategory;
                     }
@@ -67,6 +67,10 @@ namespace DiamonApp.forms
             }
         }
 
-        
+        private void backToolStripMenuItem_Click(object sender, EventArgs e)
+        {
+            new WarehouseAdmin(LoginAdmin).Show();
+            Hide();
+        }
     }
 }

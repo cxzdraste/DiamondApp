@@ -25,6 +25,7 @@ namespace DiamondApp.forms.differentFunctionsForms
         {
             InitializeComponent();
             UserLogin = userLogin;
+            labelLogin.Text = Resources.LoginInMenu + userLogin;
             CreateDataGridView();
             LoadProducts();
             comboBoxName.Click += comboBoxName_SelectedIndexChanged;

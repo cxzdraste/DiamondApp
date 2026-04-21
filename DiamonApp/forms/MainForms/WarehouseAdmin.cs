@@ -128,7 +128,6 @@ namespace Draft_Diamond_BD
         {
             var addCardForm = new AddCard(userLogin);
             addCardForm.Show();
-            Hide();
         }
         private void newCategoryToolStripMenuItem_Click(object sender, EventArgs e)
         {
