@@ -27,5 +27,15 @@
         private ToolStripMenuItem changeCategoryToolStripMenuItem1;
         private ToolStripMenuItem DeleteCategoryToolStripMenuItem2;
         private ToolStripMenuItem принятьПоставкуToolStripMenuItem;
+        private Label labelSeasonalCollection;
+        private Label labelTypeProduct;
+        private ComboBox comboBoxTypeProduct;
+        private Label labelSeasonDuration;
+        private ComboBox comboBoxSeasonDuration;
+        private NumericUpDown numericUpDown1;
+        private NumericUpDown numericUpDown2;
+        private Label labelDiscont;
+        private Label label;
+        private Button buttonSaveOptions;
     }
 }

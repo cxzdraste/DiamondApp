@@ -43,6 +43,10 @@ namespace DiamonApp.DataBase
                 entity.Property(p => p.PurchasePrice);
                 entity.Property(p => p.Rest);
                 entity.Property(p => p.Creator);
+                entity.Property(p => p.EndDateOfTheDay);
+                entity.Property(p => p.UntilTheEndOfTheSeason);
+                entity.Property(p => p.Discount);
+                entity.Property(p => p.FinalyPrice);
             });
 
             // UniteOfMeasure base
@@ -160,15 +164,17 @@ namespace DiamonApp.DataBase
                     {
                         allUnitsLinq.AddRange(unite.UnitesOfMeasure);
                     }
+                var dateEnd = new DateTime(2060, 12, 12);
+                var dateNow = DateTime.Now;
                     Products.AddRange(new ProductClass[]
-                            {
-                                new ProductClass( "Какое то кольцо", allUnitsLinq[0], 45000m, allNamesLinq[0], 30, Employess.FirstOrDefault( p => p.Login=="777").Login),
-                                new ProductClass( "Какие то серьги", allUnitsLinq[0], 45000m, allNamesLinq[1], 30,Employess.FirstOrDefault( p => p.Login=="777").Login),
-                                new ProductClass( "Какое то колье", allUnitsLinq[0], 45000m, allNamesLinq[2], 30,Employess.FirstOrDefault(p => p.Login == "777").Login),
-                                new ProductClass( "Какой то браслет", allUnitsLinq[0], 45000m, allNamesLinq[3], 30, Employess.FirstOrDefault(p => p.Login == "777").Login),
-                                new ProductClass( "Какая то брошь", allUnitsLinq[0], 45000m, allNamesLinq[4], 30, Employess.FirstOrDefault(p => p.Login == "777").Login)
-                            });
-                            SaveChanges();
+                    {
+                        new ProductClass( "Какое то кольцо", allUnitsLinq[0], 45000m, allNamesLinq[0], 30, Employess.FirstOrDefault( p => p.Login=="777").Login, dateEnd, ((dateEnd.Year - dateNow.Year)*12)+(dateEnd.Month - dateNow.Month),0),
+                        new ProductClass( "Какие то серьги", allUnitsLinq[0], 45000m, allNamesLinq[1], 30,Employess.FirstOrDefault( p => p.Login=="777").Login, dateEnd,((dateEnd.Year - dateNow.Year)*12)+(dateEnd.Month - dateNow.Month),0),
+                        new ProductClass( "Какое то колье", allUnitsLinq[0], 45000m, allNamesLinq[2], 30,Employess.FirstOrDefault(p => p.Login == "777").Login, dateEnd,((dateEnd.Year - dateNow.Year)*12)+(dateEnd.Month - dateNow.Month),0),
+                        new ProductClass( "Какой то браслет", allUnitsLinq[0], 45000m, allNamesLinq[3], 30, Employess.FirstOrDefault(p => p.Login == "777").Login, dateEnd,((dateEnd.Year - dateNow.Year)*12)+(dateEnd.Month - dateNow.Month),0),
+                        new ProductClass( "Какая то брошь", allUnitsLinq[0], 45000m, allNamesLinq[4], 30, Employess.FirstOrDefault(p => p.Login == "777").Login, dateEnd,((dateEnd.Year - dateNow.Year)*12)+(dateEnd.Month - dateNow.Month),0)
+                    });
+                    SaveChanges();
                 }
             
         }

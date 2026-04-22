@@ -29,7 +29,7 @@ namespace Draft_Diamond_BD
             dgvWarehouse = new DataGridView
             {
                 Location = new System.Drawing.Point(10, 150),
-                Size = new System.Drawing.Size(780, 250),
+                Size = new System.Drawing.Size(820, 250),
                 Margin = new Padding(10, 10, 10, 10),
                 AutoSizeColumnsMode = DataGridViewAutoSizeColumnsMode.Fill,
                 BackgroundColor = System.Drawing.Color.DarkGray,
@@ -203,16 +203,28 @@ namespace Draft_Diamond_BD
             принятьПоставкуToolStripMenuItem = new ToolStripMenuItem();
             labelLogin = new Label();
             buttonHistoryShipment = new Button();
+            labelSeasonalCollection = new Label();
+            labelTypeProduct = new Label();
+            comboBoxTypeProduct = new ComboBox();
+            labelSeasonDuration = new Label();
+            comboBoxSeasonDuration = new ComboBox();
+            numericUpDown1 = new NumericUpDown();
+            numericUpDown2 = new NumericUpDown();
+            labelDiscont = new Label();
+            label = new Label();
+            this.buttonSaveOptions = new Button();
             menuStripWarehouseProducts.SuspendLayout();
+            ((System.ComponentModel.ISupportInitialize)numericUpDown1).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)numericUpDown2).BeginInit();
             SuspendLayout();
             // 
             // labelwarehouse
             // 
             labelwarehouse.AutoSize = true;
-            labelwarehouse.Font = new Font("Microsoft Sans Serif", 18F, FontStyle.Regular, GraphicsUnit.Point, 0);
+            labelwarehouse.Font = new Font("Segoe UI", 18F, FontStyle.Regular, GraphicsUnit.Point, 204);
             labelwarehouse.Location = new Point(12, 107);
             labelwarehouse.Name = "labelwarehouse";
-            labelwarehouse.Size = new Size(115, 36);
+            labelwarehouse.Size = new Size(106, 41);
             labelwarehouse.TabIndex = 0;
             labelwarehouse.Text = "Склад:";
             // 
@@ -222,7 +234,7 @@ namespace Draft_Diamond_BD
             menuStripWarehouseProducts.Items.AddRange(new ToolStripItem[] { toolStripMenuItem3, toolStripMenuItem2, toolStripMenuItem1, filterToolStripMenuItemFilter, exitToolStripMenuItemOutput, changeAccountToolStripMenuItem, принятьПоставкуToolStripMenuItem });
             menuStripWarehouseProducts.Location = new Point(0, 0);
             menuStripWarehouseProducts.Name = "menuStripWarehouseProducts";
-            menuStripWarehouseProducts.Size = new Size(804, 28);
+            menuStripWarehouseProducts.Size = new Size(848, 28);
             menuStripWarehouseProducts.TabIndex = 1;
             menuStripWarehouseProducts.Text = "Меню";
             // 
@@ -333,7 +345,7 @@ namespace Draft_Diamond_BD
             labelLogin.Anchor = AnchorStyles.Top | AnchorStyles.Right;
             labelLogin.AutoSize = true;
             labelLogin.Font = new Font("Microsoft Sans Serif", 12F, FontStyle.Regular, GraphicsUnit.Point, 204);
-            labelLogin.Location = new Point(558, 0);
+            labelLogin.Location = new Point(602, 0);
             labelLogin.Margin = new Padding(5);
             labelLogin.Name = "labelLogin";
             labelLogin.Padding = new Padding(2);
@@ -346,7 +358,7 @@ namespace Draft_Diamond_BD
             buttonHistoryShipment.Anchor = AnchorStyles.Top | AnchorStyles.Right;
             buttonHistoryShipment.BackColor = SystemColors.ControlDarkDark;
             buttonHistoryShipment.Font = new Font("Microsoft Sans Serif", 13.8F, FontStyle.Regular, GraphicsUnit.Point, 204);
-            buttonHistoryShipment.Location = new Point(508, 85);
+            buttonHistoryShipment.Location = new Point(552, 85);
             buttonHistoryShipment.Name = "buttonHistoryShipment";
             buttonHistoryShipment.Padding = new Padding(2);
             buttonHistoryShipment.RightToLeft = RightToLeft.Yes;
@@ -356,9 +368,115 @@ namespace Draft_Diamond_BD
             buttonHistoryShipment.UseVisualStyleBackColor = false;
             buttonHistoryShipment.Click += buttonHistoryShipment_Click;
             // 
+            // labelSeasonalCollection
+            // 
+            labelSeasonalCollection.AutoSize = true;
+            labelSeasonalCollection.Font = new Font("Segoe UI", 18F);
+            labelSeasonalCollection.Location = new Point(12, 408);
+            labelSeasonalCollection.Name = "labelSeasonalCollection";
+            labelSeasonalCollection.Size = new Size(318, 41);
+            labelSeasonalCollection.TabIndex = 5;
+            labelSeasonalCollection.Text = "Сезонные коллекции:";
+            // 
+            // labelTypeProduct
+            // 
+            labelTypeProduct.AutoSize = true;
+            labelTypeProduct.Font = new Font("Segoe UI", 13F);
+            labelTypeProduct.Location = new Point(25, 460);
+            labelTypeProduct.Name = "labelTypeProduct";
+            labelTypeProduct.Size = new Size(131, 30);
+            labelTypeProduct.TabIndex = 6;
+            labelTypeProduct.Text = "Тип товара:";
+            // 
+            // comboBoxTypeProduct
+            // 
+            comboBoxTypeProduct.BackColor = SystemColors.ControlDarkDark;
+            comboBoxTypeProduct.DropDownStyle = ComboBoxStyle.DropDownList;
+            comboBoxTypeProduct.FlatStyle = FlatStyle.Flat;
+            comboBoxTypeProduct.FormattingEnabled = true;
+            comboBoxTypeProduct.Location = new Point(162, 465);
+            comboBoxTypeProduct.Name = "comboBoxTypeProduct";
+            comboBoxTypeProduct.Size = new Size(181, 28);
+            comboBoxTypeProduct.TabIndex = 7;
+            // 
+            // labelSeasonDuration
+            // 
+            labelSeasonDuration.AutoSize = true;
+            labelSeasonDuration.Font = new Font("Segoe UI", 13F);
+            labelSeasonDuration.Location = new Point(12, 511);
+            labelSeasonDuration.Name = "labelSeasonDuration";
+            labelSeasonDuration.Size = new Size(144, 30);
+            labelSeasonDuration.TabIndex = 8;
+            labelSeasonDuration.Text = "Срок сезона:";
+            // 
+            // comboBoxSeasonDuration
+            // 
+            comboBoxSeasonDuration.BackColor = SystemColors.ControlDarkDark;
+            comboBoxSeasonDuration.DropDownStyle = ComboBoxStyle.DropDownList;
+            comboBoxSeasonDuration.FlatStyle = FlatStyle.Flat;
+            comboBoxSeasonDuration.FormattingEnabled = true;
+            comboBoxSeasonDuration.Location = new Point(162, 516);
+            comboBoxSeasonDuration.Name = "comboBoxSeasonDuration";
+            comboBoxSeasonDuration.Size = new Size(181, 28);
+            comboBoxSeasonDuration.TabIndex = 9;
+            // 
+            // numericUpDown1
+            // 
+            numericUpDown1.Location = new Point(322, 574);
+            numericUpDown1.Name = "numericUpDown1";
+            numericUpDown1.Size = new Size(150, 27);
+            numericUpDown1.TabIndex = 10;
+            // 
+            // numericUpDown2
+            // 
+            numericUpDown2.Location = new Point(685, 576);
+            numericUpDown2.Name = "numericUpDown2";
+            numericUpDown2.Size = new Size(150, 27);
+            numericUpDown2.TabIndex = 11;
+            // 
+            // labelDiscont
+            // 
+            labelDiscont.AutoSize = true;
+            labelDiscont.Font = new Font("Segoe UI", 14F);
+            labelDiscont.Location = new Point(12, 567);
+            labelDiscont.Name = "labelDiscont";
+            labelDiscont.Size = new Size(304, 32);
+            labelDiscont.TabIndex = 12;
+            labelDiscont.Text = "Автоматическая скидка за";
+            // 
+            // label
+            // 
+            label.AutoSize = true;
+            label.Font = new Font("Segoe UI", 14F);
+            label.Location = new Point(478, 569);
+            label.Name = "label";
+            label.Size = new Size(201, 32);
+            label.TabIndex = 13;
+            label.Text = "до конца сезона:";
+            // 
+            // buttonSaveOptions
+            // 
+            this.buttonSaveOptions.BackColor = SystemColors.ControlDarkDark;
+            this.buttonSaveOptions.Location = new Point(12, 626);
+            this.buttonSaveOptions.Name = "buttonSaveOptions";
+            this.buttonSaveOptions.Size = new Size(179, 41);
+            this.buttonSaveOptions.TabIndex = 14;
+            this.buttonSaveOptions.Text = "Сохранить настройки";
+            this.buttonSaveOptions.UseVisualStyleBackColor = false;
+            // 
             // WarehouseAdmin
             // 
-            ClientSize = new Size(804, 629);
+            ClientSize = new Size(848, 790);
+            Controls.Add(this.buttonSaveOptions);
+            Controls.Add(label);
+            Controls.Add(labelDiscont);
+            Controls.Add(numericUpDown2);
+            Controls.Add(numericUpDown1);
+            Controls.Add(comboBoxSeasonDuration);
+            Controls.Add(labelSeasonDuration);
+            Controls.Add(comboBoxTypeProduct);
+            Controls.Add(labelTypeProduct);
+            Controls.Add(labelSeasonalCollection);
             Controls.Add(buttonHistoryShipment);
             Controls.Add(labelLogin);
             Controls.Add(labelwarehouse);
@@ -368,6 +486,8 @@ namespace Draft_Diamond_BD
             Text = "Склад администратора";
             menuStripWarehouseProducts.ResumeLayout(false);
             menuStripWarehouseProducts.PerformLayout();
+            ((System.ComponentModel.ISupportInitialize)numericUpDown1).EndInit();
+            ((System.ComponentModel.ISupportInitialize)numericUpDown2).EndInit();
             ResumeLayout(false);
             PerformLayout();
 
