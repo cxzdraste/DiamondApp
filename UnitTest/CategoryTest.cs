@@ -1,10 +1,10 @@
-п»їusing 
-namespace UnitTestDiamondApp
+using DiamonApp.Classes;
+namespace UnitTest
 {
     public class CategoryTest
     {
         /// <summary>
-        /// РўРµСЃС‚ РЅР° РїСЂРѕРІРµСЂРєСѓ РёСЃРєР»СЋС‡РµРЅРёСЏ
+        /// Тест на проверку исключения
         /// </summary>
         [Fact]
         public void CategoryTest()
@@ -16,7 +16,7 @@ namespace UnitTestDiamondApp
             });
         }
         /// <summary>
-        /// РўРµСЃС‚ РЅР° РїСЂРѕРІРµСЂРєСѓ СЂР°Р·РЅС‹С… РІРІРѕРґРЅС‹С… Р·РЅР°С‡РµРЅРёР№
+        /// Тест на проверку разных вводных значений
         /// </summary>
         /// <param name="input"></param>
         [Theory]
@@ -30,7 +30,7 @@ namespace UnitTestDiamondApp
                 new CategoryClass(input));
         }
         /// <summary>
-        /// РўРµСЃС‚ РЅР° РїСЂРѕРІРµСЂРєСѓ, С‡С‚Рѕ РѕР±СЉРµРєС‚ РЅРµ СЃРѕР·РґР°РµС‚СЃСЏ РїСЂРё РёСЃРєР»СЋС‡РµРЅРёРё
+        /// Тест на проверку, что объект не создается при исключении
         /// </summary>
         [Fact]
         public void Constructor_DoesNotReturnObject_WhenExceptionThrown()
@@ -43,7 +43,7 @@ namespace UnitTestDiamondApp
             Assert.Null(result);
         }
         /// <summary>
-        /// РџСЂРѕРІРµСЂРєР° РЅР° РјРЅРѕР¶РµСЃС‚РІРѕ РІС‹Р·РѕРІРѕРІ
+        /// Проверка на множество вызовов
         /// </summary>
         [Fact]
         public void Constructor_MultipleCalls_AlwaysThrow()

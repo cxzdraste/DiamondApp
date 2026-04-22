@@ -5,7 +5,7 @@ VisualStudioVersion = 17.14.37111.16
 MinimumVisualStudioVersion = 10.0.40219.1
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "DiamondApp", "DiamonApp\DiamondApp.csproj", "{2F752795-3B59-44E4-A07E-F6CE7C4001A7}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "UnitTestDiamondApp", "UnitTestDiamondApp\UnitTestDiamondApp.csproj", "{8985651E-2284-4C15-8C19-999E9FC9C724}"
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "UnitTest", "UnitTest\UnitTest.csproj", "{5D3C8D98-456F-4BE0-92B5-B32E018FE41B}"
 EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
@@ -17,10 +17,10 @@ Global
 		{2F752795-3B59-44E4-A07E-F6CE7C4001A7}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{2F752795-3B59-44E4-A07E-F6CE7C4001A7}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{2F752795-3B59-44E4-A07E-F6CE7C4001A7}.Release|Any CPU.Build.0 = Release|Any CPU
-		{8985651E-2284-4C15-8C19-999E9FC9C724}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
-		{8985651E-2284-4C15-8C19-999E9FC9C724}.Debug|Any CPU.Build.0 = Debug|Any CPU
-		{8985651E-2284-4C15-8C19-999E9FC9C724}.Release|Any CPU.ActiveCfg = Release|Any CPU
-		{8985651E-2284-4C15-8C19-999E9FC9C724}.Release|Any CPU.Build.0 = Release|Any CPU
+		{5D3C8D98-456F-4BE0-92B5-B32E018FE41B}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{5D3C8D98-456F-4BE0-92B5-B32E018FE41B}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{5D3C8D98-456F-4BE0-92B5-B32E018FE41B}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{5D3C8D98-456F-4BE0-92B5-B32E018FE41B}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE
