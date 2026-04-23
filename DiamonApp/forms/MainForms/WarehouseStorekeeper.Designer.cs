@@ -38,6 +38,10 @@
             категорииToolStripMenuItem = new ToolStripMenuItem();
             exitToolStripMenuItemOutput = new ToolStripMenuItem();
             сменитьАккаунтToolStripMenuItem = new ToolStripMenuItem();
+            labelWrittenOffGoods = new Label();
+            labelFilterProductsFalse = new Label();
+            comboBoxFiterProductFalse = new ComboBox();
+            принятьПоставкуToolStripMenuItem = new ToolStripMenuItem();
             menuStrip1.SuspendLayout();
             SuspendLayout();
             // 
@@ -45,9 +49,9 @@
             // 
             label1.AutoSize = true;
             label1.Font = new Font("Microsoft Sans Serif", 18F, FontStyle.Bold, GraphicsUnit.Point, 204);
-            label1.Location = new Point(10, 67);
+            label1.Location = new Point(12, 66);
             label1.Name = "label1";
-            label1.Size = new Size(96, 29);
+            label1.Size = new Size(121, 36);
             label1.TabIndex = 0;
             label1.Text = "Склад:";
             // 
@@ -56,75 +60,117 @@
             labelLogin.Anchor = AnchorStyles.Top | AnchorStyles.Right;
             labelLogin.AutoSize = true;
             labelLogin.Font = new Font("Microsoft Sans Serif", 12F);
-            labelLogin.Location = new Point(508, 7);
+            labelLogin.Location = new Point(605, 9);
             labelLogin.Name = "labelLogin";
-            labelLogin.Size = new Size(51, 20);
+            labelLogin.Size = new Size(64, 25);
             labelLogin.TabIndex = 1;
             labelLogin.Text = "label2";
             // 
             // menuStrip1
             // 
             menuStrip1.ImageScalingSize = new Size(20, 20);
-            menuStrip1.Items.AddRange(new ToolStripItem[] { toolStripMenuItem1, createShipmentToolStripMenuItem, фильтрToolStripMenuItem, exitToolStripMenuItemOutput, сменитьАккаунтToolStripMenuItem });
+            menuStrip1.Items.AddRange(new ToolStripItem[] { toolStripMenuItem1, createShipmentToolStripMenuItem, фильтрToolStripMenuItem, exitToolStripMenuItemOutput, сменитьАккаунтToolStripMenuItem, принятьПоставкуToolStripMenuItem });
             menuStrip1.Location = new Point(0, 0);
             menuStrip1.Name = "menuStrip1";
-            menuStrip1.Padding = new Padding(5, 2, 0, 2);
-            menuStrip1.Size = new Size(726, 24);
+            menuStrip1.Padding = new Padding(6, 3, 0, 3);
+            menuStrip1.Size = new Size(854, 30);
             menuStrip1.TabIndex = 2;
             menuStrip1.Text = "menuStrip1";
             // 
             // toolStripMenuItem1
             // 
             toolStripMenuItem1.Name = "toolStripMenuItem1";
-            toolStripMenuItem1.Size = new Size(12, 20);
+            toolStripMenuItem1.Size = new Size(14, 24);
             // 
             // createShipmentToolStripMenuItem
             // 
             createShipmentToolStripMenuItem.Name = "createShipmentToolStripMenuItem";
-            createShipmentToolStripMenuItem.Size = new Size(115, 20);
+            createShipmentToolStripMenuItem.Size = new Size(144, 24);
             createShipmentToolStripMenuItem.Text = "Создать отгрузку ";
             // 
             // фильтрToolStripMenuItem
             // 
             фильтрToolStripMenuItem.DropDownItems.AddRange(new ToolStripItem[] { весьСкладToolStripMenuItem, категорииToolStripMenuItem });
             фильтрToolStripMenuItem.Name = "фильтрToolStripMenuItem";
-            фильтрToolStripMenuItem.Size = new Size(60, 20);
+            фильтрToolStripMenuItem.Size = new Size(74, 24);
             фильтрToolStripMenuItem.Text = "Фильтр";
             // 
             // весьСкладToolStripMenuItem
             // 
             весьСкладToolStripMenuItem.Name = "весьСкладToolStripMenuItem";
-            весьСкладToolStripMenuItem.Size = new Size(133, 22);
+            весьСкладToolStripMenuItem.Size = new Size(166, 26);
             весьСкладToolStripMenuItem.Text = "Весь склад";
             // 
             // категорииToolStripMenuItem
             // 
             категорииToolStripMenuItem.Name = "категорииToolStripMenuItem";
-            категорииToolStripMenuItem.Size = new Size(133, 22);
+            категорииToolStripMenuItem.Size = new Size(166, 26);
             категорииToolStripMenuItem.Text = "Категории";
             // 
             // exitToolStripMenuItemOutput
             // 
             exitToolStripMenuItemOutput.Name = "exitToolStripMenuItemOutput";
-            exitToolStripMenuItemOutput.Size = new Size(54, 20);
+            exitToolStripMenuItemOutput.Size = new Size(67, 24);
             exitToolStripMenuItemOutput.Text = "Выход";
             // 
             // сменитьАккаунтToolStripMenuItem
             // 
             сменитьАккаунтToolStripMenuItem.Alignment = ToolStripItemAlignment.Right;
             сменитьАккаунтToolStripMenuItem.Name = "сменитьАккаунтToolStripMenuItem";
-            сменитьАккаунтToolStripMenuItem.Size = new Size(112, 20);
+            сменитьАккаунтToolStripMenuItem.Size = new Size(139, 24);
             сменитьАккаунтToolStripMenuItem.Text = "Сменить аккаунт";
+            // 
+            // labelWrittenOffGoods
+            // 
+            labelWrittenOffGoods.AutoSize = true;
+            labelWrittenOffGoods.Font = new Font("Segoe UI", 18F);
+            labelWrittenOffGoods.Location = new Point(12, 389);
+            labelWrittenOffGoods.Name = "labelWrittenOffGoods";
+            labelWrittenOffGoods.Size = new Size(286, 41);
+            labelWrittenOffGoods.TabIndex = 16;
+            labelWrittenOffGoods.Text = "Списанные товары:";
+            // 
+            // labelFilterProductsFalse
+            // 
+            labelFilterProductsFalse.AutoSize = true;
+            labelFilterProductsFalse.BackColor = SystemColors.ControlLight;
+            labelFilterProductsFalse.Location = new Point(695, 405);
+            labelFilterProductsFalse.Name = "labelFilterProductsFalse";
+            labelFilterProductsFalse.Size = new Size(60, 20);
+            labelFilterProductsFalse.TabIndex = 20;
+            labelFilterProductsFalse.Text = "Фильтр";
+            // 
+            // comboBoxFiterProductFalse
+            // 
+            comboBoxFiterProductFalse.DropDownStyle = ComboBoxStyle.DropDownList;
+            comboBoxFiterProductFalse.FormattingEnabled = true;
+            comboBoxFiterProductFalse.Location = new Point(695, 402);
+            comboBoxFiterProductFalse.Margin = new Padding(3, 4, 3, 4);
+            comboBoxFiterProductFalse.Name = "comboBoxFiterProductFalse";
+            comboBoxFiterProductFalse.Size = new Size(138, 28);
+            comboBoxFiterProductFalse.TabIndex = 19;
+            comboBoxFiterProductFalse.Click += comboBoxFiterProductFalse_SelectedIndexChanged;
+            // 
+            // принятьПоставкуToolStripMenuItem
+            // 
+            принятьПоставкуToolStripMenuItem.Name = "принятьПоставкуToolStripMenuItem";
+            принятьПоставкуToolStripMenuItem.Size = new Size(148, 24);
+            принятьПоставкуToolStripMenuItem.Text = "Принять поставку";
+            принятьПоставкуToolStripMenuItem.Click += принятьПоставкуToolStripMenuItem_Click;
             // 
             // WarehouseStorekeeper
             // 
-            AutoScaleDimensions = new SizeF(7F, 15F);
+            AutoScaleDimensions = new SizeF(8F, 20F);
             AutoScaleMode = AutoScaleMode.Font;
-            ClientSize = new Size(726, 422);
+            ClientSize = new Size(854, 721);
+            Controls.Add(labelFilterProductsFalse);
+            Controls.Add(comboBoxFiterProductFalse);
+            Controls.Add(labelWrittenOffGoods);
             Controls.Add(labelLogin);
             Controls.Add(label1);
             Controls.Add(menuStrip1);
             MainMenuStrip = menuStrip1;
+            Margin = new Padding(3, 4, 3, 4);
             Name = "WarehouseStorekeeper";
             Text = "Склад кладовщика";
             menuStrip1.ResumeLayout(false);
@@ -146,5 +192,9 @@
         private System.Windows.Forms.ToolStripMenuItem exitToolStripMenuItemOutput;
         private ToolStripMenuItem категорииToolStripMenuItem;
         private ToolStripMenuItem сменитьАккаунтToolStripMenuItem;
+        private Label labelWrittenOffGoods;
+        private Label labelFilterProductsFalse;
+        private ComboBox comboBoxFiterProductFalse;
+        private ToolStripMenuItem принятьПоставкуToolStripMenuItem;
     }
 }

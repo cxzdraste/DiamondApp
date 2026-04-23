@@ -44,8 +44,11 @@
             buttonShipment = new Button();
             numSumProduct = new NumericUpDown();
             labelSumProduct = new Label();
+            menuStrip1 = new MenuStrip();
+            BackToolStripMenuItem = new ToolStripMenuItem();
             ((System.ComponentModel.ISupportInitialize)numCount).BeginInit();
             ((System.ComponentModel.ISupportInitialize)numSumProduct).BeginInit();
+            menuStrip1.SuspendLayout();
             SuspendLayout();
             // 
             // labelCreatingShipment
@@ -135,7 +138,6 @@
             comboBoxUniteOfMeasure.Name = "comboBoxUniteOfMeasure";
             comboBoxUniteOfMeasure.Size = new Size(198, 28);
             comboBoxUniteOfMeasure.TabIndex = 7;
-            comboBoxUniteOfMeasure.SelectedIndexChanged += comboBoxUniteOfMeasure_SelectedIndexChanged_1;
             // 
             // numCount
             // 
@@ -225,6 +227,23 @@
             labelSumProduct.TabIndex = 15;
             labelSumProduct.Text = "Сумма:";
             // 
+            // menuStrip1
+            // 
+            menuStrip1.ImageScalingSize = new Size(20, 20);
+            menuStrip1.Items.AddRange(new ToolStripItem[] { BackToolStripMenuItem });
+            menuStrip1.Location = new Point(0, 0);
+            menuStrip1.Name = "menuStrip1";
+            menuStrip1.Size = new Size(1121, 28);
+            menuStrip1.TabIndex = 16;
+            menuStrip1.Text = "menuStrip1";
+            // 
+            // BackToolStripMenuItem
+            // 
+            BackToolStripMenuItem.Name = "BackToolStripMenuItem";
+            BackToolStripMenuItem.Size = new Size(65, 24);
+            BackToolStripMenuItem.Text = "Назад";
+            BackToolStripMenuItem.Click += BackToolStripMenuItem_Click;
+            // 
             // CreatingShipmentForm
             // 
             AutoScaleDimensions = new SizeF(8F, 20F);
@@ -246,11 +265,15 @@
             Controls.Add(labelUniteOfMeasure);
             Controls.Add(labelName);
             Controls.Add(labelCreatingShipment);
+            Controls.Add(menuStrip1);
+            MainMenuStrip = menuStrip1;
             Margin = new Padding(3, 4, 3, 4);
             Name = "CreatingShipmentForm";
             Text = "Создать отгрузку";
             ((System.ComponentModel.ISupportInitialize)numCount).EndInit();
             ((System.ComponentModel.ISupportInitialize)numSumProduct).EndInit();
+            menuStrip1.ResumeLayout(false);
+            menuStrip1.PerformLayout();
             ResumeLayout(false);
             PerformLayout();
         }
@@ -273,5 +296,7 @@
         private Button buttonShipment;
         private NumericUpDown numSumProduct;
         private Label labelSumProduct;
+        private MenuStrip menuStrip1;
+        private ToolStripMenuItem BackToolStripMenuItem;
     }
 }

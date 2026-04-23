@@ -4,38 +4,54 @@ using DiamonApp.forms;
 using DiamonApp.forms.differentFunctionsForms;
 using DiamondApp.forms.differentFunctionsForms;
 using DiamondApp.Resourses;
+using static System.Runtime.InteropServices.JavaScript.JSType;
 
 
 namespace Draft_Diamond_BD
 {
     public partial class WarehouseAdmin : Form
     {
-        private DataGridView dgvWarehouse;
+        private DataGridView dgvWarehouseTrue;
+        private DataGridView dgvWarehouseFalse;
         private string userLogin;
         public WarehouseAdmin(string login)
         {
             InitializeComponent();
             userLogin = login;
             labelLogin.Text = Resources.LoginInMenu + userLogin;
-            CreateDataGridView();
-            LoadProducts();
+            CreateDataGridViewTrue();
+            CreateDataGridViewFalse();
+            LoadProductsTrue();
             FilterProducts();
-            весьСкладToolStripMenuItem.Click += (s, a) => LoadProducts();
+            весьСкладToolStripMenuItem.Click += (s, a) => LoadProductsTrue();
             exitToolStripMenuItemOutput.Click += Exit_Click;
             addCardToolStripMenuItem.Click += AddCardToolStripMenuItem_Click;
         }
-        private void CreateDataGridView()
+        private void CreateDataGridViewTrue()
         {
-            dgvWarehouse = new DataGridView
+            dgvWarehouseTrue = new DataGridView
             {
-                Location = new System.Drawing.Point(10, 150),
+                Location = new System.Drawing.Point(10, 120),
                 Size = new System.Drawing.Size(820, 250),
                 Margin = new Padding(10, 10, 10, 10),
                 AutoSizeColumnsMode = DataGridViewAutoSizeColumnsMode.Fill,
                 BackgroundColor = System.Drawing.Color.DarkGray,
                 Anchor = AnchorStyles.Left | AnchorStyles.Right | AnchorStyles.Top,
             };
-            Controls.Add(dgvWarehouse);
+            Controls.Add(dgvWarehouseTrue);
+        }
+        private void CreateDataGridViewFalse()
+        {
+            dgvWarehouseFalse = new DataGridView
+            {
+                Location = new System.Drawing.Point(10, 670),
+                Size = new System.Drawing.Size(820, 250),
+                Margin = new Padding(10, 10, 10, 10),
+                AutoSizeColumnsMode = DataGridViewAutoSizeColumnsMode.Fill,
+                BackgroundColor = System.Drawing.Color.DarkGray,
+                Anchor = AnchorStyles.Left | AnchorStyles.Right | AnchorStyles.Top,
+            };
+            Controls.Add(dgvWarehouseFalse);
         }
         private void FilterProducts()
         {
@@ -75,7 +91,7 @@ namespace Draft_Diamond_BD
                                     p.Rest,
                                     p.Creator,
                                 }).ToList();
-                                dgvWarehouse.DataSource = products;
+                                dgvWarehouseTrue.DataSource = products;
                             }
                         };
                         категорииToolStripMenuItem.DropDownItems.Add(menuItem);
@@ -86,42 +102,136 @@ namespace Draft_Diamond_BD
         /// <summary>
         /// Метод для работы с базой данных 
         /// </summary>
-        public void LoadProducts()
+        public void LoadProductsTrue()
         {
             using (var db = new AllDB())
             {
-                var products = db.Products.Select(p => new
+                ExpirationDateCheck();
+                var productsTrue = db.Products.Where(p => p.Status == true).Select(p => new
                 {
                     p.Name,
                     p.UniteOfMeasure,
                     p.PurchasePrice,
                     p.Category,
                     p.Rest,
-                    p.Creator,
+                    p.EndDateOfTheDay,
+                    p.UntilTheEndOfTheSeason,
+                    p.Discount,
+                    p.FinalyPrice,
                 }).ToList();
-                dgvWarehouse.DataSource = products;
-                SetupColumns();
+                dgvWarehouseTrue.DataSource = productsTrue;
+                SetupColumnsTrue();
+                LoadProductsFalse();
             }
         }
-        private void SetupColumns()
+        public void LoadProductsFalse()
         {
-            if (dgvWarehouse.Columns["Name"] != null)
-                dgvWarehouse.Columns["Name"].HeaderText = "Название";
+            using (var db = new AllDB())
+            {
+                var productsFalse = db.Products.Where(p => p.Status == false);
+                if (productsFalse.Any())
+                {
+                    var productsload = productsFalse.Select(p => new
+                    {
+                        p.Name,
+                        p.UniteOfMeasure,
+                        p.Category,
+                        p.Rest,
+                        p.EndDateOfTheDay,
+                        p.FinalyPrice,
+                    }).ToList();
+                    dgvWarehouseFalse.DataSource = productsload;
+                    SetupColumnsFalse();
+                }
 
-            if (dgvWarehouse.Columns["UniteOfMeasure"] != null)
-                dgvWarehouse.Columns["UniteOfMeasure"].HeaderText = "Единица измерения";
+            }
+        }
+        private void ExpirationDateCheck()
+        {
+            using (var db = new AllDB())
+            {
+                foreach (var product in db.Products)
+                {
+                    if (product.EndDateOfTheDay < DateTime.Today)
+                    {
+                        product.Status = false;
+                        db.SaveChanges();
+                    }
+                }
+            }
+        }
+        private void CheckingForDiscount()
+        {
+            using (var db = new AllDB())
+            {
+                var activeProducts = db.Products.Where(p => p.Status == true).ToList();
 
-            if (dgvWarehouse.Columns["Price"] != null)
-                dgvWarehouse.Columns["Price"].HeaderText = "Цена";
+                foreach (var product in activeProducts)
+                {
+                    int weeksUntilEnd = (int)((product.EndDateOfTheDay - DateTime.Today).TotalDays / 7);
+                    if (weeksUntilEnd <= (int)numDiscountBeforeEnd.Value)
+                    {
+                        product.Discount = (double)numDiscount.Value;
+                        product.FinalyPrice = product.PurchasePrice - (product.PurchasePrice * (decimal)product.Discount / 100);
+                    }
+                    else
+                    {
+                        product.Discount = 0;
+                        product.FinalyPrice = product.PurchasePrice;
+                    }
+                }
+                db.SaveChanges();
+            }
+        }
 
-            if (dgvWarehouse.Columns["Category"] != null)
-                dgvWarehouse.Columns["Category"].HeaderText = "Категория";
+        private void SetupColumnsFalse()
+        {
+            if (dgvWarehouseFalse.Columns["Name"] != null)
+                dgvWarehouseFalse.Columns["Name"].HeaderText = "Название";
 
-            if (dgvWarehouse.Columns["Rest"] != null)
-                dgvWarehouse.Columns["Rest"].HeaderText = "Остаток";
+            if (dgvWarehouseFalse.Columns["UniteOfMeasure"] != null)
+                dgvWarehouseFalse.Columns["UniteOfMeasure"].HeaderText = "Единица измерения";
 
-            if (dgvWarehouse.Columns["Creator"] != null)
-                dgvWarehouse.Columns["Creator"].HeaderText = "Кто создал";
+            if (dgvWarehouseFalse.Columns["Category"] != null)
+                dgvWarehouseFalse.Columns["Category"].HeaderText = "Категория";
+
+            if (dgvWarehouseFalse.Columns["FinalyPrice"] != null)
+                dgvWarehouseFalse.Columns["FinalyPrice"].HeaderText = "Убыток";
+
+            if (dgvWarehouseFalse.Columns["Rest"] != null)
+                dgvWarehouseFalse.Columns["Rest"].HeaderText = "Остаток";
+
+            if (dgvWarehouseFalse.Columns["EndDateOfTheDay"] != null)
+                dgvWarehouseFalse.Columns["EndDateOfTheDay"].HeaderText = "Сезон до";
+        }
+        private void SetupColumnsTrue()
+        {
+            if (dgvWarehouseTrue.Columns["Name"] != null)
+                dgvWarehouseTrue.Columns["Name"].HeaderText = "Название";
+
+            if (dgvWarehouseTrue.Columns["UniteOfMeasure"] != null)
+                dgvWarehouseTrue.Columns["UniteOfMeasure"].HeaderText = "Единица измерения";
+
+            if (dgvWarehouseTrue.Columns["PurchasePrice"] != null)
+                dgvWarehouseTrue.Columns["PurchasePrice"].HeaderText = "Цена";
+
+            if (dgvWarehouseTrue.Columns["Category"] != null)
+                dgvWarehouseTrue.Columns["Category"].HeaderText = "Категория";
+
+            if (dgvWarehouseTrue.Columns["Rest"] != null)
+                dgvWarehouseTrue.Columns["Rest"].HeaderText = "Остаток";
+
+            if (dgvWarehouseTrue.Columns["EndDateOfTheDay"] != null)
+                dgvWarehouseTrue.Columns["EndDateOfTheDay"].HeaderText = "Сезон до";
+
+            if (dgvWarehouseTrue.Columns["UntilTheEndOfTheSeason"] != null)
+                dgvWarehouseTrue.Columns["UntilTheEndOfTheSeason"].HeaderText = "До конца сезона";
+
+            if (dgvWarehouseTrue.Columns["Discount"] != null)
+                dgvWarehouseTrue.Columns["Discount"].HeaderText = "Скидка";
+
+            if (dgvWarehouseTrue.Columns["FinalyPrice"] != null)
+                dgvWarehouseTrue.Columns["FinalyPrice"].HeaderText = "Итоговая стоимость";
         }
 
         private void AddCardToolStripMenuItem_Click(object sender, EventArgs e)
@@ -182,315 +292,91 @@ namespace Draft_Diamond_BD
             newAcceptanceOfGoods.Show();
             Hide();
         }
-        private void InitializeComponent()
-        {
-            labelwarehouse = new Label();
-            menuStripWarehouseProducts = new MenuStrip();
-            toolStripMenuItem3 = new ToolStripMenuItem();
-            addCardToolStripMenuItem = new ToolStripMenuItem();
-            NewCategoryToolStripMenuItem = new ToolStripMenuItem();
-            toolStripMenuItem2 = new ToolStripMenuItem();
-            changeCardToolStripMenuItem = new ToolStripMenuItem();
-            changeCategoryToolStripMenuItem1 = new ToolStripMenuItem();
-            toolStripMenuItem1 = new ToolStripMenuItem();
-            deleteCardToolStripMenuItem = new ToolStripMenuItem();
-            DeleteCategoryToolStripMenuItem2 = new ToolStripMenuItem();
-            filterToolStripMenuItemFilter = new ToolStripMenuItem();
-            весьСкладToolStripMenuItem = new ToolStripMenuItem();
-            категорииToolStripMenuItem = new ToolStripMenuItem();
-            exitToolStripMenuItemOutput = new ToolStripMenuItem();
-            changeAccountToolStripMenuItem = new ToolStripMenuItem();
-            принятьПоставкуToolStripMenuItem = new ToolStripMenuItem();
-            labelLogin = new Label();
-            buttonHistoryShipment = new Button();
-            labelSeasonalCollection = new Label();
-            labelTypeProduct = new Label();
-            comboBoxTypeProduct = new ComboBox();
-            labelSeasonDuration = new Label();
-            comboBoxSeasonDuration = new ComboBox();
-            numericUpDown1 = new NumericUpDown();
-            numericUpDown2 = new NumericUpDown();
-            labelDiscont = new Label();
-            label = new Label();
-            this.buttonSaveOptions = new Button();
-            menuStripWarehouseProducts.SuspendLayout();
-            ((System.ComponentModel.ISupportInitialize)numericUpDown1).BeginInit();
-            ((System.ComponentModel.ISupportInitialize)numericUpDown2).BeginInit();
-            SuspendLayout();
-            // 
-            // labelwarehouse
-            // 
-            labelwarehouse.AutoSize = true;
-            labelwarehouse.Font = new Font("Segoe UI", 18F, FontStyle.Regular, GraphicsUnit.Point, 204);
-            labelwarehouse.Location = new Point(12, 107);
-            labelwarehouse.Name = "labelwarehouse";
-            labelwarehouse.Size = new Size(106, 41);
-            labelwarehouse.TabIndex = 0;
-            labelwarehouse.Text = "Склад:";
-            // 
-            // menuStripWarehouseProducts
-            // 
-            menuStripWarehouseProducts.ImageScalingSize = new Size(20, 20);
-            menuStripWarehouseProducts.Items.AddRange(new ToolStripItem[] { toolStripMenuItem3, toolStripMenuItem2, toolStripMenuItem1, filterToolStripMenuItemFilter, exitToolStripMenuItemOutput, changeAccountToolStripMenuItem, принятьПоставкуToolStripMenuItem });
-            menuStripWarehouseProducts.Location = new Point(0, 0);
-            menuStripWarehouseProducts.Name = "menuStripWarehouseProducts";
-            menuStripWarehouseProducts.Size = new Size(848, 28);
-            menuStripWarehouseProducts.TabIndex = 1;
-            menuStripWarehouseProducts.Text = "Меню";
-            // 
-            // toolStripMenuItem3
-            // 
-            toolStripMenuItem3.DropDownItems.AddRange(new ToolStripItem[] { addCardToolStripMenuItem, NewCategoryToolStripMenuItem });
-            toolStripMenuItem3.Name = "toolStripMenuItem3";
-            toolStripMenuItem3.Size = new Size(90, 24);
-            toolStripMenuItem3.Text = "Добавить";
-            // 
-            // addCardToolStripMenuItem
-            // 
-            addCardToolStripMenuItem.Name = "addCardToolStripMenuItem";
-            addCardToolStripMenuItem.Size = new Size(168, 26);
-            addCardToolStripMenuItem.Text = "Карточку ";
-            // 
-            // NewCategoryToolStripMenuItem
-            // 
-            NewCategoryToolStripMenuItem.Name = "NewCategoryToolStripMenuItem";
-            NewCategoryToolStripMenuItem.Size = new Size(168, 26);
-            NewCategoryToolStripMenuItem.Text = "Категорию";
-            NewCategoryToolStripMenuItem.Click += newCategoryToolStripMenuItem_Click;
-            // 
-            // toolStripMenuItem2
-            // 
-            toolStripMenuItem2.DropDownItems.AddRange(new ToolStripItem[] { changeCardToolStripMenuItem, changeCategoryToolStripMenuItem1 });
-            toolStripMenuItem2.Name = "toolStripMenuItem2";
-            toolStripMenuItem2.Size = new Size(92, 24);
-            toolStripMenuItem2.Text = "Изменить";
-            // 
-            // changeCardToolStripMenuItem
-            // 
-            changeCardToolStripMenuItem.Name = "changeCardToolStripMenuItem";
-            changeCardToolStripMenuItem.Size = new Size(168, 26);
-            changeCardToolStripMenuItem.Text = "Карточку";
-            changeCardToolStripMenuItem.Click += changeCardToolStripMenuItem_Click;
-            // 
-            // changeCategoryToolStripMenuItem1
-            // 
-            changeCategoryToolStripMenuItem1.Name = "changeCategoryToolStripMenuItem1";
-            changeCategoryToolStripMenuItem1.Size = new Size(168, 26);
-            changeCategoryToolStripMenuItem1.Text = "Категорию";
-            changeCategoryToolStripMenuItem1.Click += CategoryChangeToolStripMenuItem1_Click;
-            // 
-            // toolStripMenuItem1
-            // 
-            toolStripMenuItem1.DropDownItems.AddRange(new ToolStripItem[] { deleteCardToolStripMenuItem, DeleteCategoryToolStripMenuItem2 });
-            toolStripMenuItem1.Name = "toolStripMenuItem1";
-            toolStripMenuItem1.Size = new Size(79, 24);
-            toolStripMenuItem1.Text = "Удалить";
-            // 
-            // deleteCardToolStripMenuItem
-            // 
-            deleteCardToolStripMenuItem.Name = "deleteCardToolStripMenuItem";
-            deleteCardToolStripMenuItem.Size = new Size(168, 26);
-            deleteCardToolStripMenuItem.Text = "Карточку";
-            deleteCardToolStripMenuItem.Click += deleteCardToolStripMenuItem_Click;
-            // 
-            // DeleteCategoryToolStripMenuItem2
-            // 
-            DeleteCategoryToolStripMenuItem2.Name = "DeleteCategoryToolStripMenuItem2";
-            DeleteCategoryToolStripMenuItem2.Size = new Size(168, 26);
-            DeleteCategoryToolStripMenuItem2.Text = "Категорию";
-            DeleteCategoryToolStripMenuItem2.Click += deleteCategoryToolStripMenuItem2_Click;
-            // 
-            // filterToolStripMenuItemFilter
-            // 
-            filterToolStripMenuItemFilter.DropDownItems.AddRange(new ToolStripItem[] { весьСкладToolStripMenuItem, категорииToolStripMenuItem });
-            filterToolStripMenuItemFilter.Name = "filterToolStripMenuItemFilter";
-            filterToolStripMenuItemFilter.Size = new Size(74, 24);
-            filterToolStripMenuItemFilter.Text = "Фильтр";
-            // 
-            // весьСкладToolStripMenuItem
-            // 
-            весьСкладToolStripMenuItem.Name = "весьСкладToolStripMenuItem";
-            весьСкладToolStripMenuItem.Size = new Size(166, 26);
-            весьСкладToolStripMenuItem.Text = "Весь склад";
-            // 
-            // категорииToolStripMenuItem
-            // 
-            категорииToolStripMenuItem.Name = "категорииToolStripMenuItem";
-            категорииToolStripMenuItem.Size = new Size(166, 26);
-            категорииToolStripMenuItem.Text = "Категории";
-            // 
-            // exitToolStripMenuItemOutput
-            // 
-            exitToolStripMenuItemOutput.Name = "exitToolStripMenuItemOutput";
-            exitToolStripMenuItemOutput.Size = new Size(67, 24);
-            exitToolStripMenuItemOutput.Text = "Выход";
-            // 
-            // changeAccountToolStripMenuItem
-            // 
-            changeAccountToolStripMenuItem.Alignment = ToolStripItemAlignment.Right;
-            changeAccountToolStripMenuItem.Name = "changeAccountToolStripMenuItem";
-            changeAccountToolStripMenuItem.Size = new Size(139, 24);
-            changeAccountToolStripMenuItem.Text = "Сменить аккаунт";
-            changeAccountToolStripMenuItem.Click += changeAccountToolStripMenuItem_Click;
-            // 
-            // принятьПоставкуToolStripMenuItem
-            // 
-            принятьПоставкуToolStripMenuItem.Name = "принятьПоставкуToolStripMenuItem";
-            принятьПоставкуToolStripMenuItem.Size = new Size(148, 24);
-            принятьПоставкуToolStripMenuItem.Text = "Принять поставку";
-            принятьПоставкуToolStripMenuItem.Click += принятьПоставкуToolStripMenuItem_Click;
-            // 
-            // labelLogin
-            // 
-            labelLogin.Anchor = AnchorStyles.Top | AnchorStyles.Right;
-            labelLogin.AutoSize = true;
-            labelLogin.Font = new Font("Microsoft Sans Serif", 12F, FontStyle.Regular, GraphicsUnit.Point, 204);
-            labelLogin.Location = new Point(602, 0);
-            labelLogin.Margin = new Padding(5);
-            labelLogin.Name = "labelLogin";
-            labelLogin.Padding = new Padding(2);
-            labelLogin.Size = new Size(68, 29);
-            labelLogin.TabIndex = 2;
-            labelLogin.Text = "label1";
-            // 
-            // buttonHistoryShipment
-            // 
-            buttonHistoryShipment.Anchor = AnchorStyles.Top | AnchorStyles.Right;
-            buttonHistoryShipment.BackColor = SystemColors.ControlDarkDark;
-            buttonHistoryShipment.Font = new Font("Microsoft Sans Serif", 13.8F, FontStyle.Regular, GraphicsUnit.Point, 204);
-            buttonHistoryShipment.Location = new Point(552, 85);
-            buttonHistoryShipment.Name = "buttonHistoryShipment";
-            buttonHistoryShipment.Padding = new Padding(2);
-            buttonHistoryShipment.RightToLeft = RightToLeft.Yes;
-            buttonHistoryShipment.Size = new Size(284, 51);
-            buttonHistoryShipment.TabIndex = 4;
-            buttonHistoryShipment.Text = "История Отгрузок";
-            buttonHistoryShipment.UseVisualStyleBackColor = false;
-            buttonHistoryShipment.Click += buttonHistoryShipment_Click;
-            // 
-            // labelSeasonalCollection
-            // 
-            labelSeasonalCollection.AutoSize = true;
-            labelSeasonalCollection.Font = new Font("Segoe UI", 18F);
-            labelSeasonalCollection.Location = new Point(12, 408);
-            labelSeasonalCollection.Name = "labelSeasonalCollection";
-            labelSeasonalCollection.Size = new Size(318, 41);
-            labelSeasonalCollection.TabIndex = 5;
-            labelSeasonalCollection.Text = "Сезонные коллекции:";
-            // 
-            // labelTypeProduct
-            // 
-            labelTypeProduct.AutoSize = true;
-            labelTypeProduct.Font = new Font("Segoe UI", 13F);
-            labelTypeProduct.Location = new Point(25, 460);
-            labelTypeProduct.Name = "labelTypeProduct";
-            labelTypeProduct.Size = new Size(131, 30);
-            labelTypeProduct.TabIndex = 6;
-            labelTypeProduct.Text = "Тип товара:";
-            // 
-            // comboBoxTypeProduct
-            // 
-            comboBoxTypeProduct.BackColor = SystemColors.ControlDarkDark;
-            comboBoxTypeProduct.DropDownStyle = ComboBoxStyle.DropDownList;
-            comboBoxTypeProduct.FlatStyle = FlatStyle.Flat;
-            comboBoxTypeProduct.FormattingEnabled = true;
-            comboBoxTypeProduct.Location = new Point(162, 465);
-            comboBoxTypeProduct.Name = "comboBoxTypeProduct";
-            comboBoxTypeProduct.Size = new Size(181, 28);
-            comboBoxTypeProduct.TabIndex = 7;
-            // 
-            // labelSeasonDuration
-            // 
-            labelSeasonDuration.AutoSize = true;
-            labelSeasonDuration.Font = new Font("Segoe UI", 13F);
-            labelSeasonDuration.Location = new Point(12, 511);
-            labelSeasonDuration.Name = "labelSeasonDuration";
-            labelSeasonDuration.Size = new Size(144, 30);
-            labelSeasonDuration.TabIndex = 8;
-            labelSeasonDuration.Text = "Срок сезона:";
-            // 
-            // comboBoxSeasonDuration
-            // 
-            comboBoxSeasonDuration.BackColor = SystemColors.ControlDarkDark;
-            comboBoxSeasonDuration.DropDownStyle = ComboBoxStyle.DropDownList;
-            comboBoxSeasonDuration.FlatStyle = FlatStyle.Flat;
-            comboBoxSeasonDuration.FormattingEnabled = true;
-            comboBoxSeasonDuration.Location = new Point(162, 516);
-            comboBoxSeasonDuration.Name = "comboBoxSeasonDuration";
-            comboBoxSeasonDuration.Size = new Size(181, 28);
-            comboBoxSeasonDuration.TabIndex = 9;
-            // 
-            // numericUpDown1
-            // 
-            numericUpDown1.Location = new Point(322, 574);
-            numericUpDown1.Name = "numericUpDown1";
-            numericUpDown1.Size = new Size(150, 27);
-            numericUpDown1.TabIndex = 10;
-            // 
-            // numericUpDown2
-            // 
-            numericUpDown2.Location = new Point(685, 576);
-            numericUpDown2.Name = "numericUpDown2";
-            numericUpDown2.Size = new Size(150, 27);
-            numericUpDown2.TabIndex = 11;
-            // 
-            // labelDiscont
-            // 
-            labelDiscont.AutoSize = true;
-            labelDiscont.Font = new Font("Segoe UI", 14F);
-            labelDiscont.Location = new Point(12, 567);
-            labelDiscont.Name = "labelDiscont";
-            labelDiscont.Size = new Size(304, 32);
-            labelDiscont.TabIndex = 12;
-            labelDiscont.Text = "Автоматическая скидка за";
-            // 
-            // label
-            // 
-            label.AutoSize = true;
-            label.Font = new Font("Segoe UI", 14F);
-            label.Location = new Point(478, 569);
-            label.Name = "label";
-            label.Size = new Size(201, 32);
-            label.TabIndex = 13;
-            label.Text = "до конца сезона:";
-            // 
-            // buttonSaveOptions
-            // 
-            this.buttonSaveOptions.BackColor = SystemColors.ControlDarkDark;
-            this.buttonSaveOptions.Location = new Point(12, 626);
-            this.buttonSaveOptions.Name = "buttonSaveOptions";
-            this.buttonSaveOptions.Size = new Size(179, 41);
-            this.buttonSaveOptions.TabIndex = 14;
-            this.buttonSaveOptions.Text = "Сохранить настройки";
-            this.buttonSaveOptions.UseVisualStyleBackColor = false;
-            // 
-            // WarehouseAdmin
-            // 
-            ClientSize = new Size(848, 790);
-            Controls.Add(this.buttonSaveOptions);
-            Controls.Add(label);
-            Controls.Add(labelDiscont);
-            Controls.Add(numericUpDown2);
-            Controls.Add(numericUpDown1);
-            Controls.Add(comboBoxSeasonDuration);
-            Controls.Add(labelSeasonDuration);
-            Controls.Add(comboBoxTypeProduct);
-            Controls.Add(labelTypeProduct);
-            Controls.Add(labelSeasonalCollection);
-            Controls.Add(buttonHistoryShipment);
-            Controls.Add(labelLogin);
-            Controls.Add(labelwarehouse);
-            Controls.Add(menuStripWarehouseProducts);
-            MainMenuStrip = menuStripWarehouseProducts;
-            Name = "WarehouseAdmin";
-            Text = "Склад администратора";
-            menuStripWarehouseProducts.ResumeLayout(false);
-            menuStripWarehouseProducts.PerformLayout();
-            ((System.ComponentModel.ISupportInitialize)numericUpDown1).EndInit();
-            ((System.ComponentModel.ISupportInitialize)numericUpDown2).EndInit();
-            ResumeLayout(false);
-            PerformLayout();
 
+        private void comboBoxTypeProduct_SelectedIndexChanged(object sender, EventArgs e)
+        {
+            comboBoxTypeProduct.Items.Clear();
+            using (var db = new AllDB())
+            {
+                foreach (var category in db.Categories.FirstOrDefault(p => p.Id == 1).NamesOfCategory)
+                {
+                    comboBoxTypeProduct.Items.Add(category);
+                }
+            }
+        }
+
+        private void buttonSaveOptions_Click(object sender, EventArgs e)
+        {
+            if (comboBoxTypeProduct.Text is null)
+            {
+                MessageBox.Show("Введите тип товара");
+                return;
+            }
+
+            if (comboBoxSeasonDuration.Text is null)
+            {
+                MessageBox.Show("Введите срок сезона");
+                return;
+            }
+            using (var db = new AllDB())
+            {
+                int month;
+                int discountBeforeend = (int)numDiscountBeforeEnd.Value;
+                double discount = (double)numDiscount.Value;
+                int.TryParse(comboBoxSeasonDuration.Text, out month);
+                var today = DateTime.Today.AddMonths(month);
+                foreach (var product in db.Products.Where(p => p.Category == comboBoxTypeProduct.Text).ToList())
+                {
+                    product.EndDateOfTheDay = today;
+                    product.UntilTheEndOfTheSeason = month * 4;
+                    product.DiscountBeforeEnd = discountBeforeend;
+                    product.Discount = discount;
+                    product.FinalyPrice = product.PurchasePrice - (product.PurchasePrice * (decimal)discount) / 100;
+                    db.SaveChanges();
+                }
+                MessageBox.Show(Resources.Success);
+                CheckingForDiscount();
+                LoadProductsTrue();
+            }
+        }
+
+        private void comboBoxFiterProductFalse_SelectedIndexChanged(object sender, EventArgs e)
+        {
+            comboBoxFiterProductFalse.Items.Clear();
+            using (var db = new AllDB())
+            {
+                foreach (var category in db.Categories.FirstOrDefault(p => p.Id == 1).NamesOfCategory)
+                {
+                    comboBoxFiterProductFalse.Items.Add(category);
+                }
+                comboBoxFiterProductFalse.SelectedIndexChanged += (s, e) =>
+                {
+                    using (var db = new AllDB())
+                    {
+                        var selectedCategory = comboBoxFiterProductFalse.SelectedItem.ToString();
+                        var products = db.Products.Where(p => p.Category == selectedCategory && p.Status == false).Select(p => new
+                        {
+                            p.Name,
+                            p.UniteOfMeasure,
+                            p.PurchasePrice,
+                            p.Category,
+                            p.Rest,
+                            p.EndDateOfTheDay,
+                            p.UntilTheEndOfTheSeason,
+                            p.Discount,
+                            p.FinalyPrice,
+                        }).ToList();
+                        if (!products.Any())
+                        {
+                            MessageBox.Show("Списанных товаров нет");
+                            return;
+                        }
+                        dgvWarehouseFalse.DataSource = products;
+                        SetupColumnsFalse();
+                    }
+                    ;
+                };
+             }
         }
     }
 }

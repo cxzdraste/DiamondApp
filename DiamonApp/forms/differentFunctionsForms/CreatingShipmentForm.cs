@@ -203,9 +203,10 @@ namespace DiamonApp.forms.differentFunctionsForms
             }
         }
 
-        private void comboBoxUniteOfMeasure_SelectedIndexChanged_1(object sender, EventArgs e)
+        private void BackToolStripMenuItem_Click(object sender, EventArgs e)
         {
-
+            new WarehouseStorekeeper (UserLogin).Show();
+            Hide();
         }
     }
 }

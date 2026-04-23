@@ -12,7 +12,7 @@ namespace UnitTest
         public void LoadProducts_DoesNotThrow()
         {
             var form = new WarehouseAdmin("admin");
-            var ex = Record.Exception(() => form.LoadProducts());
+            var ex = Record.Exception(() => form.LoadProductsTrue());
             Assert.Null(ex);
         }
         /// <summary>
@@ -22,7 +22,7 @@ namespace UnitTest
         public void LoadProducts_GridExists()
         {
             var form = new WarehouseAdmin("admin");
-            form.LoadProducts();
+            form.LoadProductsTrue();
             var grid = form.Controls.OfType<DataGridView>().FirstOrDefault();
             Assert.NotNull(grid);
         }
@@ -33,7 +33,7 @@ namespace UnitTest
         public void LoadProducts_DataSource_IsSet()
         {
             var form = new WarehouseAdmin("admin");
-            form.LoadProducts();
+            form.LoadProductsTrue();
             var grid = form.Controls.OfType<DataGridView>().First();
             Assert.NotNull(grid.DataSource);
         }
@@ -44,7 +44,7 @@ namespace UnitTest
         public void LoadProducts_ReturnsData()
         {
             var form = new WarehouseAdmin("admin");
-            form.LoadProducts();
+            form.LoadProductsTrue();
             var grid = form.Controls.OfType<DataGridView>().First();
             Assert.True(grid.Rows.Count >= 0);
         }
@@ -55,7 +55,7 @@ namespace UnitTest
         public void LoadProducts_HasExpectedColumns()
         {
             var form = new WarehouseAdmin("admin");
-            form.LoadProducts();
+            form.LoadProductsTrue();
             var grid = form.Controls.OfType<DataGridView>().First();
             Assert.Contains(grid.Columns.Cast<DataGridViewColumn>(), c => c.Name.Contains("Name") || c.DataPropertyName.Contains("Name"));
         }
@@ -66,7 +66,7 @@ namespace UnitTest
         public void LoadProducts_SetupColumns_DoesNotThrow()
         {
             var form = new WarehouseAdmin("admin");
-            var ex = Record.Exception(() => form.LoadProducts());
+            var ex = Record.Exception(() => form.LoadProductsTrue());
             Assert.Null(ex);
         }
         /// <summary>
@@ -76,7 +76,7 @@ namespace UnitTest
         public void LoadProducts_ChangesColumnHeaders()
         {
             var form = new WarehouseAdmin("admin");
-            form.LoadProducts();
+            form.LoadProductsTrue();
             var grid = form.Controls.OfType<DataGridView>().First();
             Assert.True(grid.Columns["Name"]?.HeaderText == "Название" || grid.Columns.Count > 0);
         }
@@ -87,7 +87,7 @@ namespace UnitTest
         public void LoadProducts_EmptyDb_DoesNotCrash()
         {
             var form = new WarehouseAdmin("admin");
-            var ex = Record.Exception(() => form.LoadProducts());
+            var ex = Record.Exception(() => form.LoadProductsTrue());
             Assert.Null(ex);
         }
         /// <summary>
@@ -97,7 +97,7 @@ namespace UnitTest
         public void LoadProducts_DataSource_NotNull()
         {
             var form = new WarehouseAdmin("admin");
-            form.LoadProducts();
+            form.LoadProductsTrue();
             var grid = form.Controls.OfType<DataGridView>().First();
             Assert.NotNull(grid.DataSource);
         }
@@ -108,8 +108,8 @@ namespace UnitTest
         public void LoadProducts_MultipleCalls_WorkCorrectly()
         {
             var form = new WarehouseAdmin("admin");
-            form.LoadProducts();
-            form.LoadProducts();
+            form.LoadProductsTrue();
+            form.LoadProductsTrue();
             var grid = form.Controls.OfType<DataGridView>().First();
             Assert.NotNull(grid.DataSource);
         }
@@ -121,7 +121,7 @@ namespace UnitTest
         {
             var form = new WarehouseAdmin("admin");
             var before = form.Controls.OfType<DataGridView>().Count();
-            form.LoadProducts();
+            form.LoadProductsTrue();
             var after = form.Controls.OfType<DataGridView>().Count();
             Assert.Equal(before, after);
         }
@@ -133,7 +133,7 @@ namespace UnitTest
         {
             var form = new WarehouseAdmin("admin");
             var grid1 = form.Controls.OfType<DataGridView>().First();
-            form.LoadProducts();
+            form.LoadProductsTrue();
             var grid2 = form.Controls.OfType<DataGridView>().First();
             Assert.Same(grid1, grid2);
         }
@@ -144,7 +144,7 @@ namespace UnitTest
         public void LoadProducts_ExecutesSetupColumns()
         {
             var form = new WarehouseAdmin("admin");
-            form.LoadProducts();
+            form.LoadProductsTrue();
             Assert.True(true);
         }
     }

@@ -55,7 +55,12 @@ namespace Draft_Diamond_BD
                     price,
                     comboBoxCategory.Text,
                     0,
-                    LoginAdmin
+                    LoginAdmin,
+                    DateTime.Today,
+                    0,
+                    0,
+                    0,
+                    true
                 );
 
                 db.Products.Add(newProduct);

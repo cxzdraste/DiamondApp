@@ -15,8 +15,10 @@ namespace DiamonApp.Classes
         public DateTime EndDateOfTheDay { get; set; }
         public int UntilTheEndOfTheSeason { get; set; }
         public double Discount { get; set; }
+        public int DiscountBeforeEnd { get; set; }
         public decimal FinalyPrice { get; set; }
-        public ProductClass(string name, string uniteOfMeasure, decimal purchasePrice, string category, double rest, string creator, DateTime endDateOfTheDay, int untilTheEndOfTheSeason, double discount) 
+        public bool Status { get; set; }
+        public ProductClass(string name, string uniteOfMeasure, decimal purchasePrice, string category, double rest, string creator, DateTime endDateOfTheDay, int untilTheEndOfTheSeason, double discount, int discountBeforeEnd, bool status) 
         {
             Id = Guid.NewGuid();
             Name = name;
@@ -29,6 +31,8 @@ namespace DiamonApp.Classes
             UntilTheEndOfTheSeason = untilTheEndOfTheSeason;
             Discount = discount;
             FinalyPrice = PurchasePrice - PurchasePrice * ((decimal)discount/100);
+            Status = status;
+            DiscountBeforeEnd = discountBeforeEnd;
         }
     }
 }

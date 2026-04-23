@@ -1,0 +1,8 @@
+{
+  "profiles": {
+    "DiamondApp": {
+      "commandName": "Project",
+      "workingDirectory": "C:\\Users\\kuuuk\\source\\repos\\DiamondApp"
+    }
+  }
+}
