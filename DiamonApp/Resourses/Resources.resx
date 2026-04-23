@@ -261,4 +261,7 @@
   <data name="FalseProductNotExist" xml:space="preserve">
     <value>Списанных товаров не существует</value>
   </data>
+  <data name="Result" xml:space="preserve">
+    <value>Итого:</value>
+  </data>
 </root>

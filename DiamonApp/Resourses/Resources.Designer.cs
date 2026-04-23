@@ -457,6 +457,15 @@ namespace DiamondApp.Resourses {
         }
         
         /// <summary>
+        ///   Ищет локализованную строку, похожую на Итого:.
+        /// </summary>
+        public static string Result {
+            get {
+                return ResourceManager.GetString("Result", resourceCulture);
+            }
+        }
+        
+        /// <summary>
         ///   Ищет локализованную строку, похожую на Кольцо.
         /// </summary>
         public static string Ring {

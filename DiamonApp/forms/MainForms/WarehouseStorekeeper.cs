@@ -181,7 +181,12 @@ namespace Draft_Diamond_BD
                     dgvWarehouseFalse.DataSource = productsload;
                     SetupColumnsFalse();
                 }
-
+                decimal sum = 0;
+                foreach (var product in productsFalse)
+                {
+                    sum += product.FinalyPrice;
+                }
+                labelResult.Text = Resources.Result + sum;
             }
         }
         private void SetupColumnsFalse()

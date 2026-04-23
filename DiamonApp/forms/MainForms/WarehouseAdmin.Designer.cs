@@ -73,6 +73,7 @@
             sqliteCommand1 = new Microsoft.Data.Sqlite.SqliteCommand();
             labelFilterProductsFalse = new Label();
             comboBoxFiterProductFalse = new ComboBox();
+            labelResult = new Label();
             menuStripWarehouseProducts.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)numDiscountBeforeEnd).BeginInit();
             ((System.ComponentModel.ISupportInitialize)numDiscount).BeginInit();
@@ -365,9 +366,19 @@
             comboBoxFiterProductFalse.TabIndex = 16;
             comboBoxFiterProductFalse.Click += comboBoxFiterProductFalse_SelectedIndexChanged;
             // 
+            // labelResult
+            // 
+            labelResult.AutoSize = true;
+            labelResult.Location = new Point(25, 964);
+            labelResult.Name = "labelResult";
+            labelResult.Size = new Size(50, 20);
+            labelResult.TabIndex = 18;
+            labelResult.Text = "label1";
+            // 
             // WarehouseAdmin
             // 
             ClientSize = new Size(848, 1055);
+            Controls.Add(labelResult);
             Controls.Add(labelFilterProductsFalse);
             Controls.Add(comboBoxFiterProductFalse);
             Controls.Add(labelWrittenOffGoods);
@@ -400,5 +411,6 @@
         private Microsoft.Data.Sqlite.SqliteCommand sqliteCommand1;
         private Label labelFilterProductsFalse;
         private ComboBox comboBoxFiterProductFalse;
+        private Label labelResult;
     }
 }

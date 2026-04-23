@@ -38,10 +38,11 @@
             категорииToolStripMenuItem = new ToolStripMenuItem();
             exitToolStripMenuItemOutput = new ToolStripMenuItem();
             сменитьАккаунтToolStripMenuItem = new ToolStripMenuItem();
+            принятьПоставкуToolStripMenuItem = new ToolStripMenuItem();
             labelWrittenOffGoods = new Label();
             labelFilterProductsFalse = new Label();
             comboBoxFiterProductFalse = new ComboBox();
-            принятьПоставкуToolStripMenuItem = new ToolStripMenuItem();
+            labelResult = new Label();
             menuStrip1.SuspendLayout();
             SuspendLayout();
             // 
@@ -120,6 +121,13 @@
             сменитьАккаунтToolStripMenuItem.Size = new Size(139, 24);
             сменитьАккаунтToolStripMenuItem.Text = "Сменить аккаунт";
             // 
+            // принятьПоставкуToolStripMenuItem
+            // 
+            принятьПоставкуToolStripMenuItem.Name = "принятьПоставкуToolStripMenuItem";
+            принятьПоставкуToolStripMenuItem.Size = new Size(148, 24);
+            принятьПоставкуToolStripMenuItem.Text = "Принять поставку";
+            принятьПоставкуToolStripMenuItem.Click += принятьПоставкуToolStripMenuItem_Click;
+            // 
             // labelWrittenOffGoods
             // 
             labelWrittenOffGoods.AutoSize = true;
@@ -132,6 +140,7 @@
             // 
             // labelFilterProductsFalse
             // 
+            labelFilterProductsFalse.Anchor = AnchorStyles.Top | AnchorStyles.Right;
             labelFilterProductsFalse.AutoSize = true;
             labelFilterProductsFalse.BackColor = SystemColors.ControlLight;
             labelFilterProductsFalse.Location = new Point(695, 405);
@@ -142,6 +151,7 @@
             // 
             // comboBoxFiterProductFalse
             // 
+            comboBoxFiterProductFalse.Anchor = AnchorStyles.Top | AnchorStyles.Right;
             comboBoxFiterProductFalse.DropDownStyle = ComboBoxStyle.DropDownList;
             comboBoxFiterProductFalse.FormattingEnabled = true;
             comboBoxFiterProductFalse.Location = new Point(695, 402);
@@ -151,18 +161,21 @@
             comboBoxFiterProductFalse.TabIndex = 19;
             comboBoxFiterProductFalse.Click += comboBoxFiterProductFalse_SelectedIndexChanged;
             // 
-            // принятьПоставкуToolStripMenuItem
+            // labelResult
             // 
-            принятьПоставкуToolStripMenuItem.Name = "принятьПоставкуToolStripMenuItem";
-            принятьПоставкуToolStripMenuItem.Size = new Size(148, 24);
-            принятьПоставкуToolStripMenuItem.Text = "Принять поставку";
-            принятьПоставкуToolStripMenuItem.Click += принятьПоставкуToolStripMenuItem_Click;
+            labelResult.AutoSize = true;
+            labelResult.Location = new Point(23, 708);
+            labelResult.Name = "labelResult";
+            labelResult.Size = new Size(50, 20);
+            labelResult.TabIndex = 21;
+            labelResult.Text = "label2";
             // 
             // WarehouseStorekeeper
             // 
             AutoScaleDimensions = new SizeF(8F, 20F);
             AutoScaleMode = AutoScaleMode.Font;
-            ClientSize = new Size(854, 721);
+            ClientSize = new Size(854, 748);
+            Controls.Add(labelResult);
             Controls.Add(labelFilterProductsFalse);
             Controls.Add(comboBoxFiterProductFalse);
             Controls.Add(labelWrittenOffGoods);
@@ -196,5 +209,6 @@
         private Label labelFilterProductsFalse;
         private ComboBox comboBoxFiterProductFalse;
         private ToolStripMenuItem принятьПоставкуToolStripMenuItem;
+        private Label labelResult;
     }
 }
