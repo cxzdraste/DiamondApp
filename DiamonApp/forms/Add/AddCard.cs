@@ -31,19 +31,13 @@ namespace Draft_Diamond_BD
         {
             if (string.IsNullOrWhiteSpace(textBoxName.Text))
             {
-                MessageBox.Show("Введите название товара", "Ошибка", MessageBoxButtons.OK, MessageBoxIcon.Warning);
+                MessageBox.Show(Resources.EnterProductName);
                 return;
             }
 
             if (comboBoxUniteOfMeasure.SelectedItem == null)
             {
-                MessageBox.Show("Выберите единицу измерения", "Ошибка", MessageBoxButtons.OK, MessageBoxIcon.Warning);
-                return;
-            }
-
-            if (!decimal.TryParse(numPurchasePrice.Text, out decimal price) || price <= 0)
-            {
-                MessageBox.Show("Введите корректную цену закупки", "Ошибка", MessageBoxButtons.OK, MessageBoxIcon.Warning);
+                MessageBox.Show(Resources.ChoseUniteOfMeasure);
                 return;
             }
 
@@ -52,7 +46,7 @@ namespace Draft_Diamond_BD
                 var newProduct = new ProductClass(
                     textBoxName.Text.Trim(),
                     (string)comboBoxUniteOfMeasure.SelectedItem,
-                    price,
+                    0,
                     comboBoxCategory.Text,
                     0,
                     LoginAdmin,
@@ -66,7 +60,7 @@ namespace Draft_Diamond_BD
                 db.Products.Add(newProduct);
                 db.SaveChanges();
 
-                MessageBox.Show($"{Resources.AddProduct}");
+                MessageBox.Show(Resources.AddProduct);
                 textBoxName.Clear();
                 comboBoxUniteOfMeasure.SelectedItem = null;
                 Close();

@@ -109,31 +109,31 @@ namespace DiamonApp.forms.differentFunctionsForms
             {
                 if (comboBoxName.SelectedItem == null)
                 {
-                    MessageBox.Show("Выберите название товара", "Ошибка", MessageBoxButtons.OK, MessageBoxIcon.Warning);
+                    MessageBox.Show(Resources.EnterProductName);
                     return;
                 }
 
                 if (comboBoxUniteOfMeasure.SelectedItem == null || !(comboBoxUniteOfMeasure.Text == db.Products.FirstOrDefault(p => p.Name == comboBoxName.Text).UniteOfMeasure))
                 {
-                    MessageBox.Show("Выберите единицу измерения", "Ошибка", MessageBoxButtons.OK, MessageBoxIcon.Warning);
+                    MessageBox.Show(Resources.ChoseUniteOfMeasure);
                     return;
                 }
 
                 if (!int.TryParse(numCount.Text, out int quantity) || quantity <= 0 || quantity > db.Products.FirstOrDefault(p => p.Name == comboBoxName.Text).Rest)
                 {
-                    MessageBox.Show("Введите корректное количество", "Ошибка", MessageBoxButtons.OK, MessageBoxIcon.Warning);
+                    MessageBox.Show(Resources.NumberCount);
                     return;
                 }
 
                 if (string.IsNullOrWhiteSpace(comboBoxCustomerName.Text))
                 {
-                    MessageBox.Show("Введите получателя (Кому)", "Ошибка", MessageBoxButtons.OK, MessageBoxIcon.Warning);
+                    MessageBox.Show(Resources.EnterRecipient);
                     return;
                 }
 
                 if (string.IsNullOrWhiteSpace(comboBoxCustomerName.Text))
                 {
-                    MessageBox.Show("Введите адрес доставки (Куда)", "Ошибка", MessageBoxButtons.OK, MessageBoxIcon.Warning);
+                    MessageBox.Show(Resources.EnterAddressDelivery);
                     return;
                 }
 
@@ -158,7 +158,7 @@ namespace DiamonApp.forms.differentFunctionsForms
             {
                 if (!db.ProductsOnShipments.Any())
                 {
-                    MessageBox.Show("Корзина пуста", "Ошибка", MessageBoxButtons.OK, MessageBoxIcon.Warning);
+                    MessageBox.Show(Resources.BusketIsEmpty);
                     return;
                 }
                 decimal sumShipment = 0;

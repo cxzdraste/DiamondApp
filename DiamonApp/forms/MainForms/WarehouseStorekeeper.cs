@@ -247,7 +247,7 @@ namespace Draft_Diamond_BD
                         }).ToList();
                         if (!products.Any())
                         {
-                            MessageBox.Show("Списанных товаров нет");
+                            MessageBox.Show(Resources.FalseProductNotExist);
                             return;
                         }
                         dgvWarehouseFalse.DataSource = products;

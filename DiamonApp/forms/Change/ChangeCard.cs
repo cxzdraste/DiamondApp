@@ -64,7 +64,7 @@ namespace Draft_Diamond_BD
                 }
                 else
                 {
-                    MessageBox.Show("Товар не найден");
+                    MessageBox.Show(Resources.NotDatabase);
                 }
             }
         }

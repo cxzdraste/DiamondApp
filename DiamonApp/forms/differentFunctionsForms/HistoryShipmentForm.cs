@@ -139,8 +139,7 @@ namespace DiamonApp.forms.differentFunctionsForms
         {
             if (date1.Value.Date > date2.Value.Date)
             {
-                MessageBox.Show("Дата начала не может быть позже даты окончания",
-                                "Ошибка", MessageBoxButtons.OK, MessageBoxIcon.Warning);
+                MessageBox.Show(Resources.Data1AndData2);
                 return;
             }
             using (var db = new AllDB())
@@ -169,7 +168,7 @@ namespace DiamonApp.forms.differentFunctionsForms
         {
             if(dgvWarehouse.DataSource == null)
             {
-                MessageBox.Show("Нет данных для экспорта","Предупреждение",MessageBoxButtons.OK, MessageBoxIcon.Warning); return;
+                MessageBox.Show(Resources.NoDataForExport); return;
             }
             var data = dgvWarehouse.DataSource;
             var exportList = new List<object>();
@@ -183,7 +182,7 @@ namespace DiamonApp.forms.differentFunctionsForms
 
             if(exportList.Count == 0)
             {
-                MessageBox.Show("Не читаются отгрузки", "Предупреждение", MessageBoxButtons.OK, MessageBoxIcon.Warning); return;
+                MessageBox.Show(Resources.NotReadingShipments); return;
             }
             var saveFile = new SaveFileDialog
             {
@@ -202,7 +201,7 @@ namespace DiamonApp.forms.differentFunctionsForms
                 }
                 catch(Exception ex)
                 {
-                    MessageBox.Show($"Ошибка при экспорте{ex.Message}", "Ошибка", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                    MessageBox.Show($"{Resources.ErrorExport} {ex.Message}");
                 }
             }
         }

@@ -30,16 +30,13 @@
             labelAddCard = new Label();
             labelNameCard = new Label();
             labelUnit = new Label();
-            labelPrice = new Label();
             textBoxName = new TextBox();
             buttonAdd = new Button();
             comboBoxUniteOfMeasure = new ComboBox();
-            numPurchasePrice = new NumericUpDown();
             comboBoxCategory = new ComboBox();
             CategoryLabel = new Label();
             menuStrip1 = new MenuStrip();
             назадToolStripMenuItem = new ToolStripMenuItem();
-            ((System.ComponentModel.ISupportInitialize)numPurchasePrice).BeginInit();
             menuStrip1.SuspendLayout();
             SuspendLayout();
             // 
@@ -48,7 +45,7 @@
             labelAddCard.Anchor = AnchorStyles.Top;
             labelAddCard.AutoSize = true;
             labelAddCard.Font = new Font("Microsoft Sans Serif", 18F, FontStyle.Bold, GraphicsUnit.Point, 204);
-            labelAddCard.Location = new Point(206, 11);
+            labelAddCard.Location = new Point(203, 11);
             labelAddCard.Name = "labelAddCard";
             labelAddCard.Size = new Size(313, 36);
             labelAddCard.TabIndex = 0;
@@ -59,7 +56,7 @@
             labelNameCard.Anchor = AnchorStyles.None;
             labelNameCard.AutoSize = true;
             labelNameCard.Font = new Font("Microsoft Sans Serif", 13.8F, FontStyle.Regular, GraphicsUnit.Point, 204);
-            labelNameCard.Location = new Point(118, 128);
+            labelNameCard.Location = new Point(115, 128);
             labelNameCard.Name = "labelNameCard";
             labelNameCard.Size = new Size(128, 29);
             labelNameCard.TabIndex = 1;
@@ -70,22 +67,11 @@
             // 
             labelUnit.Anchor = AnchorStyles.None;
             labelUnit.Font = new Font("Microsoft Sans Serif", 13.8F, FontStyle.Regular, GraphicsUnit.Point, 204);
-            labelUnit.Location = new Point(96, 187);
+            labelUnit.Location = new Point(93, 187);
             labelUnit.Name = "labelUnit";
             labelUnit.Size = new Size(161, 83);
             labelUnit.TabIndex = 2;
             labelUnit.Text = "   Единица измерения:";
-            // 
-            // labelPrice
-            // 
-            labelPrice.Anchor = AnchorStyles.None;
-            labelPrice.AutoSize = true;
-            labelPrice.Font = new Font("Microsoft Sans Serif", 13.8F, FontStyle.Regular, GraphicsUnit.Point, 204);
-            labelPrice.Location = new Point(91, 283);
-            labelPrice.Name = "labelPrice";
-            labelPrice.Size = new Size(165, 29);
-            labelPrice.TabIndex = 3;
-            labelPrice.Text = "цена закупки:";
             // 
             // textBoxName
             // 
@@ -93,7 +79,7 @@
             textBoxName.BackColor = SystemColors.ControlDarkDark;
             textBoxName.Font = new Font("Microsoft Sans Serif", 13.8F, FontStyle.Regular, GraphicsUnit.Point, 204);
             textBoxName.ForeColor = SystemColors.Window;
-            textBoxName.Location = new Point(263, 128);
+            textBoxName.Location = new Point(260, 128);
             textBoxName.Margin = new Padding(3, 4, 3, 4);
             textBoxName.Multiline = true;
             textBoxName.Name = "textBoxName";
@@ -107,7 +93,7 @@
             buttonAdd.BackColor = SystemColors.ScrollBar;
             buttonAdd.FlatStyle = FlatStyle.Flat;
             buttonAdd.Font = new Font("Microsoft Sans Serif", 13.8F, FontStyle.Regular, GraphicsUnit.Point, 204);
-            buttonAdd.Location = new Point(232, 427);
+            buttonAdd.Location = new Point(234, 389);
             buttonAdd.Margin = new Padding(3, 4, 3, 4);
             buttonAdd.Name = "buttonAdd";
             buttonAdd.Size = new Size(251, 75);
@@ -123,21 +109,11 @@
             comboBoxUniteOfMeasure.DropDownStyle = ComboBoxStyle.DropDownList;
             comboBoxUniteOfMeasure.FlatStyle = FlatStyle.Flat;
             comboBoxUniteOfMeasure.FormattingEnabled = true;
-            comboBoxUniteOfMeasure.Location = new Point(264, 205);
+            comboBoxUniteOfMeasure.Location = new Point(261, 205);
             comboBoxUniteOfMeasure.Margin = new Padding(3, 4, 3, 4);
             comboBoxUniteOfMeasure.Name = "comboBoxUniteOfMeasure";
             comboBoxUniteOfMeasure.Size = new Size(225, 28);
             comboBoxUniteOfMeasure.TabIndex = 8;
-            // 
-            // numPurchasePrice
-            // 
-            numPurchasePrice.Anchor = AnchorStyles.None;
-            numPurchasePrice.BackColor = SystemColors.ControlDarkDark;
-            numPurchasePrice.Location = new Point(264, 288);
-            numPurchasePrice.Maximum = new decimal(new int[] { -469762048, -590869294, 5421010, 0 });
-            numPurchasePrice.Name = "numPurchasePrice";
-            numPurchasePrice.Size = new Size(229, 27);
-            numPurchasePrice.TabIndex = 9;
             // 
             // comboBoxCategory
             // 
@@ -146,7 +122,7 @@
             comboBoxCategory.DropDownStyle = ComboBoxStyle.DropDownList;
             comboBoxCategory.FlatStyle = FlatStyle.Flat;
             comboBoxCategory.FormattingEnabled = true;
-            comboBoxCategory.Location = new Point(264, 343);
+            comboBoxCategory.Location = new Point(260, 284);
             comboBoxCategory.Margin = new Padding(3, 4, 3, 4);
             comboBoxCategory.Name = "comboBoxCategory";
             comboBoxCategory.Size = new Size(225, 28);
@@ -156,7 +132,7 @@
             // 
             CategoryLabel.Anchor = AnchorStyles.None;
             CategoryLabel.Font = new Font("Microsoft Sans Serif", 13.8F, FontStyle.Regular, GraphicsUnit.Point, 204);
-            CategoryLabel.Location = new Point(96, 339);
+            CategoryLabel.Location = new Point(93, 280);
             CategoryLabel.Name = "CategoryLabel";
             CategoryLabel.Size = new Size(150, 45);
             CategoryLabel.TabIndex = 10;
@@ -168,7 +144,7 @@
             menuStrip1.Items.AddRange(new ToolStripItem[] { назадToolStripMenuItem });
             menuStrip1.Location = new Point(0, 0);
             menuStrip1.Name = "menuStrip1";
-            menuStrip1.Size = new Size(800, 28);
+            menuStrip1.Size = new Size(795, 28);
             menuStrip1.TabIndex = 12;
             menuStrip1.Text = "menuStrip1";
             // 
@@ -183,14 +159,12 @@
             // 
             AutoScaleDimensions = new SizeF(8F, 20F);
             AutoScaleMode = AutoScaleMode.Font;
-            ClientSize = new Size(800, 563);
+            ClientSize = new Size(795, 563);
             Controls.Add(comboBoxCategory);
             Controls.Add(CategoryLabel);
-            Controls.Add(numPurchasePrice);
             Controls.Add(comboBoxUniteOfMeasure);
             Controls.Add(buttonAdd);
             Controls.Add(textBoxName);
-            Controls.Add(labelPrice);
             Controls.Add(labelUnit);
             Controls.Add(labelNameCard);
             Controls.Add(labelAddCard);
@@ -201,7 +175,6 @@
             MaximizeBox = false;
             Name = "AddCard";
             Text = "Добавить карточку";
-            ((System.ComponentModel.ISupportInitialize)numPurchasePrice).EndInit();
             menuStrip1.ResumeLayout(false);
             menuStrip1.PerformLayout();
             ResumeLayout(false);
@@ -214,11 +187,9 @@
         private System.Windows.Forms.Label labelAddCard;
         private System.Windows.Forms.Label labelNameCard;
         private System.Windows.Forms.Label labelUnit;
-        private System.Windows.Forms.Label labelPrice;
         private System.Windows.Forms.TextBox textBoxName;
         private System.Windows.Forms.Button buttonAdd;
         private ComboBox comboBoxUniteOfMeasure;
-        private NumericUpDown numPurchasePrice;
         private ComboBox comboBoxCategory;
         private Label CategoryLabel;
         private MenuStrip menuStrip1;

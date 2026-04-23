@@ -40,6 +40,10 @@ namespace DiamonApp.forms
         {
             using (var db = new AllDB())
             {
+                if(comboBoxName.SelectedIndex == 0)
+                {
+                    MessageBox.Show(Resources.EnterTheCategory);
+                }
                 foreach (var name in db.Products)
                 {
                     if (name.Category == comboBoxName.Text)

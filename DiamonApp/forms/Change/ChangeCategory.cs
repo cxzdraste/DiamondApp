@@ -31,13 +31,13 @@ namespace DiamonApp.forms
         {
             if (comboBoxOldName.SelectedItem == null)
             {
-                MessageBox.Show("Выберите категорию для изменения", "Ошибка", MessageBoxButtons.OK, MessageBoxIcon.Warning);
+                MessageBox.Show(Resources.EnterCategoryName);
                 return;
             }
 
             if (string.IsNullOrWhiteSpace(comboBoxNewName.Text))
             {
-                MessageBox.Show("Введите новое название категории", "Ошибка", MessageBoxButtons.OK, MessageBoxIcon.Warning);
+                MessageBox.Show(Resources.EnterNewCategoryName);
                 return;
             }
 

@@ -19,7 +19,7 @@ namespace DiamonApp.forms
             var newCategory = textBoxName.Text.Trim().ToLower();
             if (string.IsNullOrWhiteSpace(textBoxName.Text))
             {
-                MessageBox.Show($"Введите название категории");
+                MessageBox.Show(Resources.EnterCategoryName);
                 return;
             }
             using (var db = new AllDB())
@@ -32,7 +32,7 @@ namespace DiamonApp.forms
                         flag = true; break;
                     }
                 }
-                if (flag) { MessageBox.Show("Категория уже существует"); return; }
+                if (flag) { MessageBox.Show(Resources.CategoryIsExisting); return; }
                 db.Categories.FirstOrDefault(p => p.Id == 1).NamesOfCategory.Add(textBoxName.Text.Trim());
                 MessageBox.Show(Resources.Success);
                 new WarehouseAdmin(LoginAdmin).Show();

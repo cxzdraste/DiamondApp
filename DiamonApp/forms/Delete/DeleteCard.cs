@@ -28,6 +28,10 @@ namespace DiamonApp.forms
         {
             using (var db = new AllDB())
             {
+                if(comboBoxName.SelectedIndex == 0)
+                {
+                    MessageBox.Show(Resources.EnterTheCard);
+                }
                 var id = new Guid();
                 foreach (var name in db.Products.ToList())
                 {

@@ -117,12 +117,6 @@
   <resheader name="writer">
     <value>System.Resources.ResXResourceWriter, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
   </resheader>
-  <data name="Bracelet" xml:space="preserve">
-    <value>Браслет</value>
-  </data>
-  <data name="Earring" xml:space="preserve">
-    <value>Серьги</value>
-  </data>
   <data name="EnterProductName" xml:space="preserve">
     <value>Введите название товара</value>
   </data>
@@ -152,9 +146,6 @@
   </data>
   <data name="UserRegistreted" xml:space="preserve">
     <value>Пользователь успешно зарегистрирован</value>
-  </data>
-  <data name="Brooch" xml:space="preserve">
-    <value>Брошь</value>
   </data>
   <data name="DeleteProduct" xml:space="preserve">
     <value>Товар удалён</value>
@@ -215,5 +206,59 @@
   </data>
   <data name="ErrorPassword" xml:space="preserve">
     <value>Неверный пароль</value>
+  </data>
+  <data name="ChoseUniteOfMeasure" xml:space="preserve">
+    <value>Выберите единицу измерения</value>
+  </data>
+  <data name="EnterCategoryName" xml:space="preserve">
+    <value>Выберите категорию для изменения</value>
+  </data>
+  <data name="CategoryIsExisting" xml:space="preserve">
+    <value>Категория уже существует</value>
+  </data>
+  <data name="EnterNewCategoryName" xml:space="preserve">
+    <value>Введите новое название категории</value>
+  </data>
+  <data name="EnterTheCard" xml:space="preserve">
+    <value>Выберите карточку</value>
+  </data>
+  <data name="EnterTheCategory" xml:space="preserve">
+    <value>Выберите категорию</value>
+  </data>
+  <data name="EnterTheProvider" xml:space="preserve">
+    <value>Введите поставщика</value>
+  </data>
+  <data name="BusketIsEmpty" xml:space="preserve">
+    <value>Корзина пуста</value>
+  </data>
+  <data name="Import" xml:space="preserve">
+    <value>Импортировано</value>
+  </data>
+  <data name="Products" xml:space="preserve">
+    <value>Товаров</value>
+  </data>
+  <data name="EnterRecipient" xml:space="preserve">
+    <value>Введите получателя</value>
+  </data>
+  <data name="EnterAddressDelivery" xml:space="preserve">
+    <value>Ведите адрес доставки</value>
+  </data>
+  <data name="Data1AndData2" xml:space="preserve">
+    <value>Дата начала не может быть позже даты окончания</value>
+  </data>
+  <data name="NoDataForExport" xml:space="preserve">
+    <value>Нет данных для экспорта</value>
+  </data>
+  <data name="NotReadingShipments" xml:space="preserve">
+    <value>Не читаются отгрузки</value>
+  </data>
+  <data name="ErrorExport" xml:space="preserve">
+    <value>Ошибка при экспортировании</value>
+  </data>
+  <data name="EnterSeason" xml:space="preserve">
+    <value>Введите срок сезона</value>
+  </data>
+  <data name="FalseProductNotExist" xml:space="preserve">
+    <value>Списанных товаров не существует</value>
   </data>
 </root>

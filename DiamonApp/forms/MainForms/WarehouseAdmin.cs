@@ -99,9 +99,7 @@ namespace Draft_Diamond_BD
                 }
             }
         }
-        /// <summary>
-        /// Метод для работы с базой данных 
-        /// </summary>
+
         public void LoadProductsTrue()
         {
             using (var db = new AllDB())
@@ -307,15 +305,15 @@ namespace Draft_Diamond_BD
 
         private void buttonSaveOptions_Click(object sender, EventArgs e)
         {
-            if (comboBoxTypeProduct.Text is null)
+            if (comboBoxTypeProduct.SelectedItem is null)
             {
-                MessageBox.Show("Введите тип товара");
+                MessageBox.Show(Resources.EnterTheCategory);
                 return;
             }
 
-            if (comboBoxSeasonDuration.Text is null)
+            if (comboBoxTypeProduct.SelectedItem is null)
             {
-                MessageBox.Show("Введите срок сезона");
+                MessageBox.Show(Resources.EnterSeason);
                 return;
             }
             using (var db = new AllDB())
@@ -368,13 +366,12 @@ namespace Draft_Diamond_BD
                         }).ToList();
                         if (!products.Any())
                         {
-                            MessageBox.Show("Списанных товаров нет");
+                            MessageBox.Show(Resources.FalseProductNotExist);
                             return;
                         }
                         dgvWarehouseFalse.DataSource = products;
                         SetupColumnsFalse();
-                    }
-                    ;
+                    };
                 };
              }
         }

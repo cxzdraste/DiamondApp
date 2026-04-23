@@ -85,25 +85,25 @@ namespace DiamondApp.forms.differentFunctionsForms
             {
                 if (comboBoxName.SelectedItem == null)
                 {
-                    MessageBox.Show("Выберите название товара", "Ошибка", MessageBoxButtons.OK, MessageBoxIcon.Warning);
+                    MessageBox.Show(Resources.EnterProductName);
                     return;
                 }
 
                 if (!int.TryParse(numCount.Text, out int quantity) || quantity <= 0)
                 {
-                    MessageBox.Show("Введите корректное количество", "Ошибка", MessageBoxButtons.OK, MessageBoxIcon.Warning);
+                    MessageBox.Show(Resources.NumberCount);
                     return;
                 }
 
                 if (string.IsNullOrWhiteSpace(comboBoxProviderName.Text))
                 {
-                    MessageBox.Show("Введите поставщика", "Ошибка", MessageBoxButtons.OK, MessageBoxIcon.Warning);
+                    MessageBox.Show(Resources.EnterTheProvider);
                     return;
                 }
 
                 if (!int.TryParse(numPrice.Text, out int quant) || quant <= 0)
                 {
-                    MessageBox.Show("Введите корректную цену закупки", "Ошибка", MessageBoxButtons.OK, MessageBoxIcon.Warning);
+                    MessageBox.Show(Resources.PurchasePrice);
                     return;
                 }
 
@@ -145,7 +145,7 @@ namespace DiamondApp.forms.differentFunctionsForms
             {
                 if (!db.ProductsOnAcceptance.Any())
                 {
-                    MessageBox.Show("Корзина пуста", "Ошибка", MessageBoxButtons.OK, MessageBoxIcon.Warning);
+                    MessageBox.Show(Resources.BusketIsEmpty);
                     return;
                 }
                 foreach (var product in db.ProductsOnAcceptance)
@@ -215,7 +215,7 @@ namespace DiamondApp.forms.differentFunctionsForms
                                 db.SaveChanges();
                             }
                         }
-                        MessageBox.Show($"Импортировано {products.Count} товаров");
+                        MessageBox.Show($"{Resources.Import}: {products.Count} {Resources.Products}");
                         LoadProducts();
                     }
                     catch (Exception ex)
