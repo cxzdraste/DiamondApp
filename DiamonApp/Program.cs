@@ -1,7 +1,6 @@
 using System.Net;
 using DiamonApp.DataBase;
-using Draft_Diamond_BD;
-using Authorization = Draft_Diamond_BD.Authorization;
+
 
 namespace DiamonApp
 {
@@ -14,7 +13,7 @@ namespace DiamonApp
         static void Main()
         {
             ApplicationConfiguration.Initialize();
-            Application.Run(new Authorization());
+            Application.Run(new Form1());
         }
     }
 }
