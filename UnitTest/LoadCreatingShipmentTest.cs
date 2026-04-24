@@ -57,8 +57,7 @@ namespace UnitTest
             var form = new CreatingShipmentForm("admin");
             form.LoadProducts();
             var grid = form.Controls.OfType<DataGridView>().First();
-            Assert.Contains(grid.Columns.Cast<DataGridViewColumn>(),
-                c => c.Name.Contains("Name") || c.DataPropertyName.Contains("Name"));
+            Assert.Contains(grid.Columns.Cast<DataGridViewColumn>(), c => c.Name.Contains("Name") || c.DataPropertyName.Contains("Name"));
         }
         /// <summary>
         /// Тест на проверку, если БД пустая

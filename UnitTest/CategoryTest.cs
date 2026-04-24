@@ -7,7 +7,7 @@ namespace UnitTest
         /// Тест на проверку исключения
         /// </summary>
         [Fact]
-        public void CategoryTest()
+        public void CategoryProductTest()
         {
             string categoryName = "TestCategory";
             var ex = Assert.Throws<NullReferenceException>(() =>
