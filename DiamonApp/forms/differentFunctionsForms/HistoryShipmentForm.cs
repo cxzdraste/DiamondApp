@@ -8,10 +8,17 @@ using Newtonsoft.Json;
 
 namespace DiamonApp.forms.differentFunctionsForms
 {
+    /// <summary>
+    /// Форма истории отгрузок
+    /// </summary>
     public partial class HistoryShipmentForm : Form
     {
         private DataGridView dgvWarehouse;
         private string userLogin;
+
+        /// <summary>
+        /// Инициализирует форму истории отгрузок
+        /// </summary>
         public HistoryShipmentForm(string login)
         {
             InitializeComponent();
@@ -20,8 +27,13 @@ namespace DiamonApp.forms.differentFunctionsForms
             CreateDataGridView();
             LoadProducts();
             comboBoxFiter.Click += (s, a) => LoadStorekeepersInFilter();
+
+            Logger.UserAction(userLogin, "Открыта форма истории отгрузок");
         }
 
+        /// <summary>
+        /// Создаёт и настраивает DataGridView для отображения истории отгрузок
+        /// </summary>
         private void CreateDataGridView()
         {
             dgvWarehouse = new DataGridView
@@ -35,8 +47,13 @@ namespace DiamonApp.forms.differentFunctionsForms
             };
             Controls.Add(dgvWarehouse);
         }
+
+        /// <summary>
+        /// Загружает список всех отгрузок
+        /// </summary>
         public void LoadProducts()
         {
+            Logger.UserAction(userLogin, "Загрузка истории отгрузок");
             using (var db = new AllDB())
             {
                 var products = db.HistoryShipment.Select(p => new
@@ -56,8 +73,13 @@ namespace DiamonApp.forms.differentFunctionsForms
                 SetupColumns();
             }
         }
+
+        /// <summary>
+        /// Загружает список кладовщиков для фильтрации
+        /// </summary>
         private void LoadStorekeepersInFilter()
         {
+            Logger.UserAction(userLogin, "Загрузка списка кладовщиков для фильтрации");
             var startDate = date1.Value;
             var endDate = date2.Value;
             comboBoxFiter.Items.Clear();
@@ -72,6 +94,7 @@ namespace DiamonApp.forms.differentFunctionsForms
                 }
                 comboBoxFiter.SelectedIndexChanged += (s, e) =>
                 {
+                    Logger.UserAction(userLogin, $"Фильтрация по кладовщику: {comboBoxFiter.SelectedItem}");
                     using (var db = new AllDB())
                     {
                         var selectedLogin = comboBoxFiter.SelectedItem.ToString();
@@ -95,6 +118,10 @@ namespace DiamonApp.forms.differentFunctionsForms
                 };
             }
         }
+
+        /// <summary>
+        /// Настраивает заголовки столбцов DataGridView
+        /// </summary>
         private void SetupColumns()
         {
             if (dgvWarehouse.Columns["DateShipment"] != null)
@@ -128,17 +155,27 @@ namespace DiamonApp.forms.differentFunctionsForms
                 dgvWarehouse.Columns["Id"].HeaderText = "ID отгрузки";
         }
 
+        /// <summary>
+        /// Переход на форму складского администратора
+        /// </summary>
         private void buttonListWaredhouse_Click(object sender, EventArgs e)
         {
+            Logger.UserAction(userLogin, "Переход на форму складского администратора из истории отгрузок");
             var newWarehouseAdmine = new WarehouseAdmin(userLogin);
             newWarehouseAdmine.Show();
             Close();
         }
 
+        /// <summary>
+        /// Показывает отгрузки за выбранный период
+        /// </summary>
         private void buttonShow_Click(object sender, EventArgs e)
         {
+            Logger.UserAction(userLogin, $"Показать отгрузки за период: {date1.Value:d} - {date2.Value:d}");
+
             if (date1.Value.Date > date2.Value.Date)
             {
+                Logger.UserAction(userLogin, "Ошибка: дата начала позже даты окончания");
                 MessageBox.Show(Resources.Data1AndData2);
                 return;
             }
@@ -161,27 +198,36 @@ namespace DiamonApp.forms.differentFunctionsForms
                 }).ToList();
                 dgvWarehouse.DataSource = listShip1;
                 SetupColumns();
+
+                Logger.UserAction(userLogin, $"Найдено отгрузок: {listShip1.Count}");
             }
         }
 
+        /// <summary>
+        /// Экспортирует отчёт в JSON файл
+        /// </summary>
         private void buttonExportTheReport_Click(object sender, EventArgs e)
         {
-            if(dgvWarehouse.DataSource == null)
+            Logger.UserAction(userLogin, "Экспорт отчёта в JSON");
+
+            if (dgvWarehouse.DataSource == null)
             {
+                Logger.UserAction(userLogin, "Ошибка: нет данных для экспорта");
                 MessageBox.Show(Resources.NoDataForExport); return;
             }
             var data = dgvWarehouse.DataSource;
             var exportList = new List<object>();
-            if (data is System.Collections.IEnumerable enumerable) 
+            if (data is System.Collections.IEnumerable enumerable)
             {
-                foreach(var item in enumerable)
+                foreach (var item in enumerable)
                 {
                     exportList.Add(item);
                 }
             }
 
-            if(exportList.Count == 0)
+            if (exportList.Count == 0)
             {
+                Logger.UserAction(userLogin, "Ошибка: невозможно прочитать отгрузки для экспорта");
                 MessageBox.Show(Resources.NotReadingShipments); return;
             }
             var saveFile = new SaveFileDialog
@@ -191,16 +237,18 @@ namespace DiamonApp.forms.differentFunctionsForms
                 RestoreDirectory = true,
                 FileName = $"Отгрузки_{DateTime.Now:M}.json"
             };
-            if(saveFile.ShowDialog() == DialogResult.OK)
+            if (saveFile.ShowDialog() == DialogResult.OK)
             {
                 try
                 {
                     var json = JsonConvert.SerializeObject(exportList, Formatting.Indented);
                     File.WriteAllText(saveFile.FileName, json);
+                    Logger.UserAction(userLogin, $"Экспортировано {exportList.Count} записей в файл: {saveFile.FileName}");
                     MessageBox.Show(Resources.Success);
                 }
-                catch(Exception ex)
+                catch (Exception ex)
                 {
+                    Logger.UserAction(userLogin, $"Ошибка при экспорте: {ex.Message}");
                     MessageBox.Show($"{Resources.ErrorExport} {ex.Message}");
                 }
             }

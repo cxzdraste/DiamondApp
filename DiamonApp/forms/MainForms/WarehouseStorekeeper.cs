@@ -1,4 +1,5 @@
-﻿using DiamonApp.DataBase;
+﻿using DiamonApp.Classes;
+using DiamonApp.DataBase;
 using DiamonApp.forms.differentFunctionsForms;
 using DiamondApp.forms.differentFunctionsForms;
 using DiamondApp.Resourses;
@@ -6,11 +7,18 @@ using System.Data;
 
 namespace Draft_Diamond_BD
 {
+    /// <summary>
+    /// Форма кладовщика
+    /// </summary>
     public partial class WarehouseStorekeeper : Form
     {
         private DataGridView dgvWarehouseTrue;
         private DataGridView dgvWarehouseFalse;
         private string userLogin;
+
+        /// <summary>
+        /// Инициализирует форму кладовщика
+        /// </summary>
         public WarehouseStorekeeper(string login)
         {
             InitializeComponent();
@@ -24,7 +32,13 @@ namespace Draft_Diamond_BD
             exitToolStripMenuItemOutput.Click += Exit_Click;
             createShipmentToolStripMenuItem.Click += CreateShipmentToolStripMenuItem_Click;
             сменитьАккаунтToolStripMenuItem.Click += changeAccountToolStripMenuItem_Click;
+
+            Logger.UserAction(userLogin, "Открыта форма кладовщика");
         }
+
+        /// <summary>
+        /// Создаёт DataGridView для просроченных товаров
+        /// </summary>
         private void CreateDataGridViewTrue()
         {
             dgvWarehouseFalse = new DataGridView
@@ -38,6 +52,10 @@ namespace Draft_Diamond_BD
             };
             Controls.Add(dgvWarehouseFalse);
         }
+
+        /// <summary>
+        /// Создаёт DataGridView для активных товаров
+        /// </summary>
         private void CreateDataGridViewFalse()
         {
             dgvWarehouseTrue = new DataGridView
@@ -51,8 +69,13 @@ namespace Draft_Diamond_BD
             };
             Controls.Add(dgvWarehouseTrue);
         }
+
+        /// <summary>
+        /// Фильтрация товаров по категориям в меню
+        /// </summary>
         private void FilterProducts()
         {
+            Logger.UserAction(userLogin, "Фильтрация продуктов по категориям");
             using (var db = new AllDB())
             {
                 var categoriesBases = db.Categories.ToList();
@@ -78,6 +101,7 @@ namespace Draft_Diamond_BD
                         var menuItem = new ToolStripMenuItem(category);
                         menuItem.Click += (s, e) =>
                         {
+                            Logger.UserAction(userLogin, $"Фильтрация по категории: {category}");
                             using (var db = new AllDB())
                             {
                                 var products = db.Products.Where(p => p.Category == category).Select(p => new
@@ -97,6 +121,10 @@ namespace Draft_Diamond_BD
                 }
             }
         }
+
+        /// <summary>
+        /// Проверяет и обновляет статус просроченных товаров
+        /// </summary>
         private void ExpirationDateCheck()
         {
             using (var db = new AllDB())
@@ -106,13 +134,19 @@ namespace Draft_Diamond_BD
                     if (product.EndDateOfTheDay < DateTime.Today)
                     {
                         product.Status = false;
+                        Logger.UserAction(userLogin, $"Товар '{product.Name}' просрочен. Статус изменён на false");
                         db.SaveChanges();
                     }
                 }
             }
         }
+
+        /// <summary>
+        /// Загружает активные товары
+        /// </summary>
         public void LoadProductsTrue()
         {
+            Logger.UserAction(userLogin, "Загрузка активных товаров");
             using (var db = new AllDB())
             {
                 ExpirationDateCheck();
@@ -133,37 +167,46 @@ namespace Draft_Diamond_BD
                 LoadProductsFalse();
             }
         }
+
+        /// <summary>
+        /// Настраивает заголовки столбцов для активных товаров
+        /// </summary>
         private void SetupColumnsTrue()
         {
-            if (dgvWarehouseTrue.Columns["Name"] != null)
-                dgvWarehouseTrue.Columns["Name"].HeaderText = "Название";
+            if (dgvWarehouseTrue.Columns[Resources.NameEng] != null)
+                dgvWarehouseTrue.Columns[Resources.NameEng].HeaderText = Resources.NameRus;
 
-            if (dgvWarehouseTrue.Columns["UniteOfMeasure"] != null)
-                dgvWarehouseTrue.Columns["UniteOfMeasure"].HeaderText = "Единица измерения";
+            if (dgvWarehouseTrue.Columns[Resources.UniteOfMeasureEng] != null)
+                dgvWarehouseTrue.Columns[Resources.UniteOfMeasureEng].HeaderText = Resources.UniteOfMeasureRus;
 
-            if (dgvWarehouseTrue.Columns["PurchasePrice"] != null)
-                dgvWarehouseTrue.Columns["PurchasePrice"].HeaderText = "Цена";
+            if (dgvWarehouseTrue.Columns[Resources.PurchasePriceEng] != null)
+                dgvWarehouseTrue.Columns[Resources.PurchasePriceEng].HeaderText = Resources.PurchasePriceRus;
 
-            if (dgvWarehouseTrue.Columns["Category"] != null)
-                dgvWarehouseTrue.Columns["Category"].HeaderText = "Категория";
+            if (dgvWarehouseTrue.Columns[Resources.CategoryEng] != null)
+                dgvWarehouseTrue.Columns[Resources.CategoryEng].HeaderText = Resources.CategoryRus;
 
-            if (dgvWarehouseTrue.Columns["Rest"] != null)
-                dgvWarehouseTrue.Columns["Rest"].HeaderText = "Остаток";
+            if (dgvWarehouseTrue.Columns[Resources.RestEng] != null)
+                dgvWarehouseTrue.Columns[Resources.RestEng].HeaderText = Resources.RestRus;
 
-            if (dgvWarehouseTrue.Columns["EndDateOfTheDay"] != null)
-                dgvWarehouseTrue.Columns["EndDateOfTheDay"].HeaderText = "Сезон до";
+            if (dgvWarehouseTrue.Columns[Resources.EndDateOfTheDayEng] != null)
+                dgvWarehouseTrue.Columns[Resources.EndDateOfTheDayEng].HeaderText = Resources.EndDateOfTheDayRus;
 
-            if (dgvWarehouseTrue.Columns["UntilTheEndOfTheSeason"] != null)
-                dgvWarehouseTrue.Columns["UntilTheEndOfTheSeason"].HeaderText = "До конца сезона";
+            if (dgvWarehouseTrue.Columns[Resources.UntilTheEndOfTheSeasonEng] != null)
+                dgvWarehouseTrue.Columns[Resources.UntilTheEndOfTheSeasonEng].HeaderText = Resources.UntilTheEndOfTheSeasonRus;
 
-            if (dgvWarehouseTrue.Columns["Discount"] != null)
-                dgvWarehouseTrue.Columns["Discount"].HeaderText = "Скидка";
+            if (dgvWarehouseTrue.Columns[Resources.DiscountEng] != null)
+                dgvWarehouseTrue.Columns[Resources.DiscountEng].HeaderText = Resources.DiscountRus;
 
-            if (dgvWarehouseTrue.Columns["FinalyPrice"] != null)
-                dgvWarehouseTrue.Columns["FinalyPrice"].HeaderText = "Итоговая стоимость";
+            if (dgvWarehouseTrue.Columns[Resources.FinalyPriceEng] != null)
+                dgvWarehouseTrue.Columns[Resources.FinalyPriceEng].HeaderText = Resources.FinalyPriceRus;
         }
+
+        /// <summary>
+        /// Загружает просроченные товары
+        /// </summary>
         public void LoadProductsFalse()
         {
+            Logger.UserAction(userLogin, "Загрузка просроченных товаров");
             using (var db = new AllDB())
             {
                 var productsFalse = db.Products.Where(p => p.Status == false);
@@ -187,43 +230,68 @@ namespace Draft_Diamond_BD
                     sum += product.FinalyPrice;
                 }
                 labelResult.Text = Resources.Result + sum;
+                Logger.UserAction(userLogin, $"Сумма просроченных товаров: {sum}");
             }
         }
+
+        /// <summary>
+        /// Настраивает заголовки столбцов для просроченных товаров
+        /// </summary>
         private void SetupColumnsFalse()
         {
-            if (dgvWarehouseFalse.Columns["Name"] != null)
-                dgvWarehouseFalse.Columns["Name"].HeaderText = "Название";
+            if (dgvWarehouseFalse.Columns[Resources.NameEng] != null)
+                dgvWarehouseFalse.Columns[Resources.NameEng].HeaderText = Resources.NameRus;
 
-            if (dgvWarehouseFalse.Columns["UniteOfMeasure"] != null)
-                dgvWarehouseFalse.Columns["UniteOfMeasure"].HeaderText = "Единица измерения";
+            if (dgvWarehouseFalse.Columns[Resources.UniteOfMeasureEng] != null)
+                dgvWarehouseFalse.Columns[Resources.UniteOfMeasureEng].HeaderText = Resources.UniteOfMeasureRus;
 
-            if (dgvWarehouseFalse.Columns["Category"] != null)
-                dgvWarehouseFalse.Columns["Category"].HeaderText = "Категория";
+            if (dgvWarehouseFalse.Columns[Resources.CategoryEng] != null)
+                dgvWarehouseFalse.Columns[Resources.CategoryEng].HeaderText = Resources.CategoryRus;
 
-            if (dgvWarehouseFalse.Columns["FinallyPrice"] != null)
-                dgvWarehouseFalse.Columns["FinallyPrice"].HeaderText = "Убыток";
+            if (dgvWarehouseFalse.Columns[Resources.FinalyPriceEng] != null)
+                dgvWarehouseFalse.Columns[Resources.FinalyPriceEng].HeaderText = Resources.FinalyPriceFalseRus;
 
-            if (dgvWarehouseFalse.Columns["EndDateOfTheDay"] != null)
-                dgvWarehouseFalse.Columns["EndDateOfTheDay"].HeaderText = "Сезон до";
+            if (dgvWarehouseFalse.Columns[Resources.RestEng] != null)
+                dgvWarehouseFalse.Columns[Resources.RestEng].HeaderText = Resources.RestRus;
+
+            if (dgvWarehouseFalse.Columns[Resources.EndDateOfTheDayEng] != null)
+                dgvWarehouseFalse.Columns[Resources.EndDateOfTheDayEng].HeaderText = Resources.EndDateOfTheDayRus;
         }
+
+        /// <summary>
+        /// Открывает форму создания отгрузки
+        /// </summary>
         private void CreateShipmentToolStripMenuItem_Click(object sender, EventArgs e)
         {
+            Logger.UserAction(userLogin, "Открытие формы создания отгрузки");
             var createform = new CreatingShipmentForm(userLogin);
             createform.Show();
             Hide();
         }
+
+        /// <summary>
+        /// Выход из приложения
+        /// </summary>
         private void Exit_Click(object sender, EventArgs e)
         {
+            Logger.UserAction(userLogin, "Выход из приложения");
             Application.Exit();
         }
 
+        /// <summary>
+        /// Смена аккаунта
+        /// </summary>
         private void changeAccountToolStripMenuItem_Click(object sender, EventArgs e)
         {
+            Logger.UserAction(userLogin, "Смена аккаунта");
             var newAuthorization = new Authorization();
             newAuthorization.Show();
             Close();
         }
 
+        /// <summary>
+        /// Фильтрация просроченных товаров по категории
+        /// </summary>
         private void comboBoxFiterProductFalse_SelectedIndexChanged(object sender, EventArgs e)
         {
             comboBoxFiterProductFalse.Items.Clear();
@@ -235,6 +303,7 @@ namespace Draft_Diamond_BD
                 }
                 comboBoxFiterProductFalse.SelectedIndexChanged += (s, e) =>
                 {
+                    Logger.UserAction(userLogin, $"Фильтрация просроченных товаров по категории: {comboBoxFiterProductFalse.SelectedItem}");
                     using (var db = new AllDB())
                     {
                         var selectedCategory = comboBoxFiterProductFalse.SelectedItem.ToString();
@@ -259,8 +328,13 @@ namespace Draft_Diamond_BD
                 };
             }
         }
+
+        /// <summary>
+        /// Открывает форму приёмки поставки
+        /// </summary>
         private void принятьПоставкуToolStripMenuItem_Click(object sender, EventArgs e)
         {
+            Logger.UserAction(userLogin, "Открытие формы приёмки поставки");
             var newAcceptanceOfGoods = new AcceptanceOfGoodsForm(userLogin);
             newAcceptanceOfGoods.Show();
             Hide();

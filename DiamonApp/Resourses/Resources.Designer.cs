@@ -88,11 +88,29 @@ namespace DiamondApp.Resourses {
         }
         
         /// <summary>
+        ///   Ищет локализованную строку, похожую на Category.
+        /// </summary>
+        public static string CategoryEng {
+            get {
+                return ResourceManager.GetString("CategoryEng", resourceCulture);
+            }
+        }
+        
+        /// <summary>
         ///   Ищет локализованную строку, похожую на Категория уже существует.
         /// </summary>
         public static string CategoryIsExisting {
             get {
                 return ResourceManager.GetString("CategoryIsExisting", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Ищет локализованную строку, похожую на Категория.
+        /// </summary>
+        public static string CategoryRus {
+            get {
+                return ResourceManager.GetString("CategoryRus", resourceCulture);
             }
         }
         
@@ -115,6 +133,60 @@ namespace DiamondApp.Resourses {
         }
         
         /// <summary>
+        ///   Ищет локализованную строку, похожую на Count.
+        /// </summary>
+        public static string CountEng {
+            get {
+                return ResourceManager.GetString("CountEng", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Ищет локализованную строку, похожую на Количество.
+        /// </summary>
+        public static string CountRus {
+            get {
+                return ResourceManager.GetString("CountRus", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Ищет локализованную строку, похожую на CustomerName.
+        /// </summary>
+        public static string CustomerNameEng {
+            get {
+                return ResourceManager.GetString("CustomerNameEng", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Ищет локализованную строку, похожую на Кому.
+        /// </summary>
+        public static string CustomerNameRus {
+            get {
+                return ResourceManager.GetString("CustomerNameRus", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Ищет локализованную строку, похожую на CustomerPlace.
+        /// </summary>
+        public static string CustomerPlaceEng {
+            get {
+                return ResourceManager.GetString("CustomerPlaceEng", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Ищет локализованную строку, похожую на Куда.
+        /// </summary>
+        public static string CustomerPlaceRus {
+            get {
+                return ResourceManager.GetString("CustomerPlaceRus", resourceCulture);
+            }
+        }
+        
+        /// <summary>
         ///   Ищет локализованную строку, похожую на Дата начала не может быть позже даты окончания.
         /// </summary>
         public static string Data1AndData2 {
@@ -129,6 +201,42 @@ namespace DiamondApp.Resourses {
         public static string DeleteProduct {
             get {
                 return ResourceManager.GetString("DeleteProduct", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Ищет локализованную строку, похожую на Discount.
+        /// </summary>
+        public static string DiscountEng {
+            get {
+                return ResourceManager.GetString("DiscountEng", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Ищет локализованную строку, похожую на Скидка.
+        /// </summary>
+        public static string DiscountRus {
+            get {
+                return ResourceManager.GetString("DiscountRus", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Ищет локализованную строку, похожую на EndDateOfTheDay.
+        /// </summary>
+        public static string EndDateOfTheDayEng {
+            get {
+                return ResourceManager.GetString("EndDateOfTheDayEng", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Ищет локализованную строку, похожую на Сезон до.
+        /// </summary>
+        public static string EndDateOfTheDayRus {
+            get {
+                return ResourceManager.GetString("EndDateOfTheDayRus", resourceCulture);
             }
         }
         
@@ -277,6 +385,33 @@ namespace DiamondApp.Resourses {
         }
         
         /// <summary>
+        ///   Ищет локализованную строку, похожую на FinalyPrice.
+        /// </summary>
+        public static string FinalyPriceEng {
+            get {
+                return ResourceManager.GetString("FinalyPriceEng", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Ищет локализованную строку, похожую на Убыток.
+        /// </summary>
+        public static string FinalyPriceFalseRus {
+            get {
+                return ResourceManager.GetString("FinalyPriceFalseRus", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Ищет локализованную строку, похожую на Итоговая стоимость.
+        /// </summary>
+        public static string FinalyPriceRus {
+            get {
+                return ResourceManager.GetString("FinalyPriceRus", resourceCulture);
+            }
+        }
+        
+        /// <summary>
         ///   Ищет локализованную строку, похожую на Сначала найдите товар по ID.
         /// </summary>
         public static string FindProduct {
@@ -322,6 +457,24 @@ namespace DiamondApp.Resourses {
         }
         
         /// <summary>
+        ///   Ищет локализованную строку, похожую на LoginEmployee.
+        /// </summary>
+        public static string LoginEmployeeEng {
+            get {
+                return ResourceManager.GetString("LoginEmployeeEng", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Ищет локализованную строку, похожую на Кто принял.
+        /// </summary>
+        public static string LoginEmployeeRus {
+            get {
+                return ResourceManager.GetString("LoginEmployeeRus", resourceCulture);
+            }
+        }
+        
+        /// <summary>
         ///   Ищет локализованную строку, похожую на Логин:.
         /// </summary>
         public static string LoginInMenu {
@@ -331,11 +484,47 @@ namespace DiamondApp.Resourses {
         }
         
         /// <summary>
+        ///   Ищет локализованную строку, похожую на LoginStorekeeper.
+        /// </summary>
+        public static string LoginStorekeeperEng {
+            get {
+                return ResourceManager.GetString("LoginStorekeeperEng", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Ищет локализованную строку, похожую на Кто создал.
+        /// </summary>
+        public static string LoginStorekeeperRus {
+            get {
+                return ResourceManager.GetString("LoginStorekeeperRus", resourceCulture);
+            }
+        }
+        
+        /// <summary>
         ///   Ищет локализованную строку, похожую на Заполните название и цену закупки.
         /// </summary>
         public static string NameAndPrice {
             get {
                 return ResourceManager.GetString("NameAndPrice", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Ищет локализованную строку, похожую на Name.
+        /// </summary>
+        public static string NameEng {
+            get {
+                return ResourceManager.GetString("NameEng", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Ищет локализованную строку, похожую на Название.
+        /// </summary>
+        public static string NameRus {
+            get {
+                return ResourceManager.GetString("NameRus", resourceCulture);
             }
         }
         
@@ -430,11 +619,47 @@ namespace DiamondApp.Resourses {
         }
         
         /// <summary>
+        ///   Ищет локализованную строку, похожую на Price.
+        /// </summary>
+        public static string PriceEng {
+            get {
+                return ResourceManager.GetString("PriceEng", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Ищет локализованную строку, похожую на Цена закупки.
+        /// </summary>
+        public static string PriceRus {
+            get {
+                return ResourceManager.GetString("PriceRus", resourceCulture);
+            }
+        }
+        
+        /// <summary>
         ///   Ищет локализованную строку, похожую на Товаров.
         /// </summary>
         public static string Products {
             get {
                 return ResourceManager.GetString("Products", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Ищет локализованную строку, похожую на ProviderName.
+        /// </summary>
+        public static string ProviderNameEng {
+            get {
+                return ResourceManager.GetString("ProviderNameEng", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Ищет локализованную строку, похожую на Поставщик.
+        /// </summary>
+        public static string ProviderNameRus {
+            get {
+                return ResourceManager.GetString("ProviderNameRus", resourceCulture);
             }
         }
         
@@ -448,11 +673,47 @@ namespace DiamondApp.Resourses {
         }
         
         /// <summary>
+        ///   Ищет локализованную строку, похожую на PurchasePrice.
+        /// </summary>
+        public static string PurchasePriceEng {
+            get {
+                return ResourceManager.GetString("PurchasePriceEng", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Ищет локализованную строку, похожую на Цена.
+        /// </summary>
+        public static string PurchasePriceRus {
+            get {
+                return ResourceManager.GetString("PurchasePriceRus", resourceCulture);
+            }
+        }
+        
+        /// <summary>
         ///   Ищет локализованную строку, похожую на Ошибка регистрации.
         /// </summary>
         public static string RegistrationError {
             get {
                 return ResourceManager.GetString("RegistrationError", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Ищет локализованную строку, похожую на Rest.
+        /// </summary>
+        public static string RestEng {
+            get {
+                return ResourceManager.GetString("RestEng", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Ищет локализованную строку, похожую на Остаток.
+        /// </summary>
+        public static string RestRus {
+            get {
+                return ResourceManager.GetString("RestRus", resourceCulture);
             }
         }
         
@@ -489,6 +750,42 @@ namespace DiamondApp.Resourses {
         public static string SuchLogin {
             get {
                 return ResourceManager.GetString("SuchLogin", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Ищет локализованную строку, похожую на UniteOfMeasure.
+        /// </summary>
+        public static string UniteOfMeasureEng {
+            get {
+                return ResourceManager.GetString("UniteOfMeasureEng", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Ищет локализованную строку, похожую на Единица измерения.
+        /// </summary>
+        public static string UniteOfMeasureRus {
+            get {
+                return ResourceManager.GetString("UniteOfMeasureRus", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Ищет локализованную строку, похожую на UntilTheEndOfTheSeason.
+        /// </summary>
+        public static string UntilTheEndOfTheSeasonEng {
+            get {
+                return ResourceManager.GetString("UntilTheEndOfTheSeasonEng", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Ищет локализованную строку, похожую на До конца сезона.
+        /// </summary>
+        public static string UntilTheEndOfTheSeasonRus {
+            get {
+                return ResourceManager.GetString("UntilTheEndOfTheSeasonRus", resourceCulture);
             }
         }
         

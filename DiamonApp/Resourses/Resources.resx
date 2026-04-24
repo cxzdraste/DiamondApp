@@ -264,4 +264,103 @@
   <data name="Result" xml:space="preserve">
     <value>Итого:</value>
   </data>
+  <data name="NameEng" xml:space="preserve">
+    <value>Name</value>
+  </data>
+  <data name="UniteOfMeasureEng" xml:space="preserve">
+    <value>UniteOfMeasure</value>
+  </data>
+  <data name="CategoryEng" xml:space="preserve">
+    <value>Category</value>
+  </data>
+  <data name="FinalyPriceEng" xml:space="preserve">
+    <value>FinalyPrice</value>
+  </data>
+  <data name="RestEng" xml:space="preserve">
+    <value>Rest</value>
+  </data>
+  <data name="EndDateOfTheDayEng" xml:space="preserve">
+    <value>EndDateOfTheDay</value>
+  </data>
+  <data name="NameRus" xml:space="preserve">
+    <value>Название</value>
+  </data>
+  <data name="UniteOfMeasureRus" xml:space="preserve">
+    <value>Единица измерения</value>
+  </data>
+  <data name="CategoryRus" xml:space="preserve">
+    <value>Категория</value>
+  </data>
+  <data name="FinalyPriceFalseRus" xml:space="preserve">
+    <value>Убыток</value>
+  </data>
+  <data name="RestRus" xml:space="preserve">
+    <value>Остаток</value>
+  </data>
+  <data name="EndDateOfTheDayRus" xml:space="preserve">
+    <value>Сезон до</value>
+  </data>
+  <data name="PurchasePriceEng" xml:space="preserve">
+    <value>PurchasePrice</value>
+  </data>
+  <data name="PurchasePriceRus" xml:space="preserve">
+    <value>Цена</value>
+  </data>
+  <data name="UntilTheEndOfTheSeasonEng" xml:space="preserve">
+    <value>UntilTheEndOfTheSeason</value>
+  </data>
+  <data name="UntilTheEndOfTheSeasonRus" xml:space="preserve">
+    <value>До конца сезона</value>
+  </data>
+  <data name="DiscountEng" xml:space="preserve">
+    <value>Discount</value>
+  </data>
+  <data name="DiscountRus" xml:space="preserve">
+    <value>Скидка</value>
+  </data>
+  <data name="FinalyPriceRus" xml:space="preserve">
+    <value>Итоговая стоимость</value>
+  </data>
+  <data name="CountEng" xml:space="preserve">
+    <value>Count</value>
+  </data>
+  <data name="CountRus" xml:space="preserve">
+    <value>Количество</value>
+  </data>
+  <data name="PriceEng" xml:space="preserve">
+    <value>Price</value>
+  </data>
+  <data name="PriceRus" xml:space="preserve">
+    <value>Цена закупки</value>
+  </data>
+  <data name="ProviderNameEng" xml:space="preserve">
+    <value>ProviderName</value>
+  </data>
+  <data name="ProviderNameRus" xml:space="preserve">
+    <value>Поставщик</value>
+  </data>
+  <data name="LoginEmployeeEng" xml:space="preserve">
+    <value>LoginEmployee</value>
+  </data>
+  <data name="LoginEmployeeRus" xml:space="preserve">
+    <value>Кто принял</value>
+  </data>
+  <data name="CustomerNameEng" xml:space="preserve">
+    <value>CustomerName</value>
+  </data>
+  <data name="CustomerNameRus" xml:space="preserve">
+    <value>Кому</value>
+  </data>
+  <data name="CustomerPlaceEng" xml:space="preserve">
+    <value>CustomerPlace</value>
+  </data>
+  <data name="CustomerPlaceRus" xml:space="preserve">
+    <value>Куда</value>
+  </data>
+  <data name="LoginStorekeeperEng" xml:space="preserve">
+    <value>LoginStorekeeper</value>
+  </data>
+  <data name="LoginStorekeeperRus" xml:space="preserve">
+    <value>Кто создал</value>
+  </data>
 </root>
