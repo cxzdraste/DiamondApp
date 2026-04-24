@@ -361,12 +361,9 @@ namespace Draft_Diamond_BD
                         {
                             p.Name,
                             p.UniteOfMeasure,
-                            p.PurchasePrice,
                             p.Category,
                             p.Rest,
                             p.EndDateOfTheDay,
-                            p.UntilTheEndOfTheSeason,
-                            p.Discount,
                             p.FinalyPrice,
                         }).ToList();
                         if (!products.Any())
